@@ -9,3 +9,9 @@ C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\Imperi
 C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\ImperiumChoszczno.exe
 C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\ImperiumChoszczno.pdb
 C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\ImperiumChoszczno.Studio.resources
+C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\bin\Debug\Database1.mdf
+C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\bin\Debug\Database1_log.ldf
+C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\ImperiumChoszczno.Informacje.resources
+C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\ImperiumChoszczno.InformacjeL.resources
+C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\ImperiumChoszczno.register.resources
+C:\Users\hubi_\source\repos\ImperiumChoszczno\ImperiumChoszczno\obj\Debug\ImperiumChoszczno.login.resources

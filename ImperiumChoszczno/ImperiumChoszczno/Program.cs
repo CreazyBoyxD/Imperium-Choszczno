@@ -16,7 +16,7 @@ namespace ImperiumChoszczno
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Studio());
+            Application.Run(new login());
         }
     }
 }
