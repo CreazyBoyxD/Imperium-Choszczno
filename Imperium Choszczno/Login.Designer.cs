@@ -1,4 +1,6 @@
-﻿namespace Imperium_Choszczno
+﻿using System.Windows.Forms;
+
+namespace Imperium_Choszczno
 {
     partial class Login
     {
@@ -47,25 +49,28 @@
             // 
             // loginEmail
             // 
-            this.loginEmail.Location = new System.Drawing.Point(78, 128);
+            this.loginEmail.Location = new System.Drawing.Point(58, 104);
+            this.loginEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginEmail.Name = "loginEmail";
-            this.loginEmail.Size = new System.Drawing.Size(172, 22);
+            this.loginEmail.Size = new System.Drawing.Size(130, 20);
             this.loginEmail.TabIndex = 1;
             this.loginEmail.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // loginPassword
             // 
-            this.loginPassword.Location = new System.Drawing.Point(78, 191);
+            this.loginPassword.Location = new System.Drawing.Point(58, 155);
+            this.loginPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginPassword.Name = "loginPassword";
-            this.loginPassword.Size = new System.Drawing.Size(172, 22);
+            this.loginPassword.Size = new System.Drawing.Size(130, 20);
             this.loginPassword.TabIndex = 1;
             // 
             // loginl1
             // 
             this.loginl1.AutoSize = true;
-            this.loginl1.Location = new System.Drawing.Point(75, 92);
+            this.loginl1.Location = new System.Drawing.Point(56, 75);
+            this.loginl1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.loginl1.Name = "loginl1";
-            this.loginl1.Size = new System.Drawing.Size(131, 16);
+            this.loginl1.Size = new System.Drawing.Size(102, 13);
             this.loginl1.TabIndex = 2;
             this.loginl1.Text = "Your e-mail address:";
             this.loginl1.Click += new System.EventHandler(this.label1_Click);
@@ -73,9 +78,10 @@
             // loginl2
             // 
             this.loginl2.AutoSize = true;
-            this.loginl2.Location = new System.Drawing.Point(75, 163);
+            this.loginl2.Location = new System.Drawing.Point(56, 132);
+            this.loginl2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.loginl2.Name = "loginl2";
-            this.loginl2.Size = new System.Drawing.Size(100, 16);
+            this.loginl2.Size = new System.Drawing.Size(80, 13);
             this.loginl2.TabIndex = 2;
             this.loginl2.Text = "Your password:";
             this.loginl2.Click += new System.EventHandler(this.label1_Click);
@@ -83,9 +89,10 @@
             // ForgotPass
             // 
             this.ForgotPass.AutoSize = true;
-            this.ForgotPass.Location = new System.Drawing.Point(75, 309);
+            this.ForgotPass.Location = new System.Drawing.Point(56, 251);
+            this.ForgotPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ForgotPass.Name = "ForgotPass";
-            this.ForgotPass.Size = new System.Drawing.Size(116, 16);
+            this.ForgotPass.Size = new System.Drawing.Size(92, 13);
             this.ForgotPass.TabIndex = 3;
             this.ForgotPass.TabStop = true;
             this.ForgotPass.Text = "Forgot Password?";
@@ -93,19 +100,22 @@
             // 
             // loginLogin
             // 
-            this.loginLogin.Location = new System.Drawing.Point(131, 229);
+            this.loginLogin.Location = new System.Drawing.Point(98, 186);
+            this.loginLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginLogin.Name = "loginLogin";
-            this.loginLogin.Size = new System.Drawing.Size(75, 28);
+            this.loginLogin.Size = new System.Drawing.Size(56, 23);
             this.loginLogin.TabIndex = 4;
             this.loginLogin.Text = "Login";
             this.loginLogin.UseVisualStyleBackColor = true;
+            this.loginLogin.Click += new System.EventHandler(this.loginLogin_Click);
             // 
             // loginNewUser
             // 
             this.loginNewUser.AutoSize = true;
-            this.loginNewUser.Location = new System.Drawing.Point(75, 274);
+            this.loginNewUser.Location = new System.Drawing.Point(56, 223);
+            this.loginNewUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.loginNewUser.Name = "loginNewUser";
-            this.loginNewUser.Size = new System.Drawing.Size(157, 16);
+            this.loginNewUser.Size = new System.Drawing.Size(125, 13);
             this.loginNewUser.TabIndex = 5;
             this.loginNewUser.TabStop = true;
             this.loginNewUser.Text = "First time? Register Here!";
@@ -113,10 +123,10 @@
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(365, 404);
+            this.ClientSize = new System.Drawing.Size(274, 328);
             this.Controls.Add(this.loginNewUser);
             this.Controls.Add(this.loginLogin);
             this.Controls.Add(this.ForgotPass);
@@ -125,6 +135,7 @@
             this.Controls.Add(this.loginPassword);
             this.Controls.Add(this.loginEmail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -143,5 +154,19 @@
         private System.Windows.Forms.LinkLabel ForgotPass;
         private System.Windows.Forms.Button loginLogin;
         private System.Windows.Forms.LinkLabel loginNewUser;
+
+        private bool isValid()
+        {
+            if (loginEmail.Text.TrimStart() == string.Empty)
+            {
+                MessageBox.Show("Enter valid e-mail please!", "Error!");
+                return false;
+            } else if (loginPassword.Text.TrimStart() == string.Empty)
+            {
+                MessageBox.Show("Enter valid password please!", "Error!");
+                return false;
+            }
+            return true;
+        }
     }
 }
