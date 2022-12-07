@@ -1,0 +1,90 @@
+C:\Users\furya\Music\Imperium Choszczno\bin\Debug\Imperium Choszczno.exe.config
+C:\Users\furya\Music\Imperium Choszczno\bin\Debug\Imperium Choszczno.exe
+C:\Users\furya\Music\Imperium Choszczno\bin\Debug\Imperium Choszczno.pdb
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.AssemblyReference.cache
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.SuggestedBindingRedirects.cache
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Properties.Resources.resources
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.GenerateResource.cache
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.CoreCompileInputs.cache
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium Choszczno.exe
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium Choszczno.pdb
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Login.resources
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Main.resources
+C:\Users\furya\Music\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Register.resources
+D:\Imperium Choszczno\bin\Debug\Imperium Choszczno.exe.config
+D:\Imperium Choszczno\bin\Debug\Imperium Choszczno.exe
+D:\Imperium Choszczno\bin\Debug\Imperium Choszczno.pdb
+D:\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.AssemblyReference.cache
+D:\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.SuggestedBindingRedirects.cache
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Register.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Main.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Login.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Properties.Resources.resources
+D:\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.GenerateResource.cache
+D:\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.CoreCompileInputs.cache
+D:\Imperium Choszczno\obj\Debug\Imperium Choszczno.exe
+D:\Imperium Choszczno\obj\Debug\Imperium Choszczno.pdb
+D:\Imperium Choszczno\bin\Debug\MySqlConnector.dll
+D:\Imperium Choszczno\bin\Debug\System.Buffers.dll
+D:\Imperium Choszczno\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\Imperium Choszczno\bin\Debug\System.Memory.dll
+D:\Imperium Choszczno\bin\Debug\System.Numerics.Vectors.dll
+D:\Imperium Choszczno\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Imperium Choszczno\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Imperium Choszczno\bin\Debug\MySqlConnector.xml
+D:\Imperium Choszczno\bin\Debug\System.Buffers.xml
+D:\Imperium Choszczno\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\Imperium Choszczno\bin\Debug\System.Memory.xml
+D:\Imperium Choszczno\bin\Debug\System.Numerics.Vectors.xml
+D:\Imperium Choszczno\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Imperium Choszczno\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.CopyComplete
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Settings.resources
+D:\Imperium Choszczno\bin\Debug\en\Imperium Choszczno.resources.dll
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Settings.en.resources
+D:\Imperium Choszczno\obj\Debug\en\Imperium Choszczno.resources.dll
+D:\Imperium Choszczno\bin\Debug\de\Imperium Choszczno.resources.dll
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Settings.de.resources
+D:\Imperium Choszczno\obj\Debug\de\Imperium Choszczno.resources.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\Imperium Choszczno.exe.config
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\Imperium Choszczno.exe
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\Imperium Choszczno.pdb
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\de\Imperium Choszczno.resources.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\en\Imperium Choszczno.resources.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\MySqlConnector.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Buffers.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Memory.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\MySqlConnector.xml
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Buffers.xml
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Memory.xml
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.AssemblyReference.cache
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Register.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Main.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Login.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Properties.Resources.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Settings.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Settings.de.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Settings.en.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.GenerateResource.cache
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.CoreCompileInputs.cache
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\de\Imperium Choszczno.resources.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\en\Imperium Choszczno.resources.dll
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium Choszczno.csproj.CopyComplete
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium Choszczno.exe
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium Choszczno.pdb
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Discover.resources
+C:\Users\prosk\Desktop\Imperium_Choszczno\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Library.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Discover.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Library.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Start.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Main.en.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.History.resources
+D:\Imperium Choszczno\obj\Debug\Imperium_Choszczno.Shop.resources
