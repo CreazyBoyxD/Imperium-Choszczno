@@ -1,0 +1,107 @@
+﻿<Page 
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      xmlns:Properties="clr-namespace:WpfApp1.Properties"
+      x:Class="WpfApp1.UserPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1300"
+      Title="UserPage">
+
+    <Grid Margin="3,3,3,0" Background="#FF929292">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="Main" Background="White"/>
+        <DockPanel LastChildFill="False" Height="Auto" VerticalAlignment="Top">
+            <Menu x:Name="MenuTop" FontFamily="Bahnschrift" FontSize="14">
+                <MenuItem Header="{x:Static Properties:Resources.exitApp}" FontFamily="Bahnschrift" Click="MenuItem_Click_1"/>
+                <MenuItem Header="{x:Static Properties:Resources.logout}" Click="MenuItem_Click" FontFamily="Bahnschrift" />
+                <MenuItem Header="{x:Static Properties:Resources.changetheme}" Click="MenuItem_Click_2"/>
+            </Menu>
+        </DockPanel>
+        <TabControl x:Name="Tabs" Margin="0,94,0,0" FontSize="16">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Albums}" VerticalAlignment="Center" Width="Auto
+                     " FontFamily="Bahnschrift">
+                <Grid x:Name="AlbumsGrid" Background="#FF989898" VerticalAlignment="Top" Height="657">
+                    <DataGrid x:Name="albumUserList" Margin="22,47,651,307" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="albumUserList_SelectionChanged" AutoGeneratingColumn="albumUserList_AutoGeneratingColumn" FontSize="20" GridLinesVisibility="Horizontal" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="None" FontFamily="Bahnschrift"/>
+                    <Image x:Name="AlbumImage" HorizontalAlignment="Left" Height="251" Margin="466,386,0,0" VerticalAlignment="Top" Width="250"/>
+                    <Label x:Name="nameOfAlbumLabel" Content="{x:Static Properties:Resources.nameOfAlbum}" HorizontalAlignment="Left" Margin="27,355,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="priceOfSong1" Content="{x:Static Properties:Resources.priceOfAlbum}" HorizontalAlignment="Left" Margin="27,388,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="discountOfAlbum_Copy" Content="{x:Static Properties:Resources.discount}" HorizontalAlignment="Left" Margin="27,419,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Button x:Name="buyThisAlbum" Content="{x:Static Properties:Resources.buyAlbum}" HorizontalAlignment="Left" Margin="27,473,0,0" VerticalAlignment="Top" Height="53" Width="171" Click="buyThisAlbum_Click" FontFamily="Bahnschrift" />
+                    <Label x:Name="AlbumImageLabel" Content="{x:Static Properties:Resources.albumCover}" HorizontalAlignment="Left" Margin="466,355,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <DataGrid x:Name="albumListOfSongs" Margin="650,47,26,307" IsReadOnly="True" SelectionMode="Single" FontSize="20" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="None" GridLinesVisibility="Horizontal" AutoGeneratingColumn="albumListOfSongs_AutoGeneratingColumn" SelectionChanged="albumListOfSongs_SelectionChanged" FontFamily="Bahnschrift"/>
+                    <Label x:Name="AlbumListLabel" Content="{x:Static Properties:Resources.albumList}" HorizontalAlignment="Left" Margin="26,10,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="AlbumSongListLabel" Content="{x:Static Properties:Resources.albumListSong}" HorizontalAlignment="Left" Margin="650,11,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="nameOfAlbumLabelShow" Content="" HorizontalAlignment="Left" Margin="173,355,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="discountOfAlbumLabelShow" Content="" HorizontalAlignment="Left" Margin="173,419,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="priceOfAlbumLabelShow" Content="" HorizontalAlignment="Left" Margin="173,388,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Image x:Name="SongInAlbumImage" HorizontalAlignment="Left" Height="150" Margin="969,404,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="nameOfSong_Copy" Content="{x:Static Properties:Resources.songName}" HorizontalAlignment="Left" Margin="793,355,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="nameOfAuthorSong_Copy2" Content="{x:Static Properties:Resources.songCover}" HorizontalAlignment="Left" Margin="793,397,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                    <Label x:Name="nameOfSongAlbumLabelShow" Content="" HorizontalAlignment="Left" Margin="969,355,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+                </Grid>
+            </TabItem>
+            <TabItem Height="20" Header="{x:Static Properties:Resources.Songs}" VerticalAlignment="Top" FontFamily="Bahnschrift">
+                <Grid x:Name="SongsGrid" Background="#FF989898" VerticalAlignment="Top">
+                    <DataGrid x:Name="SongsTableUser" IsReadOnly="True" SelectionMode="Single" Background="#FFF0F0F0" CanUserSortColumns="False" CanUserReorderColumns="False" HeadersVisibility="None" FontSize="20" GridLinesVisibility="Horizontal" SelectionChanged="SongsTableUser_SelectionChanged" Margin="31,47,394,0" Height="341" VerticalAlignment="Top" AutoGeneratingColumn="SongsTableUser_AutoGeneratingColumn" CanUserAddRows="False" CanUserDeleteRows="False"/>
+                    <Image x:Name="SongImage" HorizontalAlignment="Left" Height="350" Margin="919,47,0,0" VerticalAlignment="Top" Width="350"/>
+                    <Image x:Name="AuthorImage" HorizontalAlignment="Left" Height="200" Margin="776,441,0,0" VerticalAlignment="Top" Width="200"/>
+                    <Label x:Name="nameOfSong" Content="{x:Static Properties:Resources.songName}" HorizontalAlignment="Left" Margin="36,412,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="priceOfSong" Content="{x:Static Properties:Resources.priceOfSong}" HorizontalAlignment="Left" Margin="36,446,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="discountOfSong" Content="{x:Static Properties:Resources.discount}" HorizontalAlignment="Left" Margin="35,482,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Button x:Name="buyThisSong" Content="{x:Static Properties:Resources.buySong}" HorizontalAlignment="Left" Margin="36,537,0,0" VerticalAlignment="Top" Height="53" Width="171" Click="buyThisSong_Click"/>
+                    <Label x:Name="nameOfAuthorSong_Copy" Content="{x:Static Properties:Resources.authorCover}" HorizontalAlignment="Left" Margin="776,405,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="nameOfAuthorSong_Copy1" Content="{x:Static Properties:Resources.songCover}" HorizontalAlignment="Left" Margin="919,11,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="nameOfSongLabelShow" Content="" HorizontalAlignment="Left" Margin="212,412,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="priceOfSongLabelShow" Content="" HorizontalAlignment="Left" Margin="212,448,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="discountOfSongLabelShow" Content="" HorizontalAlignment="Left" Margin="212,482,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="listOfSongs" Content="{x:Static Properties:Resources.Songs}" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+                </Grid>
+            </TabItem>
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Orders}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift">
+                <Grid x:Name="OrdersGrid" Background="#FF9E9E9E" VerticalAlignment="Top" Height="546">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="orderUserList" Margin="26,47,410,255" IsReadOnly="True" SelectionMode="Single" Background="#FFF0F0F0" AutoGeneratingColumn="orderUserList_AutoGeneratingColumn" SelectionChanged="orderUserList_SelectionChanged" FontSize="20" HeadersVisibility="None"/>
+                    <Label x:Name="orderUserNameSurnameLabel" Content="{x:Static Properties:Resources.orderUserNameSurname}" HorizontalAlignment="Left" Margin="34,296,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderUserAddressLabel" Content="{x:Static Properties:Resources.orderUserAddress}" HorizontalAlignment="Left" Margin="34,329,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderProductLabel" Content="{x:Static Properties:Resources.orderProduct}" HorizontalAlignment="Left" Margin="34,360,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderCostLabel" Content="{x:Static Properties:Resources.orderCost}" HorizontalAlignment="Left" Margin="34,392,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Button x:Name="deleteOrder" Content="{x:Static Properties:Resources.cancelThisOrder}" HorizontalAlignment="Left" Margin="36,439,0,0" VerticalAlignment="Top" Height="53" Width="172" Click="deleteOrder_Click"  />
+                    <Label x:Name="orderUserNameSurnameLabelShow" Content="" HorizontalAlignment="Left" Margin="268,296,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderUserAddressLabelShow" Content="" HorizontalAlignment="Left" Margin="268,329,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderProductLabelShow" Content="" HorizontalAlignment="Left" Margin="268,360,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderCostLabelShow" Content="" HorizontalAlignment="Left" Margin="268,389,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderUserNameSurnameLabel_Copy" Content="{x:Static Properties:Resources.myOrders}" HorizontalAlignment="Left" Margin="26,11,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="orderUserNameSurnameLabel_Copy1" Content="{x:Static Properties:Resources.coverOfOrderedProduct}" HorizontalAlignment="Left" Margin="888,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Image x:Name="orderedProductCover" HorizontalAlignment="Left" Height="350" Margin="888,47,0,0" VerticalAlignment="Top" Width="350"/>
+                </Grid>
+            </TabItem>
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.aboutMe}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift">
+                <Grid x:Name="MyData" Background="#FF9E9E9E" VerticalAlignment="Top" Height="275">
+                    <Label x:Name="UserNameLabel1" Content="{x:Static Properties:Resources.UserUserName}" HorizontalAlignment="Left" Margin="107,17,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <TextBox x:Name="selectedUserUserName" HorizontalAlignment="Left" Margin="288,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
+                    <TextBox x:Name="selectedUserName" HorizontalAlignment="Left" Margin="288,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
+                    <TextBox x:Name="selectedUserSurname" HorizontalAlignment="Left" Margin="288,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
+                    <TextBox x:Name="selectedUserAddress" HorizontalAlignment="Left" Margin="288,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
+                    <TextBox x:Name="selectedUserCity" HorizontalAlignment="Left" Margin="288,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
+                    <Label x:Name="NameLabel" Content="{x:Static Properties:Resources.UserName}" HorizontalAlignment="Left" Margin="107,49,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="SurnameLabel" Content="{x:Static Properties:Resources.UserSurname}" HorizontalAlignment="Left" Margin="107,82,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="AddressLabel" Content="{x:Static Properties:Resources.UserAddress}" HorizontalAlignment="Left" Margin="108,113,0,0" VerticalAlignment="Top" FontSize="16"/>
+                    <Label x:Name="CityLabel" Content="{x:Static Properties:Resources.UserCity}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="105,144,0,0"/>
+                    <Button x:Name="saveUser" Content="{x:Static Properties:Resources.save}" HorizontalAlignment="Left" Margin="288,0,0,24" VerticalAlignment="Bottom" Height="53" Width="170" Click="saveUser_Click"/>
+                    <Button x:Name="changePass" Content="{x:Static Properties:Resources.changePass}" HorizontalAlignment="Left" Margin="498,0,0,24" VerticalAlignment="Bottom" Height="53" Width="170" Click="changePass_Click"  />
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Image x:Name="MainAppLogoImage" HorizontalAlignment="Left" Height="60" Margin="524,22,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="NameOfStudioMainprogram" Content="Label" HorizontalAlignment="Left" Margin="612,23,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Forte"/>
+    </Grid>
+</Page>
