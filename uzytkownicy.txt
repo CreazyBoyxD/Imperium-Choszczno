@@ -1,0 +1,4 @@
+user1;userpass;Andrzej;Gołota;10.25;Pięściarka 2/8 00-000;Szczecin
+piter;haslo;Piotr;XYZ;14.88;Gazownicza 15 01-100;Łódź
+bill;windows;Bill;Gates;1540;Microsoftowa 1 21-370;Redmond
+jon;1234;John;Travolta;2137.21;Pulp Fiction 70-150;Poznań

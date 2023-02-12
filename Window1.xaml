@@ -1,0 +1,24 @@
+﻿<Window 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:Properties="clr-namespace:WpfApp1.Properties" x:Name="OrderConfirmWindow"
+        x:Class="WpfApp1.OrderConfirmation"
+        mc:Ignorable="d"
+        Title="Window1" Height="400" Width="800">
+    <Grid>
+        <Frame x:Name="Main" Background="White"/>
+        <TextBox x:Name="orderConfirmImie" HorizontalAlignment="Left" Margin="372,29,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1"/>
+        <TextBox x:Name="orderConfirmNazwisko" HorizontalAlignment="Left" Margin="372,72,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1"/>
+        <Label x:Name="orderConfirmUserName" Content= "{x:Static Properties:Resources.writename}" HorizontalAlignment="Left" Margin="173,29,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Label x:Name="orderConfirmUserSurname" Content= "{x:Static Properties:Resources.writesurname}" HorizontalAlignment="Left" Margin="173,72,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Button x:Name="orderConfirm" Content="{x:Static Properties:Resources.orderConfirm}" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="60" Width="301" FontFamily="Bahnschrift" FontSize="18" Click="orderConfirm_Click"/>
+        <Label x:Name="ErrorLabel" Content="Label" HorizontalAlignment="Center" Margin="0,204,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Red" FontSize="18" FontFamily="Bahnschrift"/>
+        <TextBox x:Name="orderConfirmAdres" HorizontalAlignment="Left" Margin="372,119,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1" AcceptsTab="True"/>
+        <Label x:Name="orderConfirmAddressEnt" Content= "{x:Static Properties:Resources.writeaddress}" HorizontalAlignment="Left" Margin="173,119,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Label x:Name="orderConfirmCityEnt" Content= "{x:Static Properties:Resources.writecity}" HorizontalAlignment="Left" Margin="173,164,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <TextBox x:Name="orderConfirmCity" HorizontalAlignment="Left" Margin="372,164,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1" AcceptsTab="True"/>
+    </Grid>
+</Window>

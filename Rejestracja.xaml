@@ -1,0 +1,30 @@
+﻿<Page x:Class="WpfApp1.Rejestracja"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      xmlns:Properties="clr-namespace:WpfApp1.Properties" 
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="Rejestracja" Height="490">
+
+    <Grid x:Name="MainSingUp" >
+        <Frame x:Name="Main" Background="White" Margin="0,0,0,0"/>
+        <TextBox x:Name="txtImie" HorizontalAlignment="Left" Margin="372,29,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1"/>
+        <TextBox x:Name="txtNazwisko" HorizontalAlignment="Left" Margin="372,72,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1"/>
+        <TextBox x:Name="txtNazwaUzytkownika" HorizontalAlignment="Left" Margin="372,117,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1" AcceptsTab="True"/>
+        <PasswordBox x:Name="Haslo" HorizontalAlignment="Left" Margin="372,165,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22"/>
+        <PasswordBox x:Name="HasloPowt" HorizontalAlignment="Left" Margin="372,214,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22"/>
+        <Label x:Name="UserName" Content= "{x:Static Properties:Resources.writename}" HorizontalAlignment="Left" Margin="173,29,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Label x:Name="UserSurname" Content= "{x:Static Properties:Resources.writesurname}" HorizontalAlignment="Left" Margin="173,72,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Label x:Name="UserUserName" Content= "{x:Static Properties:Resources.writeusername}" HorizontalAlignment="Left" Margin="173,117,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Label x:Name="PassEnt" Content= "{x:Static Properties:Resources.writepassword}" HorizontalAlignment="Left" Margin="173,165,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Label x:Name="PassEntAgain" Content= "{x:Static Properties:Resources.writepasswordagain}" HorizontalAlignment="Left" Margin="173,214,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Button x:Name="BtRejestracja" Content="Zarejestruj się" HorizontalAlignment="Center" Margin="0,385,0,0" VerticalAlignment="Top" Height="60" Width="166" Click="BtRejestracja_Click" FontFamily="Bahnschrift" FontSize="18"/>
+        <Label x:Name="ErrorLabel" Content="Label" HorizontalAlignment="Left" Margin="372,339,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Red" FontSize="18" FontFamily="Bahnschrift"/>
+        <TextBox x:Name="Adres" HorizontalAlignment="Left" Margin="372,261,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1" AcceptsTab="True"/>
+        <Label x:Name="AddressEnt" Content= "{x:Static Properties:Resources.writeaddress}" HorizontalAlignment="Left" Margin="173,261,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <Label x:Name="CityEnt" Content= "{x:Static Properties:Resources.writecity}" HorizontalAlignment="Left" Margin="173,306,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="372,306,0,0" VerticalAlignment="Top" Width="246" FontFamily="Bahnschrift" FontSize="22" MaxLines="1" AcceptsTab="True"/>
+    </Grid>
+</Page>
