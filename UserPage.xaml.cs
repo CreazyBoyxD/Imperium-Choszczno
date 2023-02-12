@@ -1,10 +1,6 @@
-﻿using Microsoft.Win32;
-using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Relational;
-using System.Resources;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Data;
 using System.Globalization;
 using System.IO;
@@ -12,8 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using System.Xml;
-using Xceed.Wpf.AvalonDock.Themes;
 
 namespace WpfApp1
 {
@@ -53,6 +47,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje wspólne do obsługi całego layoutu dla widoku usera
         /// </summary>
+        /// 
         private void changeTheme()
         {
             if (theme == 0)
@@ -305,6 +300,7 @@ namespace WpfApp1
             }
             return imageFromBytes;
         }
+       
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             userList = null;

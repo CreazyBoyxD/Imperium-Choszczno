@@ -242,7 +242,6 @@ namespace WpfApp1
                 //Zakładka studio
                 coverOfStudioLabel.Foreground = nameOfStudioLabel.Foreground = keyProductLabel.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-
                 nameOfStudio.Foreground = KeyProduct.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 nameOfStudio.Background = KeyProduct.Background =
