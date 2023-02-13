@@ -7,14 +7,6 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:p = "clr-namespace:WpfApp1.Properties"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight">
 
     <Grid>

@@ -21,10 +21,12 @@
                 <MenuItem Header="{x:Static Properties:Resources.exitApp}" FontFamily="Bahnschrift" Click="MenuItem_Click_1"/>
                 <MenuItem Header="{x:Static Properties:Resources.logout}" Click="MenuItem_Click" FontFamily="Bahnschrift" />
                 <MenuItem Header="{x:Static Properties:Resources.changetheme}" Click="MenuItem_Click_2"/>
+                <MenuItem Header="{x:Static Properties:Resources.terms}" Click="MenuItem_Click_3"/>
             </Menu>
         </DockPanel>
         <TabControl x:Name="Tabs" Margin="0,94,0,0" FontSize="16">
-            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Albums}" VerticalAlignment="Center" Width="200" FontFamily="Bahnschrift">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Albums}" VerticalAlignment="Center" Width="Auto
+                     " FontFamily="Bahnschrift">
                 <Grid x:Name="AlbumsGrid" Background="#FF989898" VerticalAlignment="Top" Height="657">
                     <DataGrid x:Name="albumUserList" Margin="22,47,651,307" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="albumUserList_SelectionChanged" AutoGeneratingColumn="albumUserList_AutoGeneratingColumn" FontSize="20" GridLinesVisibility="Horizontal" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="None" FontFamily="Bahnschrift"/>
                     <Image x:Name="AlbumImage" HorizontalAlignment="Left" Height="251" Margin="466,386,0,0" VerticalAlignment="Top" Width="250"/>
@@ -45,7 +47,7 @@
                     <Label x:Name="nameOfSongAlbumLabelShow" Content="" HorizontalAlignment="Left" Margin="969,355,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
                 </Grid>
             </TabItem>
-            <TabItem Height="48" Header="{x:Static Properties:Resources.Songs}" VerticalAlignment="Top" FontFamily="Bahnschrift" Width="200">
+            <TabItem Height="20" Header="{x:Static Properties:Resources.Songs}" VerticalAlignment="Top" FontFamily="Bahnschrift">
                 <Grid x:Name="SongsGrid" Background="#FF989898" VerticalAlignment="Top">
                     <DataGrid x:Name="SongsTableUser" IsReadOnly="True" SelectionMode="Single" Background="#FFF0F0F0" CanUserSortColumns="False" CanUserReorderColumns="False" HeadersVisibility="None" FontSize="20" GridLinesVisibility="Horizontal" SelectionChanged="SongsTableUser_SelectionChanged" Margin="31,47,394,0" Height="341" VerticalAlignment="Top" AutoGeneratingColumn="SongsTableUser_AutoGeneratingColumn" CanUserAddRows="False" CanUserDeleteRows="False"/>
                     <Image x:Name="SongImage" HorizontalAlignment="Left" Height="350" Margin="919,47,0,0" VerticalAlignment="Top" Width="350"/>
@@ -62,7 +64,7 @@
                     <Label x:Name="listOfSongs" Content="{x:Static Properties:Resources.Songs}" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="16"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Orders}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift" Width="200">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Orders}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift">
                 <Grid x:Name="OrdersGrid" Background="#FF9E9E9E" VerticalAlignment="Top" Height="546">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -82,8 +84,8 @@
                     <Image x:Name="orderedProductCover" HorizontalAlignment="Left" Height="350" Margin="888,47,0,0" VerticalAlignment="Top" Width="350"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.aboutMe}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift" Width="200">
-                <Grid x:Name="MyData" Background="#FF9E9E9E" VerticalAlignment="Top" Height="275">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.aboutMe}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift">
+                <Grid x:Name="MyData" Background="#FF9E9E9E" VerticalAlignment="Top" Height="302">
                     <Label x:Name="UserNameLabel1" Content="{x:Static Properties:Resources.UserUserName}" HorizontalAlignment="Left" Margin="107,17,0,0" VerticalAlignment="Top" FontSize="16"/>
                     <TextBox x:Name="selectedUserUserName" HorizontalAlignment="Left" Margin="288,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
                     <TextBox x:Name="selectedUserName" HorizontalAlignment="Left" Margin="288,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
@@ -96,11 +98,12 @@
                     <Label x:Name="CityLabel" Content="{x:Static Properties:Resources.UserCity}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="105,144,0,0"/>
                     <Button x:Name="saveUser" Content="{x:Static Properties:Resources.save}" HorizontalAlignment="Left" Margin="288,0,0,24" VerticalAlignment="Bottom" Height="53" Width="170" Click="saveUser_Click"/>
                     <Button x:Name="changePass" Content="{x:Static Properties:Resources.changePass}" HorizontalAlignment="Left" Margin="498,0,0,24" VerticalAlignment="Bottom" Height="53" Width="170" Click="changePass_Click"  />
+                    <Label x:Name="CashLabel" Content="{x:Static Properties:Resources.UserCash}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="105,178,0,0"/>
+                    <Label x:Name="CashUserLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="288,178,0,0"/>
 
                 </Grid>
             </TabItem>
         </TabControl>
-        
         <Image x:Name="MainAppLogoImage" HorizontalAlignment="Left" Height="60" Margin="524,22,0,0" VerticalAlignment="Top" Width="60"/>
         <Label x:Name="NameOfStudioMainprogram" Content="Label" HorizontalAlignment="Left" Margin="612,23,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Forte"/>
     </Grid>
