@@ -25,8 +25,7 @@
             </Menu>
         </DockPanel>
         <TabControl x:Name="Tabs" Margin="0,94,0,0" FontSize="16">
-            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Albums}" VerticalAlignment="Center" Width="Auto
-                     " FontFamily="Bahnschrift">
+            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Albums}" VerticalAlignment="Center" Width="200" FontFamily="Bahnschrift">
                 <Grid x:Name="AlbumsGrid" Background="#FF989898" VerticalAlignment="Top" Height="657">
                     <DataGrid x:Name="albumUserList" Margin="22,47,651,307" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserReorderColumns="False" SelectionChanged="albumUserList_SelectionChanged" AutoGeneratingColumn="albumUserList_AutoGeneratingColumn" FontSize="20" GridLinesVisibility="Horizontal" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="None" FontFamily="Bahnschrift"/>
                     <Image x:Name="AlbumImage" HorizontalAlignment="Left" Height="251" Margin="466,386,0,0" VerticalAlignment="Top" Width="250"/>
@@ -47,7 +46,7 @@
                     <Label x:Name="nameOfSongAlbumLabelShow" Content="" HorizontalAlignment="Left" Margin="969,355,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
                 </Grid>
             </TabItem>
-            <TabItem Height="20" Header="{x:Static Properties:Resources.Songs}" VerticalAlignment="Top" FontFamily="Bahnschrift">
+            <TabItem Height="48" Header="{x:Static Properties:Resources.Songs}" VerticalAlignment="Top" FontFamily="Bahnschrift" Width="200">
                 <Grid x:Name="SongsGrid" Background="#FF989898" VerticalAlignment="Top">
                     <DataGrid x:Name="SongsTableUser" IsReadOnly="True" SelectionMode="Single" Background="#FFF0F0F0" CanUserSortColumns="False" CanUserReorderColumns="False" HeadersVisibility="None" FontSize="20" GridLinesVisibility="Horizontal" SelectionChanged="SongsTableUser_SelectionChanged" Margin="31,47,394,0" Height="341" VerticalAlignment="Top" AutoGeneratingColumn="SongsTableUser_AutoGeneratingColumn" CanUserAddRows="False" CanUserDeleteRows="False"/>
                     <Image x:Name="SongImage" HorizontalAlignment="Left" Height="350" Margin="919,47,0,0" VerticalAlignment="Top" Width="350"/>
@@ -64,7 +63,7 @@
                     <Label x:Name="listOfSongs" Content="{x:Static Properties:Resources.Songs}" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" FontSize="16"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Orders}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift">
+            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Orders}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift" Width="200">
                 <Grid x:Name="OrdersGrid" Background="#FF9E9E9E" VerticalAlignment="Top" Height="546">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -84,7 +83,7 @@
                     <Image x:Name="orderedProductCover" HorizontalAlignment="Left" Height="350" Margin="888,47,0,0" VerticalAlignment="Top" Width="350"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.aboutMe}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift">
+            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.aboutMe}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift" Width="200">
                 <Grid x:Name="MyData" Background="#FF9E9E9E" VerticalAlignment="Top" Height="302">
                     <Label x:Name="UserNameLabel1" Content="{x:Static Properties:Resources.UserUserName}" HorizontalAlignment="Left" Margin="107,17,0,0" VerticalAlignment="Top" FontSize="16"/>
                     <TextBox x:Name="selectedUserUserName" HorizontalAlignment="Left" Margin="288,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
