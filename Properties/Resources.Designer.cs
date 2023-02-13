@@ -790,6 +790,15 @@ namespace WpfApp1.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Regulamin.
+        /// </summary>
+        public static string terms {
+            get {
+                return ResourceManager.GetString("terms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Adres.
         /// </summary>
         public static string UserAddress {

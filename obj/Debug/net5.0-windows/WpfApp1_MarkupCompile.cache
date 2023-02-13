@@ -1,5 +1,5 @@
 ﻿WpfApp1
-1.0.0.0
+
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 D:\WpfApp1\App.xaml
 8-828753040
 
-15-603645562
+13-163327007
 211-1814043814
 AdminPage.xaml;changePassword.xaml;Logowanie.xaml;MainWindow.xaml;Regulamin.xaml;Rejestracja.xaml;UserPage.xaml;Window1.xaml;
 

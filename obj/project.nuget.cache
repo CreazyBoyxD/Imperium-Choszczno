@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MOj/B7GZvbr3pHcH50iRc0ZBJSoTfI5U4iGt/ucfMPOH2e1hx3OKE5hURuNEFVVg87PLCTGbrmFqhaAuunurmA==",
+  "dgSpecHash": "ycoVY6TqzMzVLFNzM7zu8gkn6nmX0dSIpRjHjvKVUEnWLvcB8460PLwMwr2EgIF+rRBETauIfh9xAloJIQHGBw==",
   "success": true,
-  "projectFilePath": "D:\\test\\WpfApp1\\WpfApp1.csproj",
+  "projectFilePath": "D:\\WpfApp1\\WpfApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hubi_\\.nuget\\packages\\dotnetprojects.extended.wpf.toolkit\\5.0.103\\dotnetprojects.extended.wpf.toolkit.5.0.103.nupkg.sha512",
     "C:\\Users\\hubi_\\.nuget\\packages\\extended.wpf.toolkit\\4.5.0\\extended.wpf.toolkit.4.5.0.nupkg.sha512",

@@ -351,6 +351,9 @@
   <data name="sureSong" xml:space="preserve">
     <value>Czy jesteś pewien, że to poprawne zdjęcie okładki utworu?</value>
   </data>
+  <data name="terms" xml:space="preserve">
+    <value>Regulamin</value>
+  </data>
   <data name="UserAddress" xml:space="preserve">
     <value>Adres</value>
   </data>

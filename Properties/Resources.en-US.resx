@@ -351,6 +351,9 @@
   <data name="sureSong" xml:space="preserve">
     <value>Are you sure that is a correct photo of song?</value>
   </data>
+  <data name="terms" xml:space="preserve">
+    <value>Terms and condition</value>
+  </data>
   <data name="UserAddress" xml:space="preserve">
     <value>User Address</value>
   </data>
