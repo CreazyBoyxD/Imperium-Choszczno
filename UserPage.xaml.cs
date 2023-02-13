@@ -1,6 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
+using System.Resources;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Data;
 using System.Globalization;
 using System.IO;
@@ -8,6 +12,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Xml;
+using Xceed.Wpf.AvalonDock.Themes;
 
 namespace WpfApp1
 {
@@ -47,7 +53,6 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje wspólne do obsługi całego layoutu dla widoku usera
         /// </summary>
-        /// 
         private void changeTheme()
         {
             if (theme == 0)
@@ -69,7 +74,7 @@ namespace WpfApp1
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 //Tekst
                 //Zakładka Moje Dane
-                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground =
+                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground = CashLabel.Foreground = CashUserLabel.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
 
                 selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background = 
@@ -160,7 +165,7 @@ namespace WpfApp1
                 //Tekst
 
                 //Zakładka Moje Dane
-                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground =
+                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground = CashLabel.Foreground = CashUserLabel.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
 
                 selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background =
@@ -300,7 +305,6 @@ namespace WpfApp1
             }
             return imageFromBytes;
         }
-       
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             userList = null;
@@ -345,6 +349,7 @@ namespace WpfApp1
             selectedUserSurname.Text = userList[5].ToString();
             selectedUserAddress.Text = userList[7].ToString();
             selectedUserCity.Text = userList[8].ToString();
+            CashUserLabel.Content= userList[6].ToString() + "zł";
         }
         private void addDataOptions()
         {
@@ -396,6 +401,12 @@ namespace WpfApp1
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             changeTheme();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            Regulamin regulamin = new Regulamin(theme);
+            regulamin.Show();
         }
 
         ///

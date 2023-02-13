@@ -242,6 +242,7 @@ namespace WpfApp1
                 //Zakładka studio
                 coverOfStudioLabel.Foreground = nameOfStudioLabel.Foreground = keyProductLabel.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+
                 nameOfStudio.Foreground = KeyProduct.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 nameOfStudio.Background = KeyProduct.Background =
@@ -924,6 +925,12 @@ namespace WpfApp1
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             changeTheme();
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            Regulamin regulamin = new Regulamin(theme);
+            regulamin.Show();
         }
 
         private void listOfSongsAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)

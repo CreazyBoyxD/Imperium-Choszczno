@@ -16,14 +16,14 @@
         <Frame x:Name="Main" Background="White"/>
         <DockPanel LastChildFill="False" Height="Auto" VerticalAlignment="Top">
             <Menu x:Name="MenuTop" Width="Auto" Height="Auto" FontFamily="Bahnschrift">
-                <MenuItem Header="{x:Static Properties:Resources.appOptions}" FontFamily="Bahnschrift" FontSize="14"/>
+                <MenuItem Header="{x:Static Properties:Resources.terms}" FontFamily="Bahnschrift" FontSize="14" Click="MenuItem_Click_3"/>
                 <MenuItem Header="{x:Static Properties:Resources.exitApp}" Click="MenuItem_Click_1" FontFamily="Bahnschrift" FontSize="14"/>
                 <MenuItem Header="{x:Static Properties:Resources.logout}" Click="MenuItem_Click" FontFamily="Bahnschrift" FontSize="14"/>
                 <MenuItem Header="{x:Static Properties:Resources.changetheme}" FontFamily="Bahnschrift" FontSize="14" Click="MenuItem_Click_2"/>
             </Menu>
         </DockPanel>
         <TabControl x:Name="Tabs" Margin="0,94,0,0" FontFamily="Bahnschrift" FontSize="14">
-            <TabItem Header="{x:Static Properties:Resources.programSettings}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" Width="200" Height="48">
+            <TabItem Header="{x:Static Properties:Resources.programSettings}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-1,0,0" Width="172">
                 <Grid x:Name="OptionsGrid">
                     <Image x:Name="StudioImage" HorizontalAlignment="Left" Height="450" Margin="40,69,0,0" VerticalAlignment="Top" Width="450" OpacityMask="White"/>
                     <Label x:Name="coverOfStudioLabel" Content="{x:Static Properties:Resources.studiocover}" HorizontalAlignment="Left" Margin="40,30,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift"/>
@@ -31,13 +31,13 @@
                     <TextBox x:Name="nameOfStudio" HorizontalAlignment="Left" Margin="711,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="431" FontSize="20" FontFamily="Bahnschrift"/>
                     <Button x:Name="selectPhotoStudio" Content="{x:Static Properties:Resources.choosephoto}" HorizontalAlignment="Left" Margin="530,195,0,0" VerticalAlignment="Top" Height="53" Width="293" Click="selectPhotoStudio_Click" FontFamily="Bahnschrift" FontSize="20" />
                     <Button x:Name="saveStudioOptions" Content="{x:Static Properties:Resources.save}" HorizontalAlignment="Left" Margin="845,195,0,0" VerticalAlignment="Top" Height="53" Width="282" Click="saveStudioOptions_Click" FontFamily="Bahnschrift" FontSize="20" />
-                    <Label x:Name="cmbLocalizationLabel" Content="{x:Static Properties:Resources.localizationApp}" HorizontalAlignment="Left" Margin="530,136,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift" Background="#00000000"/>
-                    <ComboBox x:Name="cmbLocalization" HorizontalAlignment="Left" Margin="711,141,0,0" VerticalAlignment="Top" Width="120" FontFamily="Bahnschrift" FontSize="20" />
+                    <Label x:Name="cmbLocalizationLabel" Content="{x:Static Properties:Resources.localizationApp}" HorizontalAlignment="Left" Margin="530,136,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift"/>
+                    <ComboBox x:Name="cmbLocalization" HorizontalAlignment="Left" Margin="711,141,0,0" VerticalAlignment="Top" Width="120" FontFamily="Bahnschrift" FontSize="20" Background="White"/>
                     <Label x:Name="keyProductLabel" Content="{x:Static Properties:Resources.productkey}" HorizontalAlignment="Left" Margin="530,100,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift"/>
                     <TextBox x:Name="KeyProduct" HorizontalAlignment="Left" Margin="711,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="431" FontSize="20" FontFamily="Bahnschrift"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="{x:Static Properties:Resources.Users}" HorizontalAlignment="Center" Margin="0,-2,0,0" Width="200" Height="48">
+            <TabItem Header="{x:Static Properties:Resources.Users}" HorizontalAlignment="Center" Margin="0,-2,0,0" Width="122">
                 <Grid x:Name="UsersGrid" Background="#FF929292">
                     <DataGrid Name= "usersTable" Margin="32,28,58,357" IsReadOnly="True" SelectionChanged="usersTable_SelectionChanged" SelectionMode="Single">
                     </DataGrid>
@@ -59,7 +59,7 @@
                     <TextBox x:Name="selectedUserCash" HorizontalAlignment="Left" Margin="259,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="20" PreviewTextInput="selectedUserCash_PreviewTextInput" FontFamily="Bahnschrift"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Albums}" VerticalAlignment="Center" Width="200" Margin="0,-1,0,0">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Albums}" VerticalAlignment="Center" Width="100" Margin="0,-1,0,0">
                 <Grid x:Name="AlbumsGrid" Background="#FF989898">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -92,7 +92,7 @@
                     <Label x:Name="selectedAlbumSongsIDLabel" Content="{x:Static Properties:Resources.choosenAlbumSongsID}" HorizontalAlignment="Left" Margin="653,304,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Authors}" VerticalAlignment="Center" Width="200" Margin="0,-1,0,0">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Authors}" VerticalAlignment="Center" Width="92" Margin="0,-1,0,0">
                 <Grid x:Name="AuthorsGrid" Background="#FF989898">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -114,7 +114,7 @@
                     <Label x:Name="listOfAuthorsLabel" Content="{x:Static Properties:Resources.choosenAuthorID}" HorizontalAlignment="Left" Margin="32,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Songs}" VerticalAlignment="Center" Width="200" Margin="0,-1,0,0">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Songs}" VerticalAlignment="Center" Width="84" Margin="0,-1,0,0">
                 <Grid x:Name="SongsGrid" Background="#FF989898">
                     <DataGrid x:Name="SongsTable" Margin="26,47,410,382" SelectionChanged="SongsTable_SelectionChanged" IsReadOnly="True" SelectionMode="Single" Background="#FFF0F0F0"/>
                     <Image x:Name="SongImage" HorizontalAlignment="Left" Height="250" Margin="942,47,0,0" VerticalAlignment="Top" Width="250"/>
@@ -142,7 +142,7 @@
                     <Label x:Name="listOfSongsLabel" Content="{x:Static Properties:Resources.choosenSongID}" HorizontalAlignment="Left" Margin="26,8,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift"/>
                 </Grid>
             </TabItem>
-            <TabItem HorizontalAlignment="Center" Height="48" Header="{x:Static Properties:Resources.Orders}" VerticalAlignment="Center" Width="200" Margin="0,-1,0,0">
+            <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.Orders}" VerticalAlignment="Center" Width="106" Margin="0,-1,0,0">
                 <Grid x:Name="OrdersGrid" Background="#FF9E9E9E">
                     <DataGrid x:Name="orderList" Margin="26,47,410,371" IsReadOnly="True" SelectionMode="Single" Background="#FFF0F0F0" SelectionChanged="orderList_SelectionChanged"/>
                     <Label x:Name="orderUserIDLabel" Content="{x:Static Properties:Resources.orderUserID}" HorizontalAlignment="Left" Margin="32,366,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Bahnschrift"/>
