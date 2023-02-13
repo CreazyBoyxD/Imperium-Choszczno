@@ -1,0 +1,13 @@
+
+2023-02-13T17:32:48.966; Start Application - name of computer and user: DESKTOP-AP2TTPU_Piotr Bury
+2023-02-13T17:32:50.245; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:50.837; Added new Users table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:51.341; Added new user to Users table - UserName: admin, Name: Andrzej, Surname: Gołota, is Admin 1 - user: admin and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:51.829; Added new user to Users table - UserName: dzida, Name: Robert, Surname: Zienda, is Admin 0 - user: dzida and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:52.339; Added new user to Users table - UserName: bill, Name: Bill, Surname: Gates, is Admin 0 - user: bill and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:52.845; Added new user to Users table - UserName: jon, Name: John, Surname: Travolta, is Admin 0 - user: jon and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:52.966; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:53.805; Added new Songs table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:55.783; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:32:55.903; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-AP2TTPU
+2023-02-13T17:33:06.470; Logged in - user: admin and computer name: DESKTOP-AP2TTPU
