@@ -21,6 +21,7 @@
                 <MenuItem Header="{x:Static Properties:Resources.exitApp}" FontFamily="Bahnschrift" Click="MenuItem_Click_1"/>
                 <MenuItem Header="{x:Static Properties:Resources.logout}" Click="MenuItem_Click" FontFamily="Bahnschrift" />
                 <MenuItem Header="{x:Static Properties:Resources.changetheme}" Click="MenuItem_Click_2"/>
+                <MenuItem Header="{x:Static Properties:Resources.terms}" Click="MenuItem_Click_3"/>
             </Menu>
         </DockPanel>
         <TabControl x:Name="Tabs" Margin="0,94,0,0" FontSize="16">
@@ -84,7 +85,7 @@
                 </Grid>
             </TabItem>
             <TabItem HorizontalAlignment="Center" Height="20" Header="{x:Static Properties:Resources.aboutMe}" VerticalAlignment="Top" Margin="0,-1,0,0" FontFamily="Bahnschrift">
-                <Grid x:Name="MyData" Background="#FF9E9E9E" VerticalAlignment="Top" Height="275">
+                <Grid x:Name="MyData" Background="#FF9E9E9E" VerticalAlignment="Top" Height="302">
                     <Label x:Name="UserNameLabel1" Content="{x:Static Properties:Resources.UserUserName}" HorizontalAlignment="Left" Margin="107,17,0,0" VerticalAlignment="Top" FontSize="16"/>
                     <TextBox x:Name="selectedUserUserName" HorizontalAlignment="Left" Margin="288,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
                     <TextBox x:Name="selectedUserName" HorizontalAlignment="Left" Margin="288,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" FontSize="16"/>
@@ -97,6 +98,8 @@
                     <Label x:Name="CityLabel" Content="{x:Static Properties:Resources.UserCity}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="105,144,0,0"/>
                     <Button x:Name="saveUser" Content="{x:Static Properties:Resources.save}" HorizontalAlignment="Left" Margin="288,0,0,24" VerticalAlignment="Bottom" Height="53" Width="170" Click="saveUser_Click"/>
                     <Button x:Name="changePass" Content="{x:Static Properties:Resources.changePass}" HorizontalAlignment="Left" Margin="498,0,0,24" VerticalAlignment="Bottom" Height="53" Width="170" Click="changePass_Click"  />
+                    <Label x:Name="CashLabel" Content="{x:Static Properties:Resources.UserCash}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="105,178,0,0"/>
+                    <Label x:Name="CashUserLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Margin="288,178,0,0"/>
 
                 </Grid>
             </TabItem>

@@ -1,0 +1,36 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:Properties="clr-namespace:WpfApp1.Properties" x:Class="WpfApp1.Regulamin"
+        mc:Ignorable="d"
+        Title="Regulamin" Height="471" Width="800">
+    <Grid>
+        <Label x:Name="termsAndCondition" Content="{x:Static Properties:Resources.terms}" HorizontalAlignment="Left" Margin="25,22,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Bahnschrift"/>
+
+        <ScrollViewer CanContentScroll="True" Margin="0,66,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="343">
+            <InlineUIContainer>
+                <TextBlock Margin="25,0,0,0" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="WrapWithOverflow" FontWeight="Bold">
+                <Run 
+                    Text="Witamy w Studio Imperium Choszczno!"/><LineBreak/><LineBreak/>
+                    <Run Text="Niniejszy regulamin określa zasady korzystania z aplikacji Studio Imperium Choszczno."/><LineBreak/><Run/>
+                    <LineBreak/><Run Text="Użytkownik uruchamiając aplikację, akceptuje niniejsze warunki. W przypadku braku akceptacji niniejszych warunków Użytkownik powinien zamknąć natychmiastowo aplikację Studio Imperium Choszczno."/><LineBreak/><Run/>
+                    <LineBreak/><Run Text="Zabrania się:"/><LineBreak/><Run/>
+                    <LineBreak/><Run Text="    Kopiowania lub ponownego publikowania materiałów umieszczonych w aplikacji Studio Imperium Choszczno"/><LineBreak/><Run/>
+                    <Run Text="    Sprzedaży, wypożyczania lub udzielania sublicencji na materiały umieszczone w aplikacji Studio Imperium Choszczno"/><LineBreak/><Run/>
+                    <Run Text="    Odtwarzania, powielania lub kopiowania materiałów zamieszczonych w aplikacji Studio Imperium Choszczno"/><LineBreak/><Run/>
+                    <Run Text="    Ponownego rozpowszechniania treści zamieszczonych w aplikacji Studio Imperium Choszczno"/><LineBreak/><Run/>
+                    <Run Text="    Uzyskiwania materiałów w sposób nielegalny i niezgodny z prawem w aplikacji Studio Imperium Choszczno"/><LineBreak/><LineBreak/><Run/>
+                    <Run Text="Nie wyrażamy zgody na wykorzystanie logo lub innych elementów graficznych Imperium Choszczno w celu umieszczenia linku bez umowy licencyjnej na wykorzystanie znaku towarowego."/><LineBreak/><Run/>
+                    <LineBreak/><Run Text="Zastrzeżenia praw:"/><LineBreak/><Run/>
+                    <LineBreak/><Run Text="Jeśli zauważysz w naszej aplikacji zawartość, która z jakichkolwiek powodów jest obraźliwa, skontaktuj się z nami i poinformuj nas o tym w dowolnym momencie. Rozpatrzymy prośbę o usunięcie zawartości. Nie zobowiązujemy się jednak do usunięcia takiej zawartości, ani do udzielenia bezpośredniej odpowiedzi osobie zgłaszającej."/><LineBreak/><Run/>
+                    <LineBreak/><Run Text="Zwrot:"/><LineBreak/><Run/>
+                    <LineBreak/><Run Text="Użytkownik może w terminie 14 dni zwrócić zakupione materiały bez podawania przyczyny i bez ponoszenia kosztów, a Studio Imperium Choszczno musi zwrócić koszty jego zakupu."/><LineBreak/><LineBreak/><Run/>
+                    <Run/>
+                </TextBlock>
+            </InlineUIContainer>
+        </ScrollViewer>
+    </Grid>
+</Window>
