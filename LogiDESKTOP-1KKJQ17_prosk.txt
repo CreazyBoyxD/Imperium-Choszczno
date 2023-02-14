@@ -1,0 +1,13 @@
+
+2023-02-13T17:21:08.429; Start Application - name of computer and user: DESKTOP-1KKJQ17_prosk
+2023-02-13T17:21:09.320; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:09.769; Added new Users table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:10.059; Added new user to Users table - UserName: admin, Name: Andrzej, Surname: Gołota, is Admin 1 - user: admin and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:10.344; Added new user to Users table - UserName: dzida, Name: Robert, Surname: Zienda, is Admin 0 - user: dzida and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:10.855; Added new user to Users table - UserName: bill, Name: Bill, Surname: Gates, is Admin 0 - user: bill and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:11.168; Added new user to Users table - UserName: jon, Name: John, Surname: Travolta, is Admin 0 - user: jon and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:11.247; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:11.767; Added new Songs table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:14.991; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:15.075; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: DESKTOP-1KKJQ17
+2023-02-13T17:21:21.887; Logged in - user: admin and computer name: DESKTOP-1KKJQ17
