@@ -9,6 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using MaterialDesignThemes.Wpf;
+using MaterialDesignThemes.Wpf.Converters;
+using MaterialDesignThemes.Wpf.Transitions;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -32,6 +35,23 @@ using System.Windows.Shapes;
 using System.Windows.Shell;
 using WpfApp1;
 using WpfApp1.Properties;
+using Xceed.Wpf.Toolkit;
+using Xceed.Wpf.Toolkit.Chromes;
+using Xceed.Wpf.Toolkit.Converters;
+using Xceed.Wpf.Toolkit.Core;
+using Xceed.Wpf.Toolkit.Core.Converters;
+using Xceed.Wpf.Toolkit.Core.Input;
+using Xceed.Wpf.Toolkit.Core.Media;
+using Xceed.Wpf.Toolkit.Core.Utilities;
+using Xceed.Wpf.Toolkit.Mag.Converters;
+using Xceed.Wpf.Toolkit.Panels;
+using Xceed.Wpf.Toolkit.Primitives;
+using Xceed.Wpf.Toolkit.PropertyGrid;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using Xceed.Wpf.Toolkit.PropertyGrid.Commands;
+using Xceed.Wpf.Toolkit.PropertyGrid.Converters;
+using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
+using Xceed.Wpf.Toolkit.Zoombox;
 
 
 namespace WpfApp1 {
@@ -70,7 +90,7 @@ namespace WpfApp1 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfApp1;V1.0.0.0;component/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfApp1;component/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
