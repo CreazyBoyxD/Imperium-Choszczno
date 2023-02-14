@@ -76,7 +76,8 @@ D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\refint\WpfApp1.dll
 D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\WpfApp1.pdb
 D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\WpfApp1.genruntimeconfig.cache
 D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\ref\WpfApp1.dll
-D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\App.baml
+D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\Regulamin.g.cs
+D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\Regulamin.baml
 D:\GitHub\Imperium-Choszczno\bin\Debug\net5.0-windows\MaterialDesignColors.dll
 D:\GitHub\Imperium-Choszczno\bin\Debug\net5.0-windows\MaterialDesignThemes.Wpf.dll
 D:\GitHub\Imperium-Choszczno\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
@@ -85,3 +86,4 @@ D:\GitHub\Imperium-Choszczno\bin\Debug\net5.0-windows\gssapi64.dll
 D:\GitHub\Imperium-Choszczno\bin\Debug\net5.0-windows\k5sprt64.dll
 D:\GitHub\Imperium-Choszczno\bin\Debug\net5.0-windows\krb5_64.dll
 D:\GitHub\Imperium-Choszczno\bin\Debug\net5.0-windows\krbcc64.dll
+D:\GitHub\Imperium-Choszczno\obj\Debug\net5.0-windows\App.baml

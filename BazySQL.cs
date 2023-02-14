@@ -15,11 +15,11 @@ namespace WpfApp1
 {
     public class BazySQL
     {
-        static string workingDirectory = Environment.CurrentDirectory;
+        static string workingDirectory = Environment.CurrentDirectory; // gdzie znajduje sie aplikacja np. aby mogl zaczytywac dane
         static string path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
         static string PathTest = System.AppDomain.CurrentDomain.BaseDirectory;
         static string database = "TestDB2";
-        static string databaseName = "TestDB";
+        static string databaseName = "TestDB"; //databaseName do starej lokalnej bazy aby mozna bylo przywrocic
         static string Filename = "uzytkownicy.txt";
         static string FileNameAuthors = "autorzy.txt";
         static string FileNameSongs = "utwory.txt";
@@ -29,19 +29,19 @@ namespace WpfApp1
 
         private string makeConnString(int timeout, string nameOfMachAndUser)
         {
-            return string.Format(@"Server=(localdb)\MSSQLLocalDB;User id={0};Integrated Security=True;Connect Timeout={1};Encrypt=False", 
-                nameOfMachAndUser, timeout.ToString());
+            return string.Format(@"Server=(localdb)\MSSQLLocalDB;User id={0};Integrated Security=True;Connect Timeout={1};Encrypt=False",
+                nameOfMachAndUser, timeout.ToString()); //zwraca stringa do lokalnej bazy danych
         }
         private string normalConnStringAllFunctions(string databaseName, string nameOfMachineAndUser, string path)
         {
             return string.Format(@"Data source = (localdb)\MSSQLLocalDB; AttachDbFilename={2}\{0}_Data.mdf;
-                User Id={1};Integrated Security=True;Connect Timeout=1;Encrypt=False", databaseName, nameOfMachineAndUser, path);
+                User Id={1};Integrated Security=True;Connect Timeout=1;Encrypt=False", databaseName, nameOfMachineAndUser, path); //zwraca info o stringu o lokalnej b. danych
         }
         public string makeMySQLConnString()
         {
             return "SERVER=192.166.219.220;DATABASE=imperium;UID=imperium;Password=imperium1212";
-        }
-        public bool CheckConnectToDataBase(string connectionStr)
+        } // do kazdej funkcji jako stala kierujaca do zdalnej bazy danych
+        public bool CheckConnectToDataBase(string connectionStr) // sprawdza czy jest polaczenie z baza danych inaczej program nie wystartuje
         {
             bool result = false;
 
@@ -52,7 +52,7 @@ namespace WpfApp1
                     connection.Open();
                     connection.Close();
                     return true;
-                    
+
                 }
                 catch (MySqlException)
                 {
@@ -70,100 +70,21 @@ namespace WpfApp1
 
             SqlConnection tmpConn = new SqlConnection();
 
-            string connectionStr = makeConnString(ConnectTimeoutToBase,nameOfMachineAndUser);
+            string connectionStr = makeConnString(ConnectTimeoutToBase, nameOfMachineAndUser);
             string connectionStr2 = "SERVER=192.166.219.220;DATABASE=imperium;UID=imperium;Password=imperium1212";
             bool ConnOk = CheckConnectToDataBase(connectionStr2);
-            if(ConnOk) 
+            if (ConnOk) //jesli jest polaczenie ze zdalna baza danych zwraca ok i jesli jest ok moga wystartowac bazy danych
             {
-                CheckOrCreateTablesDB();
+                CheckOrCreateTablesDB(); //za kazdym razem startuje z formatowaniem bazy wewnatrz sluzy do testu czy poprawnie zawsze statruje program
             }
-            //tmpConn.ConnectionString = connectionStr;
 
-            /*string sql = string.Format(@"CREATE DATABASE {0} ON PRIMARY" +
-                @"(NAME = {1}, FILENAME = '{2}\{1}_Data.mdf', SIZE = 2MB, FILEGROWTH = 10%) " +
-                @"LOG ON (NAME = {1}_Log, FILENAME = '{2}\{1}_Data_Log.ldf', SIZE = 1MB, FILEGROWTH = 10%)",@database, @databaseName, @path);
-
-            sqlCreateDBQuery = sql;
-
-            //sqlCheckDBQuery = string.Format("SELECT database_id FROM sys.databases WHERE Name = '{0}'", @database);
-            sqlCheckDBQuery = string.Format("SELECT COUNT(*) FROM sys.databases WHERE Name = '{0}'", @database);
-            bool result;
-            using (tmpConn)
-            {
-                using (SqlCommand sqlCmd = new SqlCommand(sqlCheckDBQuery, tmpConn))
-                {
-                    tmpConn.Open();
-
-                    var resultObj = sqlCmd.ExecuteScalar();
-
-                    int databaseID = 0;
-
-                    if ((int)resultObj != 0)
-                    {
-                        int.TryParse(resultObj.ToString(), out databaseID);
-                    }
-
-                    tmpConn.Close();
-
-                    result = (databaseID > 0);
-                    if (!result)
-                    {
-                        tmpConn = new SqlConnection();
-                        tmpConn.ConnectionString = connectionStr;
-
-                        SqlCommand myCommand = new SqlCommand(sqlCreateDBQuery, tmpConn);
-                        try
-                        {
-                            tmpConn.Open();
-                            myCommand.ExecuteNonQuery();
-                            Logi.addTextToFile("Database created");
-                            //App.mainWindow.checkBox1.IsEnabled = true;
-                            //App.mainWindow.checkBox1.IsChecked = true;
-                            //App.mainWindow.checkBox1.IsEnabled = false;
-                            //MessageBox.Show("Database has been created successfully!", "Create Database");
-                        }
-                        catch (SqlException ex)
-                        {
-                            string plik = string.Format(@"{0}\{1}_Data.mdf", path, database);
-                            string plik2 = string.Format(@"{0}\{1}_Data_Log.ldf", path, database);
-                            if (File.Exists(plik) == true)
-                            {
-                                tmpConn.Close();
-                                Logi.addTextToFile("File of database exists but found a problem and deleted and created new one");
-                                tmpConn = new SqlConnection();
-                                tmpConn.ConnectionString = connectionStr;
-                                string sqlCommandText = string.Format(@"DROP DATABASE {0}", database);
-                                SqlCommand myCommandDelete = new SqlCommand(sqlCommandText, tmpConn);
-                                tmpConn.Open();
-                                myCommand.ExecuteNonQuery();
-                                //tmpConn.Close();
-                                File.Delete(plik);
-                                File.Delete(plik2);
-                                CheckAndCreateDB();
-                            }
-                            MessageBox.Show(ex.ToString(), "Created new Database");
-                        }
-                        finally
-                        {
-                            tmpConn.Close();
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        Logi.addTextToFile("Database exists");
-                        //App.mainWindow.checkBox1.IsChecked = true;
-                        //MessageBox.Show("Baza istnieje w zadanej lokalizacji");
-                    }
-                }
-            }*/
         }
 
-        private void CheckOrCreateTablesDB()
+        private void CheckOrCreateTablesDB() //DO tworzenia tablic
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Options;" +
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Options;" + // opcje programu
                 " CREATE TABLE Options (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " StudioName varchar(255) NOT NULL," +
                 " KeyProduct varchar(255) NOT NULL," +
@@ -173,11 +94,11 @@ namespace WpfApp1
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
-                Logi.addTextToFile("Added new Authors table to database");
+                Logi.addTextToFile("Added new Authors table to database"); //logi
                 addToOptionTable();
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Users;" +
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Users;" + //uzytkownicy
                 " CREATE TABLE Users (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " Login varchar(255) NOT NULL," +
                 " Password varchar(255) NOT NULL," +
@@ -198,7 +119,7 @@ namespace WpfApp1
                 addUsersToTable();
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Authors;" +
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Authors;" + //autorzy
                 " CREATE TABLE Authors (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " AuthorName varchar(255) NOT NULL," +
                 " FileName varchar(255)," +
@@ -211,7 +132,7 @@ namespace WpfApp1
                 addAuthorsToTable();
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Songs;" +
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Songs;" + //songi
                 " CREATE TABLE Songs (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " SongName varchar(255) NOT NULL," +
                 " FileName varchar(255)," +
@@ -227,7 +148,7 @@ namespace WpfApp1
                 addSongsToTable();
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Albums;" +
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Albums;" + //albumy
                 " CREATE TABLE Albums (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " AlbumName varchar(255) NOT NULL," +
                 " FileName varchar(255)," +
@@ -242,7 +163,7 @@ namespace WpfApp1
                 Logi.addTextToFile("Added new Albums table to database");
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Orders;" +
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Orders;" + //zamowienia
                 " CREATE TABLE Orders(ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " UserID varchar(255) NOT NULL," +
                 " ProductID varchar(255) NOT NULL," +
@@ -264,37 +185,38 @@ namespace WpfApp1
         {
             string sql = "";
             string studioName = "Imperium Choszczno";
-            string Keyproduct = "2137-J2PGD-MHH88";
+            string Keyproduct = "JD69A-EBE13-MHH88";
             string country = "pl_PL";
             byte[] studioImage = null;
-            
-            if (File.Exists(String.Format(path+"\\logo.png")))
+
+            if (File.Exists(String.Format(path + "\\logo.png"))) //dodanie opcji do plikow
             {
-                MemoryStream memStream = new MemoryStream();
+                MemoryStream memStream = new MemoryStream(); // dodaje bitmape ze zdjecia
                 PngBitmapEncoder encoder = new PngBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(new Uri(String.Format(path + "\\logo.png"))));
                 encoder.Save(memStream);
-                studioImage= memStream.ToArray();
+                studioImage = memStream.ToArray();
             }
             addSaveOptions(1, studioName, Keyproduct, country, studioImage);
         }
-        public void addSaveOptions(int type, string StudioName, string prodKey, string localization, byte[] image)
+        public void addSaveOptions(int type, string StudioName, string prodKey, string localization, byte[] image) //dodanie opcji edytcji do programu zamienia zawsze
+                                                                                                                   //pierwszy rekord w tablicy
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
-            if (type == 1) 
+            if (type == 1)
             {
                 sql = String.Format(@"INSERT INTO Options (StudioName, KeyProduct, Country, Image) VALUES ('{0}', '{1}', '{2}', @image)",
                     StudioName, prodKey, localization);
             }
-            else if (type == 2) 
+            else if (type == 2)
             {
                 sql = String.Format(@"UPDATE Options SET StudioName = '{0}', KeyProduct = '{1}', Country = '{2}', Image = @image WHERE ID = 1",
                     StudioName, prodKey, localization);
             }
 
             conn.Open();
-            
+
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             if (image != null)
@@ -308,7 +230,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public MySqlDataReader getOptionTable()
+        public MySqlDataReader getOptionTable() // funckja do pobrania danych z tablicy
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand getOptions = new MySqlCommand("SELECT * FROM Options WHERE ID = 1", conn);
@@ -324,7 +246,7 @@ namespace WpfApp1
             {
                 return reader;
             }
-            
+
         }
         /// <summary>
         /// Funkcje pozostałe
@@ -333,7 +255,7 @@ namespace WpfApp1
         {
             string HashPass;
             using (var sha256 = SHA256.Create())
-            {  
+            {
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pass));
                 //podwójne hashowanie hasła poprzez 256
                 //var hashedBytes = sha256.ComputeHash((sha256.ComputeHash(Encoding.UTF8.GetBytes(pass))));
@@ -341,7 +263,7 @@ namespace WpfApp1
             }
             return HashPass;
         }
-        private decimal ConvertToDecimal(string cash)
+        private decimal ConvertToDecimal(string cash) //konwersja ze stringa do decimala, przydaje sie gdy trzeba wrzucic casha uzytkownikowi
         {
             decimal defaultValue = 0;
             decimal result;
@@ -360,26 +282,26 @@ namespace WpfApp1
         /// Funkcje obsługi użytkowników
         /// </summary>
         public void registerUser(string UserName, string Password, string Name, string Surname, string Address, string City, string Cash = "1000.00")
-        {
+        { // rejestracja usera
             int Admin = 0;
-            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
-            bool checkAdmins = checkIfAdminExists();
-            if (!checkAdmins)
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString()); // musi byc polaczenie z mysql do bazy danych
+            bool checkAdmins = checkIfAdminExists(); //sprawdza czy jaki kolwiek admin istnieje 
+            if (!checkAdmins) // jesli admin nie istnieje no to stawiany jest admin 0
             {
                 Admin = 1;
             }
             string hashpass = HashPassword(Password);
             decimal cash = ConvertToDecimal(Cash);
-            conn.Open();
-            string sql = String.Format(@"INSERT INTO Users(Login, Password, Hashpass, Name, Surname, Wallet, Address, City, Admin, IsFirstAdmin) 
+            conn.Open(); //zawsze otwiera polaczenie do bazy danych      //dodawanie kolejnych kolum 
+            string sql = String.Format(@"INSERT INTO Users(Login, Password, Hashpass, Name, Surname, Wallet, Address, City, Admin, IsFirstAdmin)  
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, {9})", UserName, Password, hashpass, Name, Surname, cash.ToString().Replace(',', '.'), Address, City, Admin, Admin);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);                               //do cashu ustawiona . bo w bazie jest decimal i bez ryzyka lepiej bylo zostawic . //drugi admin czyli ten ktorego nie mozna usnac
             cmd.ExecuteNonQuery();
-            conn.Close();
+            conn.Close(); //musi zamknac polaczenie aby mozna bylo wpisac do dany
             Logi.addTextToFile(String.Format("Added new user to Users table - UserName: {0}, Name: {1}, Surname: {2}, is Admin {3}", UserName, Name, Surname, Admin), UserName);
-        }
+        } // dodaje usera z kilikoma inforamcja i czy jest adminem
         public void saveUser(int ID, string UserName, string Name, string Surname, string Cash, string Address, string City, int Admin, string WHO)
-        {
+        {//saveUser jest do zapisu przez Admina, zmienilo sie tyle ze nie ma hashowania hasla bo admin nie moze zmienic hasla
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             decimal cash = ConvertToDecimal(Cash);
             conn.Open();
@@ -390,7 +312,7 @@ namespace WpfApp1
             conn.Close();
             Logi.addTextToFile(String.Format("Saved existing user in Users table - ID in table: {0}, UserName: {1}, Name: {2}, Surname: {3}, is Admin {4}", ID, UserName, Name, Surname, Admin), WHO);
         }
-        public void deleteUser(int ID, string WHO)
+        public void deleteUser(int ID, string WHO) //usuwanie wybranego usera
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             conn.Open();
@@ -400,7 +322,7 @@ namespace WpfApp1
             conn.Close();
             Logi.addTextToFile(String.Format("Saved existing user in Users table - ID in table: {0}", ID), WHO);
         }
-        public MySqlDataReader InfoAboutUser(string login, string password)
+        public MySqlDataReader InfoAboutUser(string login, string password) //zwraca readaera czy user istnienie zwraca cala tablice usserow
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand checkLoginPass = new MySqlCommand("SELECT * FROM Users WHERE Login = @log AND Password = @pas", conn);
@@ -414,10 +336,10 @@ namespace WpfApp1
             reader.Read();
             return reader;
         }
-        public MySqlDataReader infoAboutUserByID(int ID) 
+        public MySqlDataReader infoAboutUserByID(int ID)  //wybiera wszystkie informacje o userze po ID
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
-            MySqlCommand cmd = new MySqlCommand(String.Format(@"SELECT * FROM Users WHERE ID = {0}",ID), conn);
+            MySqlCommand cmd = new MySqlCommand(String.Format(@"SELECT * FROM Users WHERE ID = {0}", ID), conn);
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
@@ -428,10 +350,11 @@ namespace WpfApp1
             {
                 reader = null;
             }
-            
+
             return reader;
         }
-        public void updateUserCash(int ID, string userName, string cash)
+        public void updateUserCash(int ID, string userName, string cash) //sluzy tylko przy kupnie jak user/admin cos kupuje trzeba mu podmienic pieniadze tak aby funckja sprawdzila 
+                                                                         // czy moze kupic cos innego
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             conn.Open();
@@ -441,7 +364,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public DataTable getUserOrder(int ID)
+        public DataTable getUserOrder(int ID) // funckja pobierajaca zamowienie dla konkretnego usera
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlDataAdapter sda = null;
@@ -456,7 +379,7 @@ namespace WpfApp1
             sda.Fill(dt);
             return dt;
         }
-        public void changeUserPassword(int ID, string UserName, string Pass)
+        public void changeUserPassword(int ID, string UserName, string Pass) //sluzy tylko do zmiany hasla przez usera
         {
             string hashpass = HashPassword(Pass);
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
@@ -470,7 +393,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void saveUserFromUserPage(int ID, string login, string name, string surname, string address, string city)
+        public void saveUserFromUserPage(int ID, string login, string name, string surname, string address, string city) //uzytkownik moze zapisac nowe dane
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             conn.Open();
@@ -489,11 +412,11 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi sprawdzania istnienia danych w konkretnych tabelach
         /// </summary>
-        private bool checkIfAdminExists()
+        private bool checkIfAdminExists() //sprawdza czy admin istnieje
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
-            MySqlCommand checkLoginPass = new MySqlCommand("SELECT * FROM Users WHERE Admin = 1", conn);
-            conn.Open();
+            MySqlCommand checkLoginPass = new MySqlCommand("SELECT * FROM Users WHERE Admin = 1", conn); //checkLoginPass funckja sprawdzajaca podczas logowania czy takie dane istnieja
+            conn.Open(); //13:30 minuta 
             var reader = checkLoginPass.ExecuteReader();
             if (reader.HasRows)
             {
@@ -505,7 +428,7 @@ namespace WpfApp1
             }
             conn.Close();
         }
-        public int checkIfDataExistLogIn(string login, string password = "default")
+        public int checkIfDataExistLogIn(string login, string password = "default") //sprawdzanie podczas logowania czy takie dane istnieja zwraca ifno czy istnieje czy nie czy haslo jest poprawne
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand checkLoginPass = new MySqlCommand();
@@ -546,7 +469,7 @@ namespace WpfApp1
                 }
                 else if (typeOfQuestion == "author")
                 {
-                    check = String.Format("SELECT COUNT(*) FROM Authors WHERE ID = @ID AND AuthorName = @Name");
+                    check = String.Format("SELECT COUNT(*) FROM Authors WHERE ID = @ID AND AuthorName = @Name"); //sprawdza czy istnieje autor o podanym id i nazwie
                 }
                 else if (typeOfQuestion == "song")
                 {
@@ -569,7 +492,7 @@ namespace WpfApp1
                 }
                 else if (typeOfQuestion == "song")
                 {
-                    check = String.Format("SELECT COUNT(*) FROM Songs WHERE ID = @ID");
+                    check = String.Format("SELECT COUNT(*) FROM Songs WHERE ID = @ID"); //czy istnieje piosenka o konkretnym id
                 }
                 else if (typeOfQuestion == "album")
                 {
@@ -602,7 +525,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi tabel (wspólne)
         /// </summary>
-        public void deleteUserAuthorSongAlbum(string type, int ID, string WHO = "")
+        public void deleteUserAuthorSongAlbum(string type, int ID, string WHO = "") //f. do usuwania konkretnego id w bazie
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
@@ -631,29 +554,29 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public DataTable getTables(string Table)
+        public DataTable getTables(string Table) //sluzy do pobierania calych tablic
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string CmdString = "";
             MySqlDataAdapter sda = null;
             DataTable dt = null;
-            if(Table == "users")
+            if (Table == "users")
             {
                 CmdString = "SELECT * FROM Users";
             }
-            else if(Table == "authors")
+            else if (Table == "authors")
             {
                 CmdString = "SELECT * FROM Authors";
             }
-            else if(Table == "songs")
+            else if (Table == "songs")
             {
                 CmdString = "SELECT * FROM Songs";
             }
-            else if(Table == "albums")
+            else if (Table == "albums")
             {
                 CmdString = "SELECT * FROM Albums";
             }
-            else if(Table == "orders")
+            else if (Table == "orders")
             {
                 CmdString = "SELECT * FROM Orders";
             }
@@ -685,17 +608,17 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi dodawania autorów
         /// </summary>
-        public void addSaveAuthor(int AddOrSave, string AuthName, string NameFile = "null", byte[] image = null, int Id = -1)
+        public void addSaveAuthor(int AddOrSave, string AuthName, string NameFile = "null", byte[] image = null, int Id = -1) //f. 
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
 
-            if (AddOrSave == 1)
+            if (AddOrSave == 1) //albo dodajemy usera
             {
                 conn.Open();
                 sql = String.Format(@"INSERT INTO Authors (AuthorName, FileName, Image) VALUES ('{0}', @NameFile, @image)", AuthName);
             }
-            else if (AddOrSave == 2 && Id >= 0)
+            else if (AddOrSave == 2 && Id >= 0) //albo edytyjemy już istniejącego
             {
                 conn.Open();
                 sql = String.Format(@"UPDATE Authors SET AuthorName = '{0}', FileName = @NameFile, Image = @image WHERE ID={1}",
@@ -721,7 +644,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public MySqlDataReader getInfoAboutAuthor(int ID)
+        public MySqlDataReader getInfoAboutAuthor(int ID) //pobiera wszystkie informacje o autorze
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string query = "SELECT * FROM Authors WHERE ID=@ID";
@@ -737,7 +660,7 @@ namespace WpfApp1
             else
                 return null;
         }
-        public DataSet getAuthorsToCombobox()
+        public DataSet getAuthorsToCombobox() //funkcja pobierająca informację do comboboxa
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
 
@@ -749,7 +672,7 @@ namespace WpfApp1
             return ds;
 
         }
-        public byte[] getAuthorImage(int ID)
+        public byte[] getAuthorImage(int ID) //funkcja pobierająca image o danym autorze
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
 
@@ -777,7 +700,7 @@ namespace WpfApp1
             }
             return imageByte;
         }
-        public void deleteAuthor(int ID)
+        public void deleteAuthor(int ID) //usuwanie autora
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             conn.Open();
@@ -785,13 +708,14 @@ namespace WpfApp1
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
-            //Logi.addTextToFile(String.Format("Saved existing user in Users table - ID in table: {0}", ID), WHO);
+
         }
         /// <summary>
         /// Funkcje obsługi utworów
         /// </summary>
+
         public void addSaveSong(int AddOrSave, string SongName, string Authors, string price, string discount, int Id = -1, string NameFile = "null", byte[] image = null)
-        {
+        {//dodanie utowrow
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
             conn.Open();
@@ -816,7 +740,7 @@ namespace WpfApp1
             {
                 cmd.Parameters.AddWithValue("@NameFile", SqlString.Null);
             }
-            if (image != null)
+            if (image != null) //jesli namefile lub image jest pusty to zamiena na null, zabezpieczenie przed tym aby program sie wysypal gdyby nie bylo obrazka - beda puste dane
             {
                 cmd.Parameters.AddWithValue("@image", image);
             }
@@ -875,7 +799,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public DataTable getSongsOfAlbum(string SongsString)
+        public DataTable getSongsOfAlbum(string SongsString) //pobiera wszystkie songi danego albumu 
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string CmdString = "";
@@ -894,7 +818,7 @@ namespace WpfApp1
         /// Funkcje obsługi zamówień
         /// </summary>
         public void addSaveOrder(int AddOrSave, int UserID, int ProductID, string ProductType, string OrderData, string Price, string DeliveryAddress, int Id = -1)
-        {
+        { // updatuje order
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
 
@@ -906,23 +830,23 @@ namespace WpfApp1
             }
             else if (AddOrSave == 2 && Id >= 0)
             {
-               // conn.Open();
+                // conn.Open();
                 //sql = String.Format(@"UPDATE Orders SET UserID = '{0}', FileName = @NameFile, Image = @image WHERE ID={1}",
-                           // AuthName, Id);
+                // AuthName, Id);
             }
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public MySqlDataReader getOrderedProductinfo(string type, int ID, string name = "")
-        {
+        public MySqlDataReader getOrderedProductinfo(string type, int ID, string name = "") //pobieraja z albumow albo piosenek informacje o zamowionym produkcie
+        {//pobiera dane po id 
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string command = "";
-            if (type == "Songs") 
+            if (type == "Songs")
             {
                 command = "SELECT * FROM Songs WHERE ID = @ID";
             }
-            else if (type == "Albums") 
+            else if (type == "Albums")
             {
                 command = "SELECT * FROM Albums WHERE ID = @ID";
             }
@@ -944,7 +868,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje dodawania danych z plików TXT do tabel
         /// </summary>
-        private void addUsersToTable()
+        private void addUsersToTable()  //3 funkcje ktore dodaja z pliku txt
         {
             //List<string> Users = new List<string>();
             if (File.Exists(string.Format(@"{0}\{1}", path, Filename)))
@@ -952,7 +876,7 @@ namespace WpfApp1
                 string[] lines = File.ReadAllLines(string.Format(@"{0}\{1}", path, Filename));
                 foreach (var line in lines)
                 {
-                    if(line != "" || line != null)
+                    if (line != "" || line != null)
                     {
                         string[] podzial = line.Split(';');
 
@@ -974,11 +898,11 @@ namespace WpfApp1
                         string[] podzial = line.Split(';');
                         string[] hex = podzial[2].Split('-');
                         byte[] bits = new byte[hex.Length];
-                        for(int i=0; i< hex.Length;i++)
+                        for (int i = 0; i < hex.Length; i++)
                         {
                             bits[i] = Convert.ToByte(hex[i], 16);
                         }
-                        addSaveAuthor(1, podzial[0], podzial[1],bits);
+                        addSaveAuthor(1, podzial[0], podzial[1], bits);
                     }
                 }
             }
@@ -1000,7 +924,7 @@ namespace WpfApp1
                         {
                             bits[i] = Convert.ToByte(hex[i], 16);
                         }
-                        addSaveSong(1, podzial[0], podzial[3], podzial[4], podzial[5],-1,podzial[1],bits);
+                        addSaveSong(1, podzial[0], podzial[3], podzial[4], podzial[5], -1, podzial[1], bits);
                     }
                 }
             }
