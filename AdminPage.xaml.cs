@@ -24,12 +24,11 @@ namespace WpfApp1
     /// Logika interakcji dla klasy AdminPage.xaml
     /// </summary>
     public partial class AdminPage : Page
-    {
+    {   //Bury - dodanie wszystkich funkcjonalności do AdminPage
         private DataTable dataTable, dataTableAuthors, dataTableSongs, dataTableAlbums, dataTableSongsOfAlbum, dataTableOrders;
         public BazySQL bazySQL;
         private DataRowView dataRowAuthor, dataRowSong, dataRowAlbum, dataRowOrder;
         private List<object> userList;
-        private List<string> discounts;
         private IList songList = null;
         private int saveUserID = 0;
         private string AuthorImageFilePath, AuthorImageFileName;
@@ -38,9 +37,11 @@ namespace WpfApp1
         private int selectedAlbumID = -1;
         private int selectedOrderID = -1;
         private MySqlDataReader options = null;
+
+        private List<string> discounts;
         private int theme = 0;
 
-        //public Image AuthorImage; 
+        //Bury - public Image AuthorImage, inicjalizacje elementów;
         public OpenFileDialog ofd;
         byte[] BinaryDataImage, BinaryDataImageSong, BinaryDataImageAlbum, BinaryDataImageStudio;
         Regex regexCeny = new Regex("^\\d{0,5}\\.\\d{1,2}$");
@@ -50,8 +51,6 @@ namespace WpfApp1
             InitializeComponent();
             updateUserList(user);
             bazySQL = obj;
-
-
             UsersTable();
             options = optionsFromLogin;
             addDiscountsToLists();
@@ -60,9 +59,11 @@ namespace WpfApp1
             addAuthorsToCombobox();
             SongsTableRefresh();
             OrderTable();
+
             theme = motyw;
             changeTheme();
         }
+        //Sprawdzenie czy aplikacje poprawnie podłączyła się do bazy danych
         private async Task checkConnect()
         {
             /*Thread.Sleep(1500);
@@ -81,9 +82,12 @@ namespace WpfApp1
             }
             checkConnect();*/
         }
+
         /// <summary>
         /// Funkcje wspólne
         /// </summary>
+ 
+        // Hubert - Oprogramowanie zmiany motywu dla wszystkich elementów dla AdminPage
         private void changeTheme()
         {
             if (theme == 0)
@@ -194,27 +198,6 @@ namespace WpfApp1
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 saveOrder.Background = deleteOrder.Background =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-
-               /* //DataGridy
-                //Uzytkownicy
-                usersTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                usersTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                //Albumy
-                albumList.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                albumList.Background= new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                albumListOfSongs.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                albumListOfSongs.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                listOfSongsAlbum.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                listOfSongsAlbum.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                //Tworcy
-                authorTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                authorTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                //Utwory
-                SongsTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                SongsTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                //Zamowienie
-                orderList.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                orderList.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));*/
 
                 theme = 1;
             }
@@ -327,36 +310,17 @@ namespace WpfApp1
                 saveOrder.Background = deleteOrder.Background =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
 
-                /*//DataGridy
-                //Uzytkownicy
-                usersTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                usersTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                //Albumy
-                albumList.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                albumList.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                albumListOfSongs.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                albumListOfSongs.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                listOfSongsAlbum.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                listOfSongsAlbum.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                //Tworcy
-                authorTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                authorTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                //Utwory
-                SongsTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                SongsTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                //Zamowienie
-                orderList.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                orderList.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));*/
-
                 theme = 0;
             }
         }
+        //Bury - Funkcja wyświetlająca błąd gdy nie masz wystarczającej liczby pieniędzy
         private void youCantBuyIt()
         {
             string messageBoxText = Properties.Resources.youcantbuymoney;
             string caption = Properties.Resources.notenoughcash;
             MessageBox.Show(messageBoxText, caption, MessageBoxButton.OK);
         }
+        //Bury - Funkcja pomocnicza do pobierania danych po wciśnięciu przycisku wybierz zdjęcie oraz konwertuje pobrane zdjęcie na tablice bitową potrzebną do zapisu danych do bazy danych
         public byte[] GetImageSelectPhoto(string type)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -366,8 +330,6 @@ namespace WpfApp1
             openFileDialog.FilterIndex = 1;
             openFileDialog.Multiselect = false;
             openFileDialog.RestoreDirectory = true;
-
-            //bool? result = openFileDialog.ShowDialog;
 
             if (openFileDialog.ShowDialog() == true)
             {
@@ -413,6 +375,7 @@ namespace WpfApp1
             }
             else return null;
         }
+        //Hubert - dodanie rabatu do listy od 0 do 100% 
         public void addDiscountsToLists()
         {
             discounts = new List<string>();
@@ -425,6 +388,7 @@ namespace WpfApp1
             cmbAlbumDiscount.ItemsSource = discounts;
             cmbAlbumDiscount.SelectedIndex = 0;
         }
+        //Bury - funckja dostaje tablice bajtów i konwertuje ją na obraz bitmapowy tak aby można go było wgrać to elemetu typu image
         private BitmapImage photoService(byte[] imageBytes)
         {
             BitmapImage imageFromBytes = null;
@@ -445,6 +409,7 @@ namespace WpfApp1
             }
             return imageFromBytes;
         }
+        //Bury - Funkcja służąca do wyświetlania w prawym górym rogu informacji takich jak nazwa użytkownika i ilość pieniędzy
         private void updateUserList(MySqlDataReader user)
         {
             userList = new List<object>();
@@ -456,6 +421,7 @@ namespace WpfApp1
             UserNameLabel.Content = "User: " + userList[1].ToString();
             UserWalletLabel.Content = "Wallet: " + userList[6].ToString() + " zł";
         }
+        //Hubert - fukcja konwertująca cene na decimal
         private decimal convertPrice(string price)
         {
             decimal defaultValue = 0;
@@ -471,6 +437,8 @@ namespace WpfApp1
             }
             return result;
         }
+        //Hubert - konwertowanie rabatu z wartości na liczbe, najpierw usuwa procent potem to formatuje do danych
+        //Funckja ta i powyższa jest wykorzystywana do obliczania rabatu przy kupowaniu utworu ub albumu
         private int convertDiscount(string discount)
         {
             int rabat = 0;
@@ -493,10 +461,12 @@ namespace WpfApp1
             }
             return rabat;
         }
+
         /// <summary>
         /// Funkcje obsługi opcji
         /// </summary>
-
+        //Bury - Funkcja wczytywania danych do okna opcji
+        //Pobieranie informacji o języku, nazwie studia, kluczu produktu oraz logo aplikacji
         private void addDataOptions()
         {
             cmbLocalization.Items.Add("pl_PL");
@@ -522,10 +492,12 @@ namespace WpfApp1
                 cmbLocalization.SelectedIndex = 0;
             }
         }
+        //Bury - funkcja do wykorzystania zdjęcia z dysku komputera w aplikacji 
         private void selectPhotoStudio_Click(object sender, RoutedEventArgs e)
         {
             BinaryDataImageStudio = GetImageSelectPhoto("studio");
         }
+        //Bury - funckja zapisująca dane które podaliśmy w opcjach 
         private void saveStudioOptions_Click(object sender, RoutedEventArgs e)
         {
             if ((nameOfStudio.Text != "" && nameOfStudio.Text != string.Empty) && (KeyProduct.Text != "" && KeyProduct.Text != string.Empty)
@@ -536,9 +508,12 @@ namespace WpfApp1
             options = bazySQL.getOptionTable();
             addDataOptions();
         }
+
         /// <summary>
         /// Funkcje obsługi tabel
         /// </summary>
+        
+        //Bury - Wczytywanie danych z bazy danych do aplikacji
         private void UsersTable()
         {
             dataTable = bazySQL.getTables("users");
@@ -565,9 +540,13 @@ namespace WpfApp1
             dataTableOrders = bazySQL.getTables("orders");
             orderList.ItemsSource = dataTableOrders.DefaultView;
         }
+
         /// <summary>
         /// Funkcje obsługi Userów
         /// </summary>
+        
+        //Bury - wczytywanie danych użytkowników do poszczególnych rubryk z bazy danych do odpowiednich okien, sprawdza czy jest adminem oraz
+        //sprawdza czy wybrany user jest zalogowany jeśli tak to wyłącza mu dostęd do zmiany danych
         private void usersTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataRowView dataRow = (DataRowView)usersTable.SelectedItem;
@@ -617,6 +596,7 @@ namespace WpfApp1
                 }
             }
         }
+        //Bury - Gdy zmienimy dane użytkownika po wciśnięciu przycisku Zapisz zostają one zapisane do bazy danych
         private void saveUser_Click(object sender, RoutedEventArgs e)
         {
             if (saveUserID != (int)userList[0])
@@ -637,6 +617,7 @@ namespace WpfApp1
             }
             UsersTable();
         }
+        //Bury - Funkcja która pozwala na usunięcia danego użytkownika z aplikacji oraz bazy danych
         private void deleteUser_Click(object sender, RoutedEventArgs e)
         {
             if (saveUserID != (int)userList[0])
@@ -651,23 +632,28 @@ namespace WpfApp1
                         admin = 1;
                     }
                     bazySQL.deleteUserAuthorSongAlbum("Users",saveUserID, (string)userList[1]);
-                    //bazySQL.deleteUser(saveUserID, (string)userList[1]);
                 }
             }
             UsersTable();
         }
+
         private void selectedUserCash_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             //Regex regex = new Regex("^\\d{0,5}\\.\\d{1,2}$");
             //e.Handled = !regexCeny.IsMatch(e.Text);
         }
+        //Bury - funkcja która pozawla na wybranie zdjęcia dla poszczegulnych autorów   
         private void selectPhoto_Click(object sender, RoutedEventArgs e)
         {
             BinaryDataImage = GetImageSelectPhoto("author");
         }
+
         /// <summary>
         /// Funkcje obsługi autorów
         /// </summary>
+        
+        //Bury - Funckja pozwalająca na zapisanie danych autora do bazy danych, pyta także czy jesteśmy pewnie wybrania zdjęcia które chcemy wgrać 
+        //pozwala ona również na edytowanie danych istniejącego już autora gdybyśmy chceli coś przy nim zmienić
         private void saveAuthor_Click(object sender, RoutedEventArgs e)
         {
             string messageBoxText = Properties.Resources.sureAuthor;
@@ -727,6 +713,7 @@ namespace WpfApp1
             AuthorsTable();
             addAuthorsToCombobox();
         }
+        //Bury - po kliknięciu na wybranego autora ładuje jego dane aby wyświetlić je w aplikacji
         private void authorTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedFilePath.Text = "";
@@ -753,6 +740,7 @@ namespace WpfApp1
                 AuthorsTable();
             }
         }
+        //Bury - funkcja pozwalająca na usunięcie wybranego autora 
         private void deleteAuthor_Click(object sender, RoutedEventArgs e)
         {
             if (selectedAuthorID != -1)
@@ -763,6 +751,7 @@ namespace WpfApp1
             nameOfAuthor.Text = selectedFileName.Text = selectedFilePath.Text = "";
             addAuthorsToCombobox();
         }
+        //Bury - funckja dodające dane wszystkich autorów do combobox aby później można było ich użyć przy utworach
         public void addAuthorsToCombobox()
         {
             cmbAuthorSong.ItemsSource = null;
@@ -783,6 +772,7 @@ namespace WpfApp1
                 cmbAuthorSong.ItemsSource = null;
             }
         }
+        //Bury - obsługa comboboxa dla autorów
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int ID;
@@ -807,9 +797,12 @@ namespace WpfApp1
                 }
             }
         }
+
         /// <summary>
         /// Funkcje obsługi utworów
         /// </summary>
+        
+        //Bury - gdy wybierzemy z listy dany utwór jego dane zostają pobrane i wyświetlone w aplikacji w oknie utwory, sprawdza także czy wybrany autor istnieje
         private void SongsTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedImageFilePathSong.Text = "";
@@ -848,10 +841,13 @@ namespace WpfApp1
                 AuthorsTable();
             }
         }
+
         private void priceOfSongTXT_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             //e.Handled = !regexCeny.IsMatch(e.Text);
         }
+        //Bury - po zapytaniu czy jesteśmy pewni zdjęcia zapisuje dane zdjęcie oraz dane które wpisaliśmy dla wybranego utworu 
+        //po czym zapisuje w bazie danych nowy utwór lub edytuje dane juz zapisanego
         private void saveSong_Click(object sender, RoutedEventArgs e)
         {
             string messageBoxText = Properties.Resources.sureSong;
@@ -917,22 +913,24 @@ namespace WpfApp1
                 SongsTableRefresh();
             }
         }
+        //Hubert - Przycisk odpowiedzialny za wyłączenie aplikacji
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
-
+        //Hubert - Przycisk odpowiedzialny za zmiane motywu
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             changeTheme();
         }
-
+        //Bury - przycisk odpowiedzialny za wyświetlenie regulaminu
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
             Regulamin regulamin = new Regulamin(theme);
             regulamin.Show();
         }
-
+        //Bury - wyświetlanie listy utworów w oknie albumów aby wybrać który utwór chcemy dodać do danego albumu
+        //oraz wypełniają okienka gdzie pokazywane są id wybranych utworów
         private void listOfSongsAlbum_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             songList = listOfSongsAlbum.SelectedItems;
@@ -947,6 +945,7 @@ namespace WpfApp1
             else selectedAlbumSongsIDTXT.Text = null;
             selectedAlbumSongsIDTXT.Text.TrimEnd(' ', ',');
         }
+        //Bury - Funkcja pozwalająca na usunięcie wybranego utworu
         private void deleteSong_Click(object sender, RoutedEventArgs e)
         {
             if (selectedSongID != -1)
@@ -955,10 +954,14 @@ namespace WpfApp1
             }
             SongsTableRefresh();
         }
+        //Bury - Funkcja pozwalająca na wybranie zdjęcia dla danego utworu
         private void selectPhotoSong_Click(object sender, RoutedEventArgs e)
         {
             BinaryDataImageSong = GetImageSelectPhoto("song");
         }
+        //Bury - funkcja pozwalająca na kupienie wybranego utworu, sprawdza też czy masz wystarczająco pieniędzy na koncie aby kupic wybrany utwór
+        //dodaje zamówienie do listy zamówień oraz do bazy danych
+        //Hubert - Obliczanie rabatu wzorem i podanie ostatecznej ceny
         private void buyThisSong_Click(object sender, RoutedEventArgs e)
         {
             if (dataRowSong != null)
@@ -993,6 +996,7 @@ namespace WpfApp1
                 }
             }
         }
+        //Hubert - funkcja która wylogowywuje cie z aplikacji
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             userList = null;
@@ -1006,6 +1010,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi albumów
         /// </summary>
+        //Bury - funkcja która zapisuje album który stworzyłeś lub edytuje już stworzony
         private void saveAlbum_Click(object sender, RoutedEventArgs e)
         {
             string messageBoxText = Properties.Resources.sureAlbum;
@@ -1077,6 +1082,7 @@ namespace WpfApp1
                 AlbumsTable();
             }
         }
+        //Bury - wyświtla dane aktualnie wybranego utworu oraz jego obrazy
         private void albumList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedImageFilePathSong.Text = "";
@@ -1099,7 +1105,6 @@ namespace WpfApp1
                 dataTableSongsOfAlbum = bazySQL.getSongsOfAlbum(dataRowAlbum.Row[4].ToString());
 
                 string[] songList = dataRowAlbum.Row[4].ToString().Split(',');
-                //albumListOfSongs.Items.Clear();
                 albumListOfSongs.ItemsSource = null;
                 albumListOfSongs.ItemsSource = dataTableSongsOfAlbum.DefaultView;
                 priceOfAlbumTXT.Text = dataRowAlbum.Row[5].ToString();
@@ -1112,10 +1117,12 @@ namespace WpfApp1
                 }
             }
         }
+        //Bury - Funkcja które pozwala na wybranie obrazu dla wybranego albumu
         private void selectAlbumPhotoImage_Click(object sender, RoutedEventArgs e)
         {
             BinaryDataImageAlbum = GetImageSelectPhoto("album");
         }
+
         private void deleteAlbum_Click(object sender, RoutedEventArgs e)
         {
             if(selectedAlbumID != -1)
@@ -1131,6 +1138,8 @@ namespace WpfApp1
         /// <summary>
         ///  Funkcje obsługi zamowień
         /// </summary>
+        
+        //Bury - funckja która wyświetla dane wybranego zamówienia w oknie zamówienia 
         private void orderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dataRowOrder = (DataRowView)orderList.SelectedItem;
@@ -1172,6 +1181,7 @@ namespace WpfApp1
                 orderCostTXT.Text = dataRowOrder[5].ToString();
             }
         }
+        //Bury - funkcja pozwalająca na usunięcie wybranego zamówienia
         private void deleteOrder_Click(object sender, RoutedEventArgs e)
         {
             if (selectedOrderID != -1)
@@ -1180,6 +1190,8 @@ namespace WpfApp1
             }
             OrderTable();
         }
+        //Bury - FUnkcja pozwalająca na kupienie wybranego albumu, sprawdzenie czy stać cie na dany utwór
+        //Hubet - Obliczenie rabatu z wzoru oraz ustawienie go jako cene ostateczną
         private void buyThisAlbum_Click(object sender, RoutedEventArgs e)
         {
             if (dataRowAlbum != null)

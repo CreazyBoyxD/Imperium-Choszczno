@@ -295,7 +295,7 @@ namespace WpfApp1
             conn.Open(); //zawsze otwiera polaczenie do bazy danych      //dodawanie kolejnych kolum 
             string sql = String.Format(@"INSERT INTO Users(Login, Password, Hashpass, Name, Surname, Wallet, Address, City, Admin, IsFirstAdmin)  
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, {9})", UserName, Password, hashpass, Name, Surname, cash.ToString().Replace(',', '.'), Address, City, Admin, Admin);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);                               //do cashu ustawiona . bo w bazie jest decimal i bez ryzyka lepiej bylo zostawic . //drugi admin czyli ten ktorego nie mozna usnac
+            MySqlCommand cmd = new MySqlCommand(sql, conn);      //do cashu ustawiona . bo w bazie jest decimal i bez ryzyka lepiej bylo zostawic . //drugi admin czyli ten ktorego nie mozna usnac
             cmd.ExecuteNonQuery();
             conn.Close(); //musi zamknac polaczenie aby mozna bylo wpisac do dany
             Logi.addTextToFile(String.Format("Added new user to Users table - UserName: {0}, Name: {1}, Surname: {2}, is Admin {3}", UserName, Name, Surname, Admin), UserName);
@@ -416,7 +416,7 @@ namespace WpfApp1
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand checkLoginPass = new MySqlCommand("SELECT * FROM Users WHERE Admin = 1", conn); //checkLoginPass funckja sprawdzajaca podczas logowania czy takie dane istnieja
-            conn.Open(); //13:30 minuta 
+            conn.Open();
             var reader = checkLoginPass.ExecuteReader();
             if (reader.HasRows)
             {
