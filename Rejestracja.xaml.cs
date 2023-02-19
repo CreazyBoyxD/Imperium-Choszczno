@@ -20,7 +20,7 @@ namespace WpfApp1
     /// <summary>
     /// Logika interakcji dla klasy Rejestracja.xaml
     /// </summary>
-    
+
     public partial class Rejestracja : Page
     {
         BazySQL bazyRej;
@@ -40,12 +40,12 @@ namespace WpfApp1
             theme = motyw;
             changeTheme();
         }
-        private void changeTheme() 
+        private void changeTheme() // zmiana motywu na podstawie podanego w oknie logowania 
         {
             if (theme == 0)
             {
                 Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                UserName.Foreground =  UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground = 
+                UserName.Foreground = UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground =
                 PassEntAgain.Foreground = AddressEnt.Foreground = CityEnt.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 BtRejestracja.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 BtRejestracja.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
@@ -57,7 +57,7 @@ namespace WpfApp1
             else if (theme == 1)
             {
                 Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
-                UserName.Foreground = UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground = 
+                UserName.Foreground = UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground =
                 PassEntAgain.Foreground = AddressEnt.Foreground = CityEnt.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 BtRejestracja.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 BtRejestracja.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
@@ -67,7 +67,7 @@ namespace WpfApp1
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
             }
         }
-        private async Task ShowLabel(string tekst, int Green = 0)
+        private async Task ShowLabel(string tekst, int Green = 0) // wyswietlanie informacji o blednym wprowadzeniu danych
         {
             if (Green == 1)
             {
@@ -82,45 +82,46 @@ namespace WpfApp1
             await Task.Delay(3000);
             ErrorLabel.Visibility = Visibility.Hidden;
         }
-        private async void BtRejestracja_Click(object sender, RoutedEventArgs e)
+        private async void BtRejestracja_Click(object sender, RoutedEventArgs e) // rejestracja
         {
-            if(((txtImie.Text != "" || txtImie.Text == null) && (txtNazwisko.Text != "" || txtNazwisko.Text == null) &&
-                (txtNazwaUzytkownika.Text != "" || txtNazwaUzytkownika.Text == null) && (Haslo.Password != "" || Haslo.Password == null) && 
+            if (((txtImie.Text != "" || txtImie.Text == null) && (txtNazwisko.Text != "" || txtNazwisko.Text == null) &&
+                (txtNazwaUzytkownika.Text != "" || txtNazwaUzytkownika.Text == null) && (Haslo.Password != "" || Haslo.Password == null) &&
                 (HasloPowt.Password != "" || HasloPowt.Password == null) && (Adres.Text != "" || Adres.Text == null) &&
-                (City.Text != "" || City.Text == null)))
+                (City.Text != "" || City.Text == null))) //jezeli dane zostaly poprawnie wpisane
             {
-                if (Haslo.Password == HasloPowt.Password)
+                if (Haslo.Password == HasloPowt.Password) // jezeli haslo i powtorz hasla sa takie same
                 {
                     int UserExists = bazyRej.checkIfDataExistLogIn(txtNazwaUzytkownika.Text.ToString(), Haslo.Password.ToString());
-                    if(UserExists == 1)
+                    //sprawdzenie czy istnieje juz uzytkownik o podanych danych
+                    if (UserExists == 1)
                     {
                         ShowLabel(Properties.Resources.userexists);
-                        Logi.addTextToFile("Failed register new user with a name (user exists): ",txtNazwaUzytkownika.Text);
+                        Logi.addTextToFile("Failed register new user with a name (user exists): ", txtNazwaUzytkownika.Text);
                     }
-                    else if(UserExists == 5)
+                    else if (UserExists == 5)
                     {
                         ShowLabel(Properties.Resources.userNameExists);
                         Logi.addTextToFile("Failed register new user with a name (user name exists): ", txtNazwaUzytkownika.Text);
                     }
-                    else if(UserExists == 99)
+                    else if (UserExists == 99) //jezeli uzytkownik o podanych danych nie istnieje to jest on rejestrowany na podstawie podanych danych
                     {
-                        bazyRej.registerUser(txtNazwaUzytkownika.Text.ToString(), Haslo.Password.ToString(), txtImie.Text.ToString(),txtNazwisko.Text.ToString(), Adres.Text.ToString(), City.Text.ToString());
+                        bazyRej.registerUser(txtNazwaUzytkownika.Text.ToString(), Haslo.Password.ToString(), txtImie.Text.ToString(), txtNazwisko.Text.ToString(), Adres.Text.ToString(), City.Text.ToString());
                         ShowLabel(Properties.Resources.userRegistered, 1);
                         Logi.addTextToFile(String.Format("Registered new user with a user name: {0}, name: {1} and surname: {2} ", txtNazwaUzytkownika.Text, txtImie.Text, txtNazwisko.Text), txtNazwaUzytkownika.Text);
                         await Task.Delay(1000);
-                        NavigationService.Navigate(new Logowanie(bazyRej));
+                        NavigationService.Navigate(new Logowanie(bazyRej)); //przejscie do logowania
                     }
                 }
                 else
                 {
-                    ShowLabel(Properties.Resources.notCompPass);
+                    ShowLabel(Properties.Resources.notCompPass); // haslo i powtorz haslo nie sa takie same
                     Logi.addTextToFile("Failed register new user with a name (user's passwords aren't the same): ", txtNazwaUzytkownika.Text);
                 }
             }
             else
             {
-                ShowLabel(Properties.Resources.completeFields);
-                if(txtNazwaUzytkownika != null)
+                ShowLabel(Properties.Resources.completeFields); //blad wypelnienia danych
+                if (txtNazwaUzytkownika != null)
                 {
                     Logi.addTextToFile("Failed register new user with a name (fields were not filled in): ", txtNazwaUzytkownika.Text);
                 }

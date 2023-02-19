@@ -26,7 +26,7 @@ namespace WpfApp1
         List<object> userInfo;
         string[] information;
         int theme = 0;
-        public OrderConfirmation(List<object> user, int Theme = 0)
+        public OrderConfirmation(List<object> user, int Theme = 0) // pobranie informacji o uzytkowniku 
         {
             userInfo = new List<object>();
             userInfo = user;
@@ -34,16 +34,16 @@ namespace WpfApp1
             ErrorLabel.Visibility = Visibility.Hidden;
             orderConfirmImie.Text = userInfo[4].ToString();
             orderConfirmNazwisko.Text = userInfo[5].ToString();
-            orderConfirmAdres.Text= userInfo[7].ToString();
-            orderConfirmCity.Text= userInfo[8].ToString();
+            orderConfirmAdres.Text = userInfo[7].ToString();
+            orderConfirmCity.Text = userInfo[8].ToString();
             theme = Theme;
             changeTheme();
         }
-        public string[] Answer
+        public string[] Answer //zwraca informacje z potwierdzenia zamowienia do strony uzytkownika
         {
             get { return information; }
         }
-        private void changeTheme()
+        private void changeTheme() //zmienia motyw w zaleznosci od ustawien
         {
             if (theme == 1)
             {
@@ -52,9 +52,9 @@ namespace WpfApp1
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 orderConfirm.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 orderConfirm.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                orderConfirmImie.Background = orderConfirmNazwisko.Background = orderConfirmAdres.Background = orderConfirmCity.Background 
+                orderConfirmImie.Background = orderConfirmNazwisko.Background = orderConfirmAdres.Background = orderConfirmCity.Background
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                orderConfirmImie.Foreground = orderConfirmNazwisko.Foreground = orderConfirmAdres.Foreground = orderConfirmCity.Foreground 
+                orderConfirmImie.Foreground = orderConfirmNazwisko.Foreground = orderConfirmAdres.Foreground = orderConfirmCity.Foreground
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
             }
             else if (theme == 0)
@@ -64,13 +64,13 @@ namespace WpfApp1
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 orderConfirm.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 orderConfirm.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                orderConfirmImie.Background = orderConfirmNazwisko.Background = orderConfirmAdres.Background = orderConfirmCity.Background 
+                orderConfirmImie.Background = orderConfirmNazwisko.Background = orderConfirmAdres.Background = orderConfirmCity.Background
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                orderConfirmImie.Foreground = orderConfirmNazwisko.Foreground = orderConfirmAdres.Foreground = orderConfirmCity.Foreground 
+                orderConfirmImie.Foreground = orderConfirmNazwisko.Foreground = orderConfirmAdres.Foreground = orderConfirmCity.Foreground
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
             }
         }
-        private async Task ShowLabel(string tekst, int Green = 0)
+        private async Task ShowLabel(string tekst, int Green = 0) // opis dot niepoprawnie wpisanych danych
         {
             if (Green == 1)
             {
@@ -85,9 +85,9 @@ namespace WpfApp1
             await Task.Delay(3000);
             ErrorLabel.Visibility = Visibility.Hidden;
         }
-        private void orderConfirm_Click(object sender, RoutedEventArgs e)
+        private void orderConfirm_Click(object sender, RoutedEventArgs e) //uzupelnia informacje dot zamowienia
         {
-            if((orderConfirmImie.Text != null && orderConfirmImie.Text != "") && (orderConfirmNazwisko.Text != null && orderConfirmNazwisko.Text != "") &&
+            if ((orderConfirmImie.Text != null && orderConfirmImie.Text != "") && (orderConfirmNazwisko.Text != null && orderConfirmNazwisko.Text != "") &&
                 (orderConfirmAdres.Text != null && orderConfirmAdres.Text != "") && (orderConfirmCity.Text != null && orderConfirmCity.Text != ""))
             {
                 information = new string[4];
@@ -99,7 +99,7 @@ namespace WpfApp1
             }
             else
             {
-                ShowLabel(Properties.Resources.notAllFieldsFillUp,1);
+                ShowLabel(Properties.Resources.notAllFieldsFillUp, 1);
             }
         }
     }

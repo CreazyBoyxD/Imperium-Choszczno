@@ -17,7 +17,7 @@ namespace WpfApp1
     public partial class Logowanie : Page
     {
         BazySQL bazySQL;
-        int ThemeColor = 0;
+        int ThemeColor = 0; //motyw
         //Logi logs;
         public int UserExists;
         MySqlDataReader options;
@@ -26,10 +26,10 @@ namespace WpfApp1
 
             InitializeComponent();
             Main.Height = 450;
-            Main.Width = 800;
-            bazySQL = obj;
-            options = bazySQL.getOptionTable();
-            if(options.HasRows)
+            Main.Width = 800; //wymiary okna 
+            bazySQL = obj; //
+            options = bazySQL.getOptionTable(); //pobranie opcji do bazy danych
+            if (options.HasRows) // uzupelniane ustawien z ponizszej funkcji jezeli istnieja
             {
                 addDataOptions();
             }
@@ -37,9 +37,9 @@ namespace WpfApp1
         }
         private void addDataOptions()
         {
-            NameOfStudio.Content = options.GetValue(1).ToString();
-            Application.Current.Windows[0].Title = options.GetValue(1).ToString();
-            if (!options.IsDBNull("Image"))
+            NameOfStudio.Content = options.GetValue(1).ToString(); //nazwa programu
+            Application.Current.Windows[0].Title = options.GetValue(1).ToString(); //tytul okna
+            if (!options.IsDBNull("Image")) // zdjecie jezeli istnieje
             {
                 var imageFromBytes = new BitmapImage();
                 if ((byte[])options.GetValue(4) != null && options.GetValue(4) != DBNull.Value)
@@ -59,7 +59,7 @@ namespace WpfApp1
                 LogoImage.Source = (imageFromBytes);
             }
         }
-        private async Task ShowLabel(string tekst, int Green = 0)
+        private async Task ShowLabel(string tekst, int Green = 0) // wyswietlanie labelu z informacjami dot bledow logowania
         {
             if (Green == 1)
             {
@@ -75,20 +75,20 @@ namespace WpfApp1
             ErrorLabelLogin.Visibility = Visibility.Hidden;
 
         }
-        private void openAdminPage(BazySQL obj, MySqlDataReader user, MySqlDataReader optionsFromLogin)
+        private void openAdminPage(BazySQL obj, MySqlDataReader user, MySqlDataReader optionsFromLogin) //otworzenie strony admina
         {
             NavigationService.Navigate(new AdminPage(obj, user, optionsFromLogin, ThemeColor));
         }
-        private void openUserPage(BazySQL obj, MySqlDataReader user, MySqlDataReader optionsFromLogin)
+        private void openUserPage(BazySQL obj, MySqlDataReader user, MySqlDataReader optionsFromLogin) //otworzenie strony usera
         {
             NavigationService.Navigate(new UserPage(obj, user, optionsFromLogin, ThemeColor));
         }
 
-        public void Button_Click_signin(object sender, RoutedEventArgs e)
+        public void Button_Click_signin(object sender, RoutedEventArgs e) // zaloguj
         {
-            if ((txtBox1.Text != "" || txtBox1.Text == null) && (PassBoxLogin.Password != "" || PassBoxLogin.Password == null))
+            if ((txtBox1.Text != "" || txtBox1.Text == null) && (PassBoxLogin.Password != "" || PassBoxLogin.Password == null)) //jezeli pola nie sa puste
             {
-                UserExists = bazySQL.checkIfDataExistLogIn(txtBox1.Text, PassBoxLogin.Password);
+                UserExists = bazySQL.checkIfDataExistLogIn(txtBox1.Text, PassBoxLogin.Password); //sprawzda czy uzytkownik istnieje i poprawnosc hasla
                 if (UserExists == 1)
                 {
                     //MessageBox.Show("Zalogowano");
@@ -100,40 +100,40 @@ namespace WpfApp1
                     //NavigationService.Navigate(new AdminPage(bazySQL, user, options));
                     //main.Show();
                     //Application.Current.Windows[0].WindowState = WindowState.Minimized;
-                    if(Admin == "1")
+                    if (Admin == "1") // jezeli admin otwiera strone admina
                     {
                         openAdminPage(bazySQL, user, options);
                     }
-                    else
+                    else // jezeli nie admin otwiera strone uzytkownika
                     {
                         openUserPage(bazySQL, user, options);
                     }
                 }
-                else if (UserExists == 5)
+                else if (UserExists == 5) // gdy bledne haslo
                 {
                     ShowLabel(Properties.Resources.wrongPass);
                 }
-                else if (UserExists == 99)
+                else if (UserExists == 99) // gdy uzytkownik nie istnieje
                 {
                     ShowLabel(Properties.Resources.userDoesntExist);
                 }
             }
-            else
+            else // dane logowania niekompletne
             {
                 ShowLabel(Properties.Resources.completeLoginPass);
             }
         }
 
-        private void Button_Click_signup(object sender, RoutedEventArgs e)
+        private void Button_Click_signup(object sender, RoutedEventArgs e) // przejscie do rejestracji
         {
             NavigationService.Navigate(new Rejestracja(bazySQL, ThemeColor, Main));
             //Rejestracja rej = new Rejestracja(bazySQL);
             //Main.Content = rej;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) // zmiana motywu
         {
-            if(ThemeColor == 0) 
+            if (ThemeColor == 0)
             {
                 Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
                 LoginLabel.Foreground = Passlabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
@@ -143,7 +143,7 @@ namespace WpfApp1
                 txtBox1.Foreground = PassBoxLogin.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 ThemeColor = 1;
             }
-            else if(ThemeColor == 1) 
+            else if (ThemeColor == 1)
             {
                 Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 LoginLabel.Foreground = Passlabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));

@@ -28,11 +28,11 @@ namespace WpfApp1
         public MainWindow()
         {
             //Application.Current.MainWindow.Height = 500;
-            logi = new Logi();
+            logi = new Logi(); // stworzenie obiektu logów
             logi.checkOrCreateFile();
             InitializeComponent();
-            bazySQL = new BazySQL();
-            options = bazySQL.getOptionTable();
+            bazySQL = new BazySQL(); //stowrzenie obiektu bazy danych
+            options = bazySQL.getOptionTable(); // baza danych pobiera dane o programie, a konkretnie język
             string language = options.GetValue(3).ToString();
             if (language == "pl_PL")
             {
@@ -43,7 +43,7 @@ namespace WpfApp1
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
             }
             bazySQL.CheckAndCreateDB();
-            Start();
+            Start(); // wystartowanie okna logowania
         }
         public void Start()
         {
@@ -52,6 +52,6 @@ namespace WpfApp1
             //Logowanie logowanie = new Logowanie(obj, objLog);
             //Main.Content = logowanie;
         }
-        
+
     }
 }

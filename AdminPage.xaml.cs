@@ -95,12 +95,10 @@ namespace WpfApp1
                 foreach (MenuItem mi in MenuTop.Items)
                 {
                     mi.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                    //mi.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 }
                 foreach (TabItem ti in Tabs.Items)
                 {
                     ti.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                    //ti.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 }
                 NameOfStudioMainprogram.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 //infos
@@ -111,6 +109,7 @@ namespace WpfApp1
                 //Grids
                 OptionsGrid.Background = UsersGrid.Background = AlbumsGrid.Background = AuthorsGrid.Background = SongsGrid.Background = OrdersGrid.Background =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
                 //Tekst
                 //Zakładka studio
                 coverOfStudioLabel.Foreground = nameOfStudioLabel.Foreground = keyProductLabel.Foreground = cmbLocalizationLabel.Foreground =
@@ -206,12 +205,10 @@ namespace WpfApp1
                 foreach(MenuItem mi in MenuTop.Items) 
                 {
                     mi.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                    //mi.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 }
                 foreach(TabItem ti in Tabs.Items) 
                 {
                     ti.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                   //ti.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 }
                 NameOfStudioMainprogram.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 //infos

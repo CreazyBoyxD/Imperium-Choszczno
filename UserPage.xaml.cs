@@ -77,23 +77,23 @@ namespace WpfApp1
                 UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground = CashLabel.Foreground = CashUserLabel.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
 
-                selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background = 
+                selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                selectedUserUserName.Foreground = selectedUserName.Foreground = selectedUserSurname.Foreground = selectedUserAddress.Foreground = selectedUserCity.Foreground = 
+                selectedUserUserName.Foreground = selectedUserName.Foreground = selectedUserSurname.Foreground = selectedUserAddress.Foreground = selectedUserCity.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
 
                 //Zakładka albumy
                 AlbumListLabel.Foreground = AlbumSongListLabel.Foreground = nameOfAlbumLabel.Foreground = nameOfAlbumLabelShow.Foreground = priceOfSong1.Foreground =
                     priceOfAlbumLabelShow.Foreground = discountOfAlbum_Copy.Foreground = discountOfAlbumLabelShow.Foreground = AlbumImageLabel.Foreground = nameOfSong_Copy.Foreground =
-                    nameOfSongAlbumLabelShow.Foreground  = nameOfAuthorSong_Copy2.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                    nameOfSongAlbumLabelShow.Foreground = nameOfAuthorSong_Copy2.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
 
                 //Zakładka utwory
                 nameOfSong.Foreground = nameOfAuthorSong_Copy1.Foreground = nameOfSongLabelShow.Foreground = nameOfSong.Foreground = priceOfSongLabelShow.Foreground = discountOfSongLabelShow.Foreground =
-                    priceOfSong.Foreground = discountOfSong.Foreground = nameOfAuthorSong_Copy1.Foreground = nameOfAuthorSong_Copy.Foreground = listOfSongs.Foreground = 
+                    priceOfSong.Foreground = discountOfSong.Foreground = nameOfAuthorSong_Copy1.Foreground = nameOfAuthorSong_Copy.Foreground = listOfSongs.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
 
                 //Zakładka zamowienia
-                orderUserNameSurnameLabel.Foreground = orderUserAddressLabel.Foreground = orderProductLabel.Foreground = orderCostLabel.Foreground = orderUserNameSurnameLabel.Foreground = 
+                orderUserNameSurnameLabel.Foreground = orderUserAddressLabel.Foreground = orderProductLabel.Foreground = orderCostLabel.Foreground = orderUserNameSurnameLabel.Foreground =
                     orderUserNameSurnameLabel_Copy1.Foreground = orderUserNameSurnameLabelShow.Foreground = orderUserAddressLabelShow.Foreground = orderProductLabelShow.Foreground = orderCostLabelShow.Foreground =
                    orderUserNameSurnameLabel_Copy.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
 
@@ -316,7 +316,7 @@ namespace WpfApp1
         }
         private void albumUserList_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image" || 
+            if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image" ||
                 e.PropertyName == "Songs" || e.PropertyName == "Price" || e.PropertyName == "Discount")
             {
                 e.Cancel = true;
@@ -324,7 +324,7 @@ namespace WpfApp1
         }
         private void albumListOfSongs_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image" || 
+            if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image" ||
                 e.PropertyName == "Authors" || e.PropertyName == "Price" || e.PropertyName == "Discount")
             {
                 e.Cancel = true;
@@ -349,7 +349,7 @@ namespace WpfApp1
             selectedUserSurname.Text = userList[5].ToString();
             selectedUserAddress.Text = userList[7].ToString();
             selectedUserCity.Text = userList[8].ToString();
-            CashUserLabel.Content= userList[6].ToString() + "zł";
+            CashUserLabel.Content = userList[6].ToString() + "zł";
         }
         private void addDataOptions()
         {
@@ -373,7 +373,7 @@ namespace WpfApp1
 
         private void deleteOrder_Click(object sender, RoutedEventArgs e)
         {
-            if(selectedUserOrderID!= -1) 
+            if (selectedUserOrderID != -1)
             {
                 bazySQL.deleteUserAuthorSongAlbum("Orders", selectedUserOrderID);
             }
@@ -382,7 +382,7 @@ namespace WpfApp1
 
         private void saveUser_Click(object sender, RoutedEventArgs e)
         {
-            if((selectedUserName.Text != null && selectedUserName.Text != "" ) && (selectedUserUserName.Text != null && selectedUserUserName.Text != "") && 
+            if ((selectedUserName.Text != null && selectedUserName.Text != "") && (selectedUserUserName.Text != null && selectedUserUserName.Text != "") &&
                 (selectedUserSurname.Text != null && selectedUserSurname.Text != "") && (selectedUserAddress.Text != null && selectedUserAddress.Text != "")
                 && (selectedUserCity.Text != null && selectedUserCity.Text != ""))
             {
@@ -415,24 +415,24 @@ namespace WpfApp1
         private void orderUserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             userDataRowOrder = (DataRowView)orderUserList.SelectedItem;
-            
-            if(userDataRowOrder != null) 
+
+            if (userDataRowOrder != null)
             {
                 MySqlDataReader elementMain, authorSong = null;
                 selectedUserOrderID = (int)userDataRowOrder[0];
                 orderUserNameSurnameLabelShow.Content = userDataRowOrder[4];
                 orderUserAddressLabelShow.Content = userDataRowOrder[6];
                 elementMain = bazySQL.getOrderedProductinfo(userDataRowOrder[3].ToString(), int.Parse(userDataRowOrder[2].ToString()));
-                if(elementMain != null) 
+                if (elementMain != null)
                 {
-                    if(elementMain.GetValue(3) != DBNull.Value && (byte[])elementMain.GetValue(3) != null)
+                    if (elementMain.GetValue(3) != DBNull.Value && (byte[])elementMain.GetValue(3) != null)
                     {
                         orderedProductCover.Source = photoService((byte[])elementMain.GetValue(3));
                     }
                     if (userDataRowOrder[3].ToString() == "Songs")
                     {
                         authorSong = bazySQL.getInfoAboutAuthor(int.Parse(elementMain.GetValue(4).ToString()));
-                        if(authorSong != null) 
+                        if (authorSong != null)
                         {
                             orderProductLabelShow.Content = authorSong[1].ToString() + " - " + elementMain[1].ToString();
                         }
@@ -450,7 +450,7 @@ namespace WpfApp1
         /// </summary>
         private void SongsTableUser_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image" 
+            if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image"
                 || e.PropertyName == "Authors" || e.PropertyName == "Price" || e.PropertyName == "Discount")
             {
                 e.Cancel = true;
@@ -569,7 +569,7 @@ namespace WpfApp1
         {
             string[] infosFormOrder = new string[4];
             OrderConfirmation window1 = new OrderConfirmation(userList, theme);
-            if(window1.ShowDialog() == true)
+            if (window1.ShowDialog() == true)
             {
                 infosFormOrder = window1.Answer;
             }
@@ -590,7 +590,7 @@ namespace WpfApp1
                 {
                     difference = wallet - finishPrice;
                     int SongID = (int)userDataRowSong.Row[0];
-                    if(infosFormOrder != null)
+                    if (infosFormOrder != null)
                     {
                         if ((infosFormOrder[0] != null && infosFormOrder[0] != "") && (infosFormOrder[1] != null && infosFormOrder[1] != "") &&
                             (infosFormOrder[2] != null && infosFormOrder[2] != "") && (infosFormOrder[3] != null && infosFormOrder[3] != ""))
@@ -674,7 +674,7 @@ namespace WpfApp1
         ///
         /// Funkcje obsługi usera
         ///
-        private void changePass_Click(object sender, RoutedEventArgs e)
+        private void changePass_Click(object sender, RoutedEventArgs e) //zmiana hasla do konta
         {
             string NewPass = "";
             changePassword windowChPass = new changePassword(theme);

@@ -32,18 +32,18 @@ namespace WpfApp1
             changeTheme();
         }
 
-        private void changeTheme()
+        private void changeTheme() //ustawienie motywu na podstawie ustawien
         {
             if (theme == 1)
             {
                 Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                orderConfirmUserName.Foreground = orderConfirmUserSurname.Foreground  =
+                orderConfirmUserName.Foreground = orderConfirmUserSurname.Foreground =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 passConfirm.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 passConfirm.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                newPass.Background = repeatNewPass.Background 
+                newPass.Background = repeatNewPass.Background
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                newPass.Foreground = repeatNewPass.Foreground 
+                newPass.Foreground = repeatNewPass.Foreground
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
             }
             else if (theme == 0)
@@ -53,18 +53,18 @@ namespace WpfApp1
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 passConfirm.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 passConfirm.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                newPass.Background = repeatNewPass.Background 
+                newPass.Background = repeatNewPass.Background
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                newPass.Foreground = repeatNewPass.Foreground 
+                newPass.Foreground = repeatNewPass.Foreground
                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
             }
         }
 
-        public string Answer
+        public string Answer //zwraca haslo do strony uzytkownika
         {
             get { return Pass; }
         }
-        private async Task ShowLabel(string tekst, int Green = 0)
+        private async Task ShowLabel(string tekst, int Green = 0) // informacje o blednym wypelnieniu informacji
         {
             if (Green == 1)
             {
@@ -80,11 +80,11 @@ namespace WpfApp1
             ErrorLabel.Visibility = Visibility.Hidden;
         }
 
-        private void orderConfirm_Click(object sender, RoutedEventArgs e)
+        private void orderConfirm_Click(object sender, RoutedEventArgs e) //zamiana hasla jezeli dane zostaly poprawnie uzupelnione
         {
             if ((newPass.Password != null && newPass.Password != null) && (repeatNewPass.Password != null && repeatNewPass.Password != null))
             {
-                if(newPass.Password == repeatNewPass.Password)
+                if (newPass.Password == repeatNewPass.Password)
                 {
                     Pass = newPass.Password;
                     this.DialogResult = true;
