@@ -26,6 +26,7 @@ namespace WpfApp1
     //wyświetla również błędy jeżeli hasło jest nieprawidłowe lub jeżeli podane dane istnieją już w bazie danych
     //sprawdza też czy wpisane hasło zgadza się z tym wpisanym w rubryce powtórz hasło
     //gdy user zostanie poprawnie zarejestrowany zostanie przeniesy na strone logowania gdzie może się zalogować
+    //Zostaje także zmieniony motyw na podstawie wybranej opcji w oknie logowania jasny/ciemny
     public partial class Rejestracja : Page
     {
         BazySQL bazyRej;
