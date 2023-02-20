@@ -1029,7 +1029,7 @@ namespace WpfApp1
             }
             if (selectedAlbumID != -1 && nameOfAlbum.Text != null && nameOfAlbum.Text != "")
             {
-                checkIfAlbumIs = bazySQL.checkIfUserAuthorSongAlbumExist("album", selectedAuthorID, nameOfAuthor.Text);
+                checkIfAlbumIs = bazySQL.checkIfUserAuthorSongAlbumExist("album", selectedAlbumID, nameOfAlbum.Text);
             }
             result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             if (result == MessageBoxResult.Yes)
