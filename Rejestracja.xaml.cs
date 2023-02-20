@@ -38,33 +38,7 @@ namespace WpfApp1
             theme = motyw;
             changeTheme();
         }
-        private void changeTheme() // zmiana motywu na podstawie podanego w oknie logowania 
-        {
-            if (theme == 0)
-            {
-                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                UserName.Foreground = UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground =
-                PassEntAgain.Foreground = AddressEnt.Foreground = CityEnt.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                BtRejestracja.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                BtRejestracja.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                txtImie.Background = txtNazwisko.Background = txtNazwaUzytkownika.Background = Haslo.Background = HasloPowt.Background = Adres.Background = City.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                txtImie.Foreground = txtNazwisko.Foreground = txtNazwaUzytkownika.Foreground = Haslo.Foreground = HasloPowt.Foreground = Adres.Foreground = City.Foreground
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-            }
-            else if (theme == 1)
-            {
-                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
-                UserName.Foreground = UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground =
-                PassEntAgain.Foreground = AddressEnt.Foreground = CityEnt.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                BtRejestracja.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                BtRejestracja.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                txtImie.Background = txtNazwisko.Background = txtNazwaUzytkownika.Background = Haslo.Background = HasloPowt.Background = Adres.Background = City.Background
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                txtImie.Foreground = txtNazwisko.Foreground = txtNazwaUzytkownika.Foreground = Haslo.Foreground = HasloPowt.Foreground = Adres.Foreground = City.Foreground
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-            }
-        }
+        
         private async Task ShowLabel(string tekst, int Green = 0) // wyswietlanie informacji o blednym wprowadzeniu danych
         {
             if (Green == 1)
@@ -124,6 +98,33 @@ namespace WpfApp1
                     Logi.addTextToFile("Failed register new user with a name (fields were not filled in): ", txtNazwaUzytkownika.Text);
                 }
                 Logi.addTextToFile("Failed register new user with a name (fields were not filled in): ");
+            }
+        }
+        private void changeTheme() // zmiana motywu na podstawie podanego w oknie logowania 
+        {
+            if (theme == 0)
+            {
+                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                UserName.Foreground = UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground =
+                PassEntAgain.Foreground = AddressEnt.Foreground = CityEnt.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                BtRejestracja.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                BtRejestracja.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
+                txtImie.Background = txtNazwisko.Background = txtNazwaUzytkownika.Background = Haslo.Background = HasloPowt.Background = Adres.Background = City.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                txtImie.Foreground = txtNazwisko.Foreground = txtNazwaUzytkownika.Foreground = Haslo.Foreground = HasloPowt.Foreground = Adres.Foreground = City.Foreground
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+            }
+            else if (theme == 1)
+            {
+                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
+                UserName.Foreground = UserSurname.Foreground = UserUserName.Foreground = PassEnt.Foreground =
+                PassEntAgain.Foreground = AddressEnt.Foreground = CityEnt.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                BtRejestracja.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                BtRejestracja.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
+                txtImie.Background = txtNazwisko.Background = txtNazwaUzytkownika.Background = Haslo.Background = HasloPowt.Background = Adres.Background = City.Background
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                txtImie.Foreground = txtNazwisko.Foreground = txtNazwaUzytkownika.Foreground = Haslo.Foreground = HasloPowt.Foreground = Adres.Foreground = City.Foreground
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
             }
         }
     }

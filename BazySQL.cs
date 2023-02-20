@@ -63,10 +63,7 @@ namespace WpfApp1
         }
         public void CheckAndCreateDB() // Szymon: funkcja tworząca i sprawdząjaca istnienie bazy o zadanej nazwie
         {
-            //string workingDirectory = Environment.CurrentDirectory;
-            //string path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             string sqlCreateDBQuery, sqlCheckDBQuery;
-            //string databaseName = "TestDB2";
 
             SqlConnection tmpConn = new SqlConnection();
 
@@ -181,6 +178,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi ładowania opcji do programu, ich edycji oraz dodawania
         /// </summary>
+        
         public void addToOptionTable() //Szymon: funkcja dodająca opcję do pliku
         {
             string sql = "";
@@ -283,6 +281,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi użytkowników
         /// </summary>
+        
         public void registerUser(string UserName, string Password, string Name, string Surname, string Address, string City, string Cash = "1000.00")
         { // Szymon: funkcja do rejestracji usera
             int Admin = 0;

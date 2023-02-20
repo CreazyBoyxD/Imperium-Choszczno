@@ -28,7 +28,7 @@ namespace WpfApp1
             InitializeComponent();
             Main.Height = 450;
             Main.Width = 800; //wymiary okna 
-            bazySQL = obj; //
+            bazySQL = obj;
             options = bazySQL.getOptionTable(); //pobranie opcji do bazy danych
             if (options.HasRows) // uzupelniane ustawien z ponizszej funkcji jezeli istnieja
             {
