@@ -303,6 +303,12 @@ namespace WpfApp1
             conn.Close(); //musi zamknąć połączenie aby można było wpisać dane do bazy
             Logi.addTextToFile(String.Format("Added new user to Users table - UserName: {0}, Name: {1}, Surname: {2}, is Admin {3}", UserName, Name, Surname, Admin), UserName);
         } // dodaje usera z kilikoma inforamcja i czy jest adminem
+
+        //Szymon - pierwsza funkcjonalność Możliwość zmiany danych poszczególnych użytkowników, nadanie administratora,
+        //usunięcie użytkownika. (tylko admin)
+        //Po naciśnięciu na wybranego użytkownika zostają wyświetlone dane z bazy danych w rubrykach poniżej które możemy
+        //edytować, o ile ten użytkownik nie jest zalogowany(nie można zmieniać własnych danych), 
+        //można także usunąć całkowinie użytkownika poprzez wybranie go i wciśnięcie przycisku usuń
         public void saveUser(int ID, string UserName, string Name, string Surname, string Cash, string Address, string City, int Admin, string WHO)
         {//Szymon: funkcja saveUser jest do zapisu przez Admina
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
@@ -326,6 +332,7 @@ namespace WpfApp1
             conn.Close();
             Logi.addTextToFile(String.Format("Saved existing user in Users table - ID in table: {0}", ID), WHO);
         }
+
         public MySqlDataReader InfoAboutUser(string login, string password) // Szymon: funkcja zwraca readaera czy user istnieje, zwraca całą tablice usera
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
