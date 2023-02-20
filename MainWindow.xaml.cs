@@ -27,7 +27,6 @@ namespace WpfApp1
 
         public MainWindow()
         {
-            //Application.Current.MainWindow.Height = 500;
             logi = new Logi(); // stworzenie obiektu logów
             logi.checkOrCreateFile();
             InitializeComponent();
@@ -49,8 +48,6 @@ namespace WpfApp1
         {
             Logowanie logow = new Logowanie(bazySQL);
             Main.NavigationService.Navigate(logow);
-            //Logowanie logowanie = new Logowanie(obj, objLog);
-            //Main.Content = logowanie;
         }
 
     }

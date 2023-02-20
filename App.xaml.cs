@@ -30,9 +30,6 @@ namespace WpfApp1
             {
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
             }
-            //mainWindow = new MainWindow();
-            //mainWindow.InitializeComponent();
-            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
         }
     }
 }

@@ -35,10 +35,6 @@ namespace WpfApp1
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 txtBlock.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
                 txtBlock.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                /*orderConfirmImie.Background = orderConfirmNazwisko.Background = orderConfirmAdres.Background = orderConfirmCity.Background
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                orderConfirmImie.Foreground = orderConfirmNazwisko.Foreground = orderConfirmAdres.Foreground = orderConfirmCity.Foreground
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));*/
             }
             else if (theme == 0)
             {
@@ -47,10 +43,6 @@ namespace WpfApp1
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 txtBlock.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 txtBlock.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                /*orderConfirmImie.Background = orderConfirmNazwisko.Background = orderConfirmAdres.Background = orderConfirmCity.Background
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                orderConfirmImie.Foreground = orderConfirmNazwisko.Foreground = orderConfirmAdres.Foreground = orderConfirmCity.Foreground
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));*/
             }
         }
     }

@@ -24,19 +24,17 @@ namespace WpfApp1
     public partial class Rejestracja : Page
     {
         BazySQL bazyRej;
-        int theme;
         Frame frame1;
+        int theme;
         public Rejestracja(BazySQL bazyObj, int motyw, Frame frame)
         {
-            //System.Windows.Application.Current.MainWindow.Height = 500;
             frame1 = frame;
             InitializeComponent();
             Main.Height = 600;
             Main.Width = 900;
-            //frame1.Height = 550;
-            //frame1.Width = 800;
             ErrorLabel.Visibility = Visibility.Hidden;
             bazyRej = bazyObj;
+
             theme = motyw;
             changeTheme();
         }

@@ -17,8 +17,9 @@ namespace WpfApp1
     public partial class Logowanie : Page
     {
         BazySQL bazySQL;
+
         int ThemeColor = 0; //motyw
-        //Logi logs;
+
         public int UserExists;
         MySqlDataReader options;
         public Logowanie(BazySQL obj)
@@ -91,15 +92,10 @@ namespace WpfApp1
                 UserExists = bazySQL.checkIfDataExistLogIn(txtBox1.Text, PassBoxLogin.Password); //sprawzda czy uzytkownik istnieje i poprawnosc hasla
                 if (UserExists == 1)
                 {
-                    //MessageBox.Show("Zalogowano");
                     ShowLabel(Properties.Resources.loggedIn);
                     Logi.addTextToFile("Logged in", txtBox1.Text.ToString());
                     MySqlDataReader user = bazySQL.InfoAboutUser(txtBox1.Text, PassBoxLogin.Password);
                     string Admin = user.GetValue(9).ToString();
-                    //MainApp main = new MainApp(bazySQL,user,options);
-                    //NavigationService.Navigate(new AdminPage(bazySQL, user, options));
-                    //main.Show();
-                    //Application.Current.Windows[0].WindowState = WindowState.Minimized;
                     if (Admin == "1") // jezeli admin otwiera strone admina
                     {
                         openAdminPage(bazySQL, user, options);
@@ -127,8 +123,6 @@ namespace WpfApp1
         private void Button_Click_signup(object sender, RoutedEventArgs e) // przejscie do rejestracji
         {
             NavigationService.Navigate(new Rejestracja(bazySQL, ThemeColor, Main));
-            //Rejestracja rej = new Rejestracja(bazySQL);
-            //Main.Content = rej;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) // zmiana motywu
