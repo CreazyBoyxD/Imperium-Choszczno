@@ -20,7 +20,12 @@ namespace WpfApp1
     /// <summary>
     /// Logika interakcji dla klasy Rejestracja.xaml
     /// </summary>
-
+    
+    //Hubert - druga funkcjonalność Rejestracja
+    //Pozwala ona na zarejestrowanie się nowego użytkownika sprawdzając dane z bazy danych 
+    //wyświetla również błędy jeżeli hasło jest nieprawidłowe lub jeżeli podane dane istnieją już w bazie danych
+    //sprawdza też czy wpisane hasło zgadza się z tym wpisanym w rubryce powtórz hasło
+    //gdy user zostanie poprawnie zarejestrowany zostanie przeniesy na strone logowania gdzie może się zalogować
     public partial class Rejestracja : Page
     {
         BazySQL bazyRej;

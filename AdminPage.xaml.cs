@@ -917,6 +917,9 @@ namespace WpfApp1
             System.Windows.Application.Current.Shutdown();
         }
         //Hubert - Przycisk odpowiedzialny za zmiane motywu
+        //Hubert - pierwsza funkcjonalność zmiana motywu (jasny/ciemny)
+        //Po naciśnięciu tego przycisku motywy które są ustawione w każdym pliku xaml.cs zostają zmienione na motyw 0 (jasny) lub 1 (ciemny)
+        //jest to zrobione przez przypisanie do każdego elementu koloru aby po wciśnięciu przyciski zostały one zmnienione na inny kolor
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             changeTheme();
