@@ -94,7 +94,8 @@ namespace WpfApp1
             string caption = Properties.Resources.notenoughcash;
             MessageBox.Show(messageBoxText, caption, MessageBoxButton.OK);
         }
-        //Bury - Funkcja pomocnicza do pobierania danych po wciśnięciu przycisku wybierz zdjęcie oraz konwertuje pobrane zdjęcie na tablice bitową potrzebną do zapisu danych do bazy danych
+        //Bury - Funkcja pomocnicza do pobierania danych po wciśnięciu przycisku wybierz
+        //zdjęcie oraz konwertuje pobrane zdjęcie na tablice bitową potrzebną do zapisu danych do bazy danych
         public byte[] GetImageSelectPhoto(string type)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

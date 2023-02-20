@@ -22,6 +22,7 @@ namespace WpfApp1
     /// </summary>
     public partial class UserPage : Page
     {
+        //Bury - dodanie wszystkich funkcjonalności do UserPage
         private DataTable userDataTable, userDataTableAuthors, userDataTableSongs, userDataTableAlbums, userDataTableSongsOfAlbum, userDataTableOrders;
         MySqlDataReader daneUser;
         public BazySQL bazySQL;
@@ -32,8 +33,8 @@ namespace WpfApp1
         private int selectedUserOrderID = -1;
         private int selectedSongOfAlbumID = -1;
         private MySqlDataReader options = null;
-        int theme = 0;
 
+        int theme = 0;
 
         public UserPage(BazySQL obj, MySqlDataReader user, MySqlDataReader optionsFromLogin, int motyw)
         {
@@ -53,6 +54,8 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje wspólne do obsługi całego layoutu dla widoku usera
         /// </summary>
+
+        //Hubert - Oprogramowanie zmiany motywu dla wszystkich elementów dla UserPage 
         private void changeTheme()
         {
             if (theme == 0)
@@ -192,6 +195,7 @@ namespace WpfApp1
                 theme = 0;
             }
         }
+        //Hubert - fukcja konwertująca cene na decimal
         private decimal convertPrice(string price)
         {
             decimal defaultValue = 0;
@@ -207,6 +211,8 @@ namespace WpfApp1
             }
             return result;
         }
+        //Hubert - konwertowanie rabatu z wartości na liczbe, najpierw usuwa procent potem to formatuje do danych
+        //Funckja ta i powyższa jest wykorzystywana do obliczania rabatu przy kupowaniu utworu ub albumu
         private int convertDiscount(string discount)
         {
             int rabat = 0;
@@ -229,6 +235,7 @@ namespace WpfApp1
             }
             return rabat;
         }
+        //Bury - Wczytywanie danych z bazy danych do aplikacji
         private void getTables()
         {
             userDataTableSongs = bazySQL.getTables("songs");
@@ -241,6 +248,8 @@ namespace WpfApp1
             userDataTableOrders = bazySQL.getUserOrder(UserID);
             orderUserList.ItemsSource = userDataTableOrders.DefaultView;
         }
+        //Bury - Funkcja pomocnicza do pobierania danych po wciśnięciu przycisku wybierz
+        //zdjęcie oraz konwertuje pobrane zdjęcie na tablice bitową potrzebną do zapisu danych do bazy danych
         private BitmapImage photoService(byte[] imageBytes)
         {
             BitmapImage imageFromBytes = null;
@@ -261,6 +270,7 @@ namespace WpfApp1
             }
             return imageFromBytes;
         }
+
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             userList = null;
@@ -270,6 +280,7 @@ namespace WpfApp1
             daneUser = null;
             NavigationService.Navigate(new Logowanie(bazySQL));
         }
+        //Bury - wczytanie wybranych danych do okna z albumami
         private void albumUserList_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image" ||
@@ -278,6 +289,7 @@ namespace WpfApp1
                 e.Cancel = true;
             }
         }
+        //Bury - wczytanie wybranych danych do okna z wybramymi utworami w albumie
         private void albumListOfSongs_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image" ||
@@ -286,6 +298,7 @@ namespace WpfApp1
                 e.Cancel = true;
             }
         }
+        //Bury - wyświetlanie zamówień danego użytwkonika w oknie zamówień
         private void orderUserList_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyName == "ID" || e.PropertyName == "UserID" || e.PropertyName == "ProductID" || e.PropertyName == "ProductType" || e.PropertyName == "Price")
@@ -293,6 +306,7 @@ namespace WpfApp1
                 e.Cancel = true;
             }
         }
+        //Bury - Funkcja służąca do wyświetlania informacji takich jak imie nazwisko adres ilość pieniędzy
         private void updateUserList(MySqlDataReader user)
         {
             userList = new List<object>();
@@ -307,6 +321,7 @@ namespace WpfApp1
             selectedUserCity.Text = userList[8].ToString();
             CashUserLabel.Content = userList[6].ToString() + "zł";
         }
+        //Bury - schowanie okna opcji
         private void addDataOptions()
         {
             NameOfStudioMainprogram.Content = options.GetValue(1).ToString();
@@ -320,13 +335,14 @@ namespace WpfApp1
                 else MainAppLogoImage.Source = null;
             }
         }
+        //Bury - Funkcja wyświetlająca błąd gdy nie masz wystarczającej liczby pieniędzy
         private void youCantBuyIt()
         {
             string messageBoxText = Properties.Resources.youcantbuymoney;
             string caption = Properties.Resources.notenoughcash;
             MessageBox.Show(messageBoxText, caption, MessageBoxButton.OK);
         }
-
+        //Bury - funkcja pozwalająca na usunięcie swojego zamówienia
         private void deleteOrder_Click(object sender, RoutedEventArgs e)
         {
             if (selectedUserOrderID != -1)
@@ -335,7 +351,7 @@ namespace WpfApp1
             }
             RefreshOrderTable((int)userList[0]);
         }
-
+        //Bury - funkcja pozwalająca na edytowanie swoich danych osobowych
         private void saveUser_Click(object sender, RoutedEventArgs e)
         {
             if ((selectedUserName.Text != null && selectedUserName.Text != "") && (selectedUserUserName.Text != null && selectedUserUserName.Text != "") &&
@@ -348,17 +364,17 @@ namespace WpfApp1
             MySqlDataReader userTemp = bazySQL.infoAboutUserByID((int)userList[0]);
             updateUserList(userTemp);
         }
-
+        //Hubert - Przycisk umożliwiający zamknięcie aplikacji
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
-
+        //Hubert - Przycisk umożliwiający zmiane motywu apliakcji
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
             changeTheme();
         }
-
+        //Bury - Przycisk pozwalający na wyświetlenie regulaminu
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
             Regulamin regulamin = new Regulamin(theme);
@@ -368,6 +384,8 @@ namespace WpfApp1
         ///
         /// Funkcje obsługi zamówień
         /// 
+
+        //Bury - funckja która wyślietla dane aktualnie wybranego zamówienia w oknie zamówienia
         private void orderUserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             userDataRowOrder = (DataRowView)orderUserList.SelectedItem;
@@ -404,6 +422,8 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi utworów
         /// </summary>
+         
+        //Bury - wyświetlenie wybranych danych w tabeli utworów
         private void SongsTableUser_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyName == "ID" || e.PropertyName == "FileName" || e.PropertyName == "Image"
@@ -412,6 +432,7 @@ namespace WpfApp1
                 e.Cancel = true;
             }
         }
+        //Bury - wyświetlenie aktualnych danych wybranego utworu w oknie utwory po jego kliknięciu
         private void SongsTableUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             userDataRowSong = (DataRowView)SongsTableUser.SelectedItem;
@@ -459,6 +480,8 @@ namespace WpfApp1
         ///
         /// Funkcje obsługi albumów
         /// 
+
+        //Bury - pokazanie informacji o albumie w oknie albumy po wciśnięciu na wybrany album
         private void albumUserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             userDataRowAlbum = (DataRowView)albumUserList.SelectedItem;
@@ -490,6 +513,7 @@ namespace WpfApp1
                 discountOfAlbumLabelShow.Content = userDataRowAlbum.Row[6].ToString();
             }
         }
+        //Bury - Wyświetlenie listy utwrów wybranego albumu
         private void albumListOfSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dataRowSongOfAlbum = (DataRowView)albumListOfSongs.SelectedItem;
@@ -521,6 +545,8 @@ namespace WpfApp1
         ///
         /// Funkcje obsługi kupowania
         ///
+
+        //Bury - Funckja pozwalająca na kupienie wybraego utworu oraz sprawdzenie czy masz wystraczjąco pieniędzy
         private void buyThisSong_Click(object sender, RoutedEventArgs e)
         {
             string[] infosFormOrder = new string[4];
@@ -573,6 +599,7 @@ namespace WpfApp1
                 }
             }
         }
+        //Bury - Funkcja pozwalająca na kupienie wybranego albumu oraz sprawdzenie czy masz wystarczająco pieniędzy
         private void buyThisAlbum_Click(object sender, RoutedEventArgs e)
         {
             string[] infosFormOrder = new string[4];
@@ -630,6 +657,8 @@ namespace WpfApp1
         ///
         /// Funkcje obsługi usera
         ///
+
+        // Funckja pozwalająca na zmiane hasła użytwkownika
         private void changePass_Click(object sender, RoutedEventArgs e) //zmiana hasla do konta
         {
             string NewPass = "";
