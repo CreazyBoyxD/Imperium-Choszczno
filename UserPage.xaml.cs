@@ -271,6 +271,7 @@ namespace WpfApp1
             return imageFromBytes;
         }
 
+        // Bury - oprogramowanie przycisku wyloguj; po wciśnięciu następuje wylogowanie użytkownika/administratora oraz przeniesienie do okna logowania
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             userList = null;
@@ -343,6 +344,8 @@ namespace WpfApp1
             MessageBox.Show(messageBoxText, caption, MessageBoxButton.OK);
         }
         //Bury - funkcja pozwalająca na usunięcie swojego zamówienia
+        //po wybraniu szukanego zamówienia i wciśnięciu przycisku Anuluj Zamówienie wybrane zamówienie usuwane jest z listy
+        //tym samym użytkownik traci do niego dostęp; pieniądze zapłacone podczas kupna danego albumu/zamówienia nie są zwracane
         private void deleteOrder_Click(object sender, RoutedEventArgs e)
         {
             if (selectedUserOrderID != -1)
@@ -352,6 +355,8 @@ namespace WpfApp1
             RefreshOrderTable((int)userList[0]);
         }
         //Bury - funkcja pozwalająca na edytowanie swoich danych osobowych
+        //dane podawane przy rejestracji (z wyjatkiem hasla) wyswietlane sa w oknie Moje Konto
+        //użytkownik może zmienić swoje dane a wszystkie zmiany zatwierdzic naciskajac przycisk Zapisz
         private void saveUser_Click(object sender, RoutedEventArgs e)
         {
             if ((selectedUserName.Text != null && selectedUserName.Text != "") && (selectedUserUserName.Text != null && selectedUserUserName.Text != "") &&
@@ -422,7 +427,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi utworów
         /// </summary>
-         
+
         //Bury - wyświetlenie wybranych danych w tabeli utworów
         private void SongsTableUser_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
@@ -546,7 +551,9 @@ namespace WpfApp1
         /// Funkcje obsługi kupowania
         ///
 
-        //Bury - Funckja pozwalająca na kupienie wybraego utworu oraz sprawdzenie czy masz wystraczjąco pieniędzy
+        //Bury - Funkcja pozwalająca na kupienie wybranego utworu, sprawdza czy użytkownik ma wystarczająco pieniędzy
+        //Po naciśnięciu otwierane jest okno zawierające dane dot. zamówienia oraz zawierające przycisk potwierdzający zamówienie
+        //po potwierdzeniu zamówienia odpowiednia ilość pieniędzy zabierana jest z konta użytkownika a zakupiony utwór pokazuje się w zakładce zamówienia
         private void buyThisSong_Click(object sender, RoutedEventArgs e)
         {
             string[] infosFormOrder = new string[4];
@@ -599,7 +606,9 @@ namespace WpfApp1
                 }
             }
         }
-        //Bury - Funkcja pozwalająca na kupienie wybranego albumu oraz sprawdzenie czy masz wystarczająco pieniędzy
+        //Bury - Funkcja pozwalająca na kupienie wybranego albumu, sprawdza czy użytkownik ma wystarczająco pieniędzy
+        //Po naciśnięciu otwierane jest okno zawierające dane dot. zamówienia oraz zawierające przycisk potwierdzający zamówienie
+        //po potwierdzeniu zamówienia odpowiednia ilość pieniędzy zabierana jest z konta użytkownika a zakupiony album pokazuje się w zakładce zamówienia
         private void buyThisAlbum_Click(object sender, RoutedEventArgs e)
         {
             string[] infosFormOrder = new string[4];
@@ -658,8 +667,10 @@ namespace WpfApp1
         /// Funkcje obsługi usera
         ///
 
-        // Funckja pozwalająca na zmiane hasła użytwkownika
-        private void changePass_Click(object sender, RoutedEventArgs e) //zmiana hasla do konta
+        // Bury - zmiana hasła dostępu do konta
+        //po wciśnięciu przycisku Zmień Hasło otwiera się nowe okno z tekstboksami do wypełnienia w których wpisujemy nowe hasło
+        //jeżeli hasło i powtórz hasło zostaną poprawnie wypełnione, hasło dostępu do konta zostaje zmienione
+        private void changePass_Click(object sender, RoutedEventArgs e)
         {
             string NewPass = "";
             changePassword windowChPass = new changePassword(theme);

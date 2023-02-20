@@ -47,7 +47,7 @@ namespace WpfApp1
         Regex regexCeny = new Regex("^\\d{0,5}\\.\\d{1,2}$");
         public AdminPage(BazySQL obj, MySqlDataReader user, MySqlDataReader optionsFromLogin, int motyw)
         {
-            
+
             InitializeComponent();
             updateUserList(user);
             bazySQL = obj;
@@ -86,7 +86,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje wspólne
         /// </summary>
- 
+
         //Bury - Funkcja wyświetlająca błąd gdy nie masz wystarczającej liczby pieniędzy
         private void youCantBuyIt()
         {
@@ -511,7 +511,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi tabel
         /// </summary>
-        
+
         //Bury - Wczytywanie danych z bazy danych do aplikacji
         private void UsersTable()
         {
@@ -543,7 +543,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi Userów
         /// </summary>
-        
+
         //Bury - wczytywanie danych użytkowników do poszczególnych rubryk z bazy danych do odpowiednich okien, sprawdza czy jest adminem oraz
         //sprawdza czy wybrany user jest zalogowany jeśli tak to wyłącza mu dostęd do zmiany danych
         private void usersTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -630,7 +630,7 @@ namespace WpfApp1
                     {
                         admin = 1;
                     }
-                    bazySQL.deleteUserAuthorSongAlbum("Users",saveUserID, (string)userList[1]);
+                    bazySQL.deleteUserAuthorSongAlbum("Users", saveUserID, (string)userList[1]);
                 }
             }
             UsersTable();
@@ -650,7 +650,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi autorów
         /// </summary>
-        
+
         //Bury - Funckja pozwalająca na zapisanie danych autora do bazy danych, pyta także czy jesteśmy pewnie wybrania zdjęcia które chcemy wgrać 
         //pozwala ona również na edytowanie danych istniejącego już autora gdybyśmy chceli coś przy nim zmienić
         private void saveAuthor_Click(object sender, RoutedEventArgs e)
@@ -720,7 +720,7 @@ namespace WpfApp1
             dataRowAuthor = (DataRowView)authorTable.SelectedItem;
             if (dataRowAuthor != null)
             {
-                selectedIDsAuthorsTXT.Text = Properties.Resources.selectedID+ ": " + dataRowAuthor.Row[0].ToString() 
+                selectedIDsAuthorsTXT.Text = Properties.Resources.selectedID + ": " + dataRowAuthor.Row[0].ToString()
                     + " " + Properties.Resources.authorName + ": " + dataRowAuthor.Row[1].ToString();
                 int ID = Convert.ToInt32(dataRowAuthor.Row[0]);
                 selectedAuthorID = Convert.ToInt32(dataRowAuthor.Row[0]);
@@ -735,7 +735,7 @@ namespace WpfApp1
                 {
                     AuthorImage.Source = photoService(byteToImage);
                 }
-                
+
                 AuthorsTable();
             }
         }
@@ -800,7 +800,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi utworów
         /// </summary>
-        
+
         //Bury - gdy wybierzemy z listy dany utwór jego dane zostają pobrane i wyświetlone w aplikacji w oknie utwory, sprawdza także czy wybrany autor istnieje
         private void SongsTable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -808,7 +808,7 @@ namespace WpfApp1
             dataRowSong = (DataRowView)SongsTable.SelectedItem;
             if (dataRowSong != null)
             {
-                selectedSongIDsTXT.Text = Properties.Resources.selectedID + ": " + dataRowSong.Row[0].ToString() 
+                selectedSongIDsTXT.Text = Properties.Resources.selectedID + ": " + dataRowSong.Row[0].ToString()
                     + Properties.Resources.songName + ": " + dataRowSong.Row[1].ToString();
                 byte[] byteToImage = null;
                 int ID = Convert.ToInt32(dataRowSong.Row[0]);
@@ -912,7 +912,7 @@ namespace WpfApp1
                 SongsTableRefresh();
             }
         }
-        //Hubert - Przycisk odpowiedzialny za wyłączenie aplikacji
+        //Bury - oprogramowanie przycisku Wyłącz Program
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -925,7 +925,7 @@ namespace WpfApp1
         {
             changeTheme();
         }
-        //Bury - przycisk odpowiedzialny za wyświetlenie regulaminu
+        //Bury - oprogramowanie przycisku regulamin: po wciśnięciu otwiera się nowe okno zawierające regulamin, motyw ustawiony automatycznie na podstawie ustawien;
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
             Regulamin regulamin = new Regulamin(theme);
@@ -998,7 +998,7 @@ namespace WpfApp1
                 }
             }
         }
-        //Hubert - funkcja która wylogowywuje cie z aplikacji
+        // Bury - oprogramowanie przycisku wyloguj; po wciśnięciu następuje wylogowanie użytkownika/administratora oraz przeniesienie do okna logowania
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             userList = null;
@@ -1127,20 +1127,20 @@ namespace WpfApp1
 
         private void deleteAlbum_Click(object sender, RoutedEventArgs e)
         {
-            if(selectedAlbumID != -1)
+            if (selectedAlbumID != -1)
             {
                 bazySQL.deleteUserAuthorSongAlbum("Albums", selectedAlbumID);
             }
-            albumListOfSongs.ItemsSource= null;
+            albumListOfSongs.ItemsSource = null;
             selectedAlbumIDTXT.Text = string.Empty;
-            selectedAlbumSongsIDTXT.Text= string.Empty;
+            selectedAlbumSongsIDTXT.Text = string.Empty;
             AlbumsTable();
         }
 
         /// <summary>
         ///  Funkcje obsługi zamowień
         /// </summary>
-        
+
         //Bury - funckja która wyświetla dane wybranego zamówienia w oknie zamówienia 
         private void orderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -1154,7 +1154,7 @@ namespace WpfApp1
                 orderUserIDLabelTXT.Text = dataRowOrder.Row[1].ToString();
                 MySqlDataReader getUserInfo = bazySQL.infoAboutUserByID(int.Parse(dataRowOrder[1].ToString()));
                 MySqlDataReader getElementInfo = bazySQL.getOrderedProductinfo(dataRowOrder[3].ToString(), int.Parse(dataRowOrder[2].ToString()));
-                if(getUserInfo!= null) 
+                if (getUserInfo != null)
                 {
                     orderUserIDLabelTXT.Text = getUserInfo.GetValue(1).ToString();
                     orderUserNameSurnameLabelTXT.Text = getUserInfo.GetValue(4).ToString() + " " + getUserInfo.GetValue(5).ToString();
