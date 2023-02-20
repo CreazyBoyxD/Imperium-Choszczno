@@ -315,8 +315,8 @@ namespace WpfApp1
             {
                 userList.Add(user.GetValue(i));
             }
-            selectedUserName.Text = userList[1].ToString();
-            selectedUserUserName.Text = userList[4].ToString();
+            selectedUserName.Text = userList[4].ToString();
+            selectedUserUserName.Text = userList[1].ToString();
             selectedUserSurname.Text = userList[5].ToString();
             selectedUserAddress.Text = userList[7].ToString();
             selectedUserCity.Text = userList[8].ToString();
