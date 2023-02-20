@@ -87,229 +87,6 @@ namespace WpfApp1
         /// Funkcje wspólne
         /// </summary>
  
-        // Hubert - Oprogramowanie zmiany motywu dla wszystkich elementów dla AdminPage
-        private void changeTheme()
-        {
-            if (theme == 0)
-            {
-                foreach (MenuItem mi in MenuTop.Items)
-                {
-                    mi.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                }
-                foreach (TabItem ti in Tabs.Items)
-                {
-                    ti.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                }
-                NameOfStudioMainprogram.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                //infos
-                UserNameIDLabel.Foreground = UserNameLabel.Foreground = UserWalletLabel.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                //Tła
-                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                //Grids
-                OptionsGrid.Background = UsersGrid.Background = AlbumsGrid.Background = AuthorsGrid.Background = SongsGrid.Background = OrdersGrid.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-
-                //Tekst
-                //Zakładka studio
-                coverOfStudioLabel.Foreground = nameOfStudioLabel.Foreground = keyProductLabel.Foreground = cmbLocalizationLabel.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                nameOfStudio.Foreground = KeyProduct.Foreground  = 
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                nameOfStudio.Background = KeyProduct.Background = 
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                
-                //Zakładka uzytkownicy
-                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground = CashLabel.Foreground = AdminLabel.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-
-                selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background = selectedUserCash.Background = selectedUserAdmin.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                selectedUserUserName.Foreground = selectedUserName.Foreground = selectedUserSurname.Foreground = selectedUserAddress.Foreground = selectedUserCity.Foreground = selectedUserCash.Foreground = selectedUserAdmin.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-
-                //Zakładka albumy
-                AlbumListLabel.Foreground = AlbumSongListLabel.Foreground = ListOfAvailableSongsLabel.Foreground = selectedAlbumIDLabel.Foreground = selectedAlbumSongsIDLabel.Foreground =
-                    nameOfAlbumLabel.Foreground = albumSelectedImagePath.Foreground = albumSelectedImageNameFile.Foreground = priceOfAlbum.Foreground = discountOfAlbum_Copy.Foreground =
-                    AlbumImageLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-
-                selectedAlbumIDTXT.Background = selectedAlbumSongsIDTXT.Background = nameOfAlbum.Background = selectedImageFilePathAlbum.Background = selectedImageFileNameAlbum.Background =
-                    priceOfAlbumTXT.Background =  new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                selectedAlbumIDTXT.Foreground = selectedAlbumSongsIDTXT.Foreground = nameOfAlbum.Foreground = selectedImageFilePathAlbum.Foreground = selectedImageFileNameAlbum.Foreground =
-                    priceOfAlbumTXT.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                
-                //Zakładka utwory
-                listOfSongsLabel.Foreground = nameOfAuthorSong_Copy1.Foreground = selectedSongIDsLabel.Foreground = nameOfSong.Foreground = songSelectedImagePath.Foreground = songSelectedImageNameFile.Foreground =
-                    priceOfSong.Foreground = discountOfSong.Foreground = nameOfAuthorSong.Foreground = nameOfAuthorSong_Copy.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-
-                selectedSongIDsTXT.Foreground = nameOfSong1.Foreground = selectedImageFilePathSong.Foreground = selectedImageFileNameSong.Foreground = priceOfSongTXT.Foreground
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                selectedSongIDsTXT.Background = nameOfSong1.Background = selectedImageFilePathSong.Background = selectedImageFileNameSong.Background = priceOfSongTXT.Background 
-                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-
-                //Zakładka autorzy
-                listOfAuthorsLabel.Foreground = nameOfAuthorSong_Copy2.Foreground = selectedIDsAuthorLabel.Foreground = nameOfAuthorLabel.Foreground = nameOfPathAuthorLabel.Foreground =
-                    nameOfFileImageAuthorLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-
-                selectedIDsAuthorsTXT.Background = nameOfAuthor.Background = selectedFilePath.Background = selectedFileName.Background 
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                selectedIDsAuthorsTXT.Foreground = nameOfAuthor.Foreground = selectedFilePath.Foreground = selectedFileName.Foreground
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-
-                //Zakładka zamowienia
-                listOfOrdersLabel.Foreground = orderProductCoverLabel.Foreground = selectedOrderIDsLabel.Foreground = orderUserIDLabel.Foreground = orderUserNameSurnameLabel.Foreground = orderUserAddressLabel.Foreground =
-                    orderProductLabel.Foreground = orderCostLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-
-                selectedOrderIDsTXT.Foreground = orderUserIDLabelTXT.Foreground = orderUserNameSurnameLabelTXT.Foreground = orderUserAddressTXT.Foreground = orderProductTXT.Foreground = orderCostTXT.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                selectedOrderIDsTXT.Background = orderUserIDLabelTXT.Background = orderUserNameSurnameLabelTXT.Background = orderUserAddressTXT.Background = orderProductTXT.Background = orderCostTXT.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-
-                //Przyciski
-                // Studio
-                selectPhotoStudio.Foreground = saveStudioOptions.Foreground = 
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                selectPhotoStudio.Background = saveStudioOptions.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                //Uzytkownicy
-                saveUser.Foreground = deleteUser.Foreground = 
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                saveUser.Background = deleteUser.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                //Albumy
-                selectAlbumPhotoImage.Foreground = buyThisAlbum.Foreground = saveAlbum.Foreground = deleteAlbum.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                selectAlbumPhotoImage.Background = buyThisAlbum.Background = saveAlbum.Background = deleteAlbum.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-               //Autorzy
-                saveAuthor.Foreground = deleteAuthor.Foreground = selectPhoto.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                saveAuthor.Background = deleteAuthor.Background = selectPhoto.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                //Utwory
-                selectPhotoSong.Foreground = saveSong.Foreground = deleteSong.Foreground = buyThisSong.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                selectPhotoSong.Background = saveSong.Background = deleteSong.Background = buyThisSong.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-                //Zamowienie
-                saveOrder.Foreground = deleteOrder.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
-                saveOrder.Background = deleteOrder.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
-
-                theme = 1;
-            }
-            else if (theme == 1)
-            {
-                foreach(MenuItem mi in MenuTop.Items) 
-                {
-                    mi.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                }
-                foreach(TabItem ti in Tabs.Items) 
-                {
-                    ti.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                }
-                NameOfStudioMainprogram.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                //infos
-                UserNameIDLabel.Foreground = UserNameLabel.Foreground = UserWalletLabel.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                //Tła
-                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
-                OptionsGrid.Background = UsersGrid.Background = AlbumsGrid.Background = AuthorsGrid.Background = SongsGrid.Background = OrdersGrid.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
-                //Tekst
-                //Zakładka studio
-                coverOfStudioLabel.Foreground = nameOfStudioLabel.Foreground = keyProductLabel.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-
-                nameOfStudio.Foreground = KeyProduct.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                nameOfStudio.Background = KeyProduct.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-
-                //Zakładka uzytkownicy
-                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground = CashLabel.Foreground = AdminLabel.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-
-                selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background = selectedUserCash.Background = selectedUserAdmin.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                selectedUserUserName.Foreground = selectedUserName.Foreground = selectedUserSurname.Foreground = selectedUserAddress.Foreground = selectedUserCity.Foreground = selectedUserCash.Foreground = selectedUserAdmin.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-
-                //Zakładka albumy
-                AlbumListLabel.Foreground = AlbumSongListLabel.Foreground = ListOfAvailableSongsLabel.Foreground = selectedAlbumIDLabel.Foreground = selectedAlbumSongsIDLabel.Foreground =
-                    nameOfAlbumLabel.Foreground = albumSelectedImagePath.Foreground = albumSelectedImageNameFile.Foreground = priceOfAlbum.Foreground = discountOfAlbum_Copy.Foreground =
-                    AlbumImageLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-
-                selectedAlbumIDTXT.Background = selectedAlbumSongsIDTXT.Background = nameOfAlbum.Background = selectedImageFilePathAlbum.Background = selectedImageFileNameAlbum.Background =
-                    priceOfAlbumTXT.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                selectedAlbumIDTXT.Foreground = selectedAlbumSongsIDTXT.Foreground = nameOfAlbum.Foreground = selectedImageFilePathAlbum.Foreground = selectedImageFileNameAlbum.Foreground =
-                    priceOfAlbumTXT.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-
-                //Zakładka utwory
-                listOfSongsLabel.Foreground = nameOfAuthorSong_Copy1.Foreground = selectedSongIDsLabel.Foreground = nameOfSong.Foreground = songSelectedImagePath.Foreground = songSelectedImageNameFile.Foreground =
-                    priceOfSong.Foreground = discountOfSong.Foreground = nameOfAuthorSong.Foreground = nameOfAuthorSong_Copy.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-
-                selectedSongIDsTXT.Foreground = nameOfSong1.Foreground = selectedImageFilePathSong.Foreground = selectedImageFileNameSong.Foreground = priceOfSongTXT.Foreground 
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                selectedSongIDsTXT.Background = nameOfSong1.Background = selectedImageFilePathSong.Background = selectedImageFileNameSong.Background = priceOfSongTXT.Background 
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-
-                //Zakładka autorzy
-                listOfAuthorsLabel.Foreground = nameOfAuthorSong_Copy2.Foreground = selectedIDsAuthorLabel.Foreground = nameOfAuthorLabel.Foreground = nameOfPathAuthorLabel.Foreground =
-                    nameOfFileImageAuthorLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-
-                selectedIDsAuthorsTXT.Background = nameOfAuthor.Background = selectedFilePath.Background = selectedFileName.Background
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-                selectedIDsAuthorsTXT.Foreground = nameOfAuthor.Foreground = selectedFilePath.Foreground = selectedFileName.Foreground
-                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-
-                //Zakładka zamowienia
-                listOfOrdersLabel.Foreground = orderProductCoverLabel.Foreground = selectedOrderIDsLabel.Foreground = orderUserIDLabel.Foreground = orderUserNameSurnameLabel.Foreground = orderUserAddressLabel.Foreground =
-                    orderProductLabel.Foreground = orderCostLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-
-                selectedOrderIDsTXT.Foreground = orderUserIDLabelTXT.Foreground = orderUserNameSurnameLabelTXT.Foreground = orderUserAddressTXT.Foreground = orderProductTXT.Foreground = orderCostTXT.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
-                selectedOrderIDsTXT.Background = orderUserIDLabelTXT.Background = orderUserNameSurnameLabelTXT.Background = orderUserAddressTXT.Background = orderProductTXT.Background = orderCostTXT.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
-
-                //Przyciski
-                // Studio
-                selectPhotoStudio.Foreground = saveStudioOptions.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                selectPhotoStudio.Background = saveStudioOptions.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                //Uzytkownicy
-                saveUser.Foreground = deleteUser.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                saveUser.Background = deleteUser.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                //Albumy
-                selectAlbumPhotoImage.Foreground = buyThisAlbum.Foreground = saveAlbum.Foreground = deleteAlbum.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                selectAlbumPhotoImage.Background = buyThisAlbum.Background = saveAlbum.Background = deleteAlbum.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                //Autorzy
-                saveAuthor.Foreground = deleteAuthor.Foreground = selectPhoto.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                saveAuthor.Background = deleteAuthor.Background = selectPhoto.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                //Utwory
-                selectPhotoSong.Foreground = saveSong.Foreground = deleteSong.Foreground = buyThisSong.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                selectPhotoSong.Background = saveSong.Background = deleteSong.Background = buyThisSong.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-                //Zamowienie
-                saveOrder.Foreground = deleteOrder.Foreground =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
-                saveOrder.Background = deleteOrder.Background =
-                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
-
-                theme = 0;
-            }
-        }
         //Bury - Funkcja wyświetlająca błąd gdy nie masz wystarczającej liczby pieniędzy
         private void youCantBuyIt()
         {
@@ -457,6 +234,230 @@ namespace WpfApp1
                 rabat = 0;
             }
             return rabat;
+        }
+
+        // Hubert - Oprogramowanie zmiany motywu dla wszystkich elementów dla AdminPage
+        private void changeTheme()
+        {
+            if (theme == 0)
+            {
+                foreach (MenuItem mi in MenuTop.Items)
+                {
+                    mi.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                }
+                foreach (TabItem ti in Tabs.Items)
+                {
+                    ti.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                }
+                NameOfStudioMainprogram.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                //infos
+                UserNameIDLabel.Foreground = UserNameLabel.Foreground = UserWalletLabel.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                //Tła
+                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                //Grids
+                OptionsGrid.Background = UsersGrid.Background = AlbumsGrid.Background = AuthorsGrid.Background = SongsGrid.Background = OrdersGrid.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
+                //Tekst
+                //Zakładka studio
+                coverOfStudioLabel.Foreground = nameOfStudioLabel.Foreground = keyProductLabel.Foreground = cmbLocalizationLabel.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                nameOfStudio.Foreground = KeyProduct.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                nameOfStudio.Background = KeyProduct.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
+                //Zakładka uzytkownicy
+                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground = CashLabel.Foreground = AdminLabel.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background = selectedUserCash.Background = selectedUserAdmin.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                selectedUserUserName.Foreground = selectedUserName.Foreground = selectedUserSurname.Foreground = selectedUserAddress.Foreground = selectedUserCity.Foreground = selectedUserCash.Foreground = selectedUserAdmin.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                //Zakładka albumy
+                AlbumListLabel.Foreground = AlbumSongListLabel.Foreground = ListOfAvailableSongsLabel.Foreground = selectedAlbumIDLabel.Foreground = selectedAlbumSongsIDLabel.Foreground =
+                    nameOfAlbumLabel.Foreground = albumSelectedImagePath.Foreground = albumSelectedImageNameFile.Foreground = priceOfAlbum.Foreground = discountOfAlbum_Copy.Foreground =
+                    AlbumImageLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                selectedAlbumIDTXT.Background = selectedAlbumSongsIDTXT.Background = nameOfAlbum.Background = selectedImageFilePathAlbum.Background = selectedImageFileNameAlbum.Background =
+                    priceOfAlbumTXT.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                selectedAlbumIDTXT.Foreground = selectedAlbumSongsIDTXT.Foreground = nameOfAlbum.Foreground = selectedImageFilePathAlbum.Foreground = selectedImageFileNameAlbum.Foreground =
+                    priceOfAlbumTXT.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                //Zakładka utwory
+                listOfSongsLabel.Foreground = nameOfAuthorSong_Copy1.Foreground = selectedSongIDsLabel.Foreground = nameOfSong.Foreground = songSelectedImagePath.Foreground = songSelectedImageNameFile.Foreground =
+                    priceOfSong.Foreground = discountOfSong.Foreground = nameOfAuthorSong.Foreground = nameOfAuthorSong_Copy.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                selectedSongIDsTXT.Foreground = nameOfSong1.Foreground = selectedImageFilePathSong.Foreground = selectedImageFileNameSong.Foreground = priceOfSongTXT.Foreground
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                selectedSongIDsTXT.Background = nameOfSong1.Background = selectedImageFilePathSong.Background = selectedImageFileNameSong.Background = priceOfSongTXT.Background
+                     = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
+                //Zakładka autorzy
+                listOfAuthorsLabel.Foreground = nameOfAuthorSong_Copy2.Foreground = selectedIDsAuthorLabel.Foreground = nameOfAuthorLabel.Foreground = nameOfPathAuthorLabel.Foreground =
+                    nameOfFileImageAuthorLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                selectedIDsAuthorsTXT.Background = nameOfAuthor.Background = selectedFilePath.Background = selectedFileName.Background
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                selectedIDsAuthorsTXT.Foreground = nameOfAuthor.Foreground = selectedFilePath.Foreground = selectedFileName.Foreground
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                //Zakładka zamowienia
+                listOfOrdersLabel.Foreground = orderProductCoverLabel.Foreground = selectedOrderIDsLabel.Foreground = orderUserIDLabel.Foreground = orderUserNameSurnameLabel.Foreground = orderUserAddressLabel.Foreground =
+                    orderProductLabel.Foreground = orderCostLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+
+                selectedOrderIDsTXT.Foreground = orderUserIDLabelTXT.Foreground = orderUserNameSurnameLabelTXT.Foreground = orderUserAddressTXT.Foreground = orderProductTXT.Foreground = orderCostTXT.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                selectedOrderIDsTXT.Background = orderUserIDLabelTXT.Background = orderUserNameSurnameLabelTXT.Background = orderUserAddressTXT.Background = orderProductTXT.Background = orderCostTXT.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
+                //Przyciski
+                // Studio
+                selectPhotoStudio.Foreground = saveStudioOptions.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                selectPhotoStudio.Background = saveStudioOptions.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
+                //Uzytkownicy
+                saveUser.Foreground = deleteUser.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                saveUser.Background = deleteUser.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
+                //Albumy
+                selectAlbumPhotoImage.Foreground = buyThisAlbum.Foreground = saveAlbum.Foreground = deleteAlbum.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                selectAlbumPhotoImage.Background = buyThisAlbum.Background = saveAlbum.Background = deleteAlbum.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
+                //Autorzy
+                saveAuthor.Foreground = deleteAuthor.Foreground = selectPhoto.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                saveAuthor.Background = deleteAuthor.Background = selectPhoto.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
+                //Utwory
+                selectPhotoSong.Foreground = saveSong.Foreground = deleteSong.Foreground = buyThisSong.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                selectPhotoSong.Background = saveSong.Background = deleteSong.Background = buyThisSong.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
+                //Zamowienie
+                saveOrder.Foreground = deleteOrder.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                saveOrder.Background = deleteOrder.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
+
+                theme = 1;
+            }
+            else if (theme == 1)
+            {
+                foreach (MenuItem mi in MenuTop.Items)
+                {
+                    mi.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                }
+                foreach (TabItem ti in Tabs.Items)
+                {
+                    ti.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                }
+                NameOfStudioMainprogram.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                //infos
+                UserNameIDLabel.Foreground = UserNameLabel.Foreground = UserWalletLabel.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                //Tła
+                Main.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
+                OptionsGrid.Background = UsersGrid.Background = AlbumsGrid.Background = AuthorsGrid.Background = SongsGrid.Background = OrdersGrid.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF252525"));
+                //Tekst
+                //Zakładka studio
+                coverOfStudioLabel.Foreground = nameOfStudioLabel.Foreground = keyProductLabel.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+
+                nameOfStudio.Foreground = KeyProduct.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                nameOfStudio.Background = KeyProduct.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+
+                //Zakładka uzytkownicy
+                UserNameLabel1.Foreground = NameLabel.Foreground = SurnameLabel.Foreground = AddressLabel.Foreground = CityLabel.Foreground = CashLabel.Foreground = AdminLabel.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+
+                selectedUserUserName.Background = selectedUserName.Background = selectedUserSurname.Background = selectedUserAddress.Background = selectedUserCity.Background = selectedUserCash.Background = selectedUserAdmin.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                selectedUserUserName.Foreground = selectedUserName.Foreground = selectedUserSurname.Foreground = selectedUserAddress.Foreground = selectedUserCity.Foreground = selectedUserCash.Foreground = selectedUserAdmin.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
+                //Zakładka albumy
+                AlbumListLabel.Foreground = AlbumSongListLabel.Foreground = ListOfAvailableSongsLabel.Foreground = selectedAlbumIDLabel.Foreground = selectedAlbumSongsIDLabel.Foreground =
+                    nameOfAlbumLabel.Foreground = albumSelectedImagePath.Foreground = albumSelectedImageNameFile.Foreground = priceOfAlbum.Foreground = discountOfAlbum_Copy.Foreground =
+                    AlbumImageLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+
+                selectedAlbumIDTXT.Background = selectedAlbumSongsIDTXT.Background = nameOfAlbum.Background = selectedImageFilePathAlbum.Background = selectedImageFileNameAlbum.Background =
+                    priceOfAlbumTXT.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                selectedAlbumIDTXT.Foreground = selectedAlbumSongsIDTXT.Foreground = nameOfAlbum.Foreground = selectedImageFilePathAlbum.Foreground = selectedImageFileNameAlbum.Foreground =
+                    priceOfAlbumTXT.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
+                //Zakładka utwory
+                listOfSongsLabel.Foreground = nameOfAuthorSong_Copy1.Foreground = selectedSongIDsLabel.Foreground = nameOfSong.Foreground = songSelectedImagePath.Foreground = songSelectedImageNameFile.Foreground =
+                    priceOfSong.Foreground = discountOfSong.Foreground = nameOfAuthorSong.Foreground = nameOfAuthorSong_Copy.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+
+                selectedSongIDsTXT.Foreground = nameOfSong1.Foreground = selectedImageFilePathSong.Foreground = selectedImageFileNameSong.Foreground = priceOfSongTXT.Foreground
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                selectedSongIDsTXT.Background = nameOfSong1.Background = selectedImageFilePathSong.Background = selectedImageFileNameSong.Background = priceOfSongTXT.Background
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+
+                //Zakładka autorzy
+                listOfAuthorsLabel.Foreground = nameOfAuthorSong_Copy2.Foreground = selectedIDsAuthorLabel.Foreground = nameOfAuthorLabel.Foreground = nameOfPathAuthorLabel.Foreground =
+                    nameOfFileImageAuthorLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+
+                selectedIDsAuthorsTXT.Background = nameOfAuthor.Background = selectedFilePath.Background = selectedFileName.Background
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                selectedIDsAuthorsTXT.Foreground = nameOfAuthor.Foreground = selectedFilePath.Foreground = selectedFileName.Foreground
+                    = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+
+                //Zakładka zamowienia
+                listOfOrdersLabel.Foreground = orderProductCoverLabel.Foreground = selectedOrderIDsLabel.Foreground = orderUserIDLabel.Foreground = orderUserNameSurnameLabel.Foreground = orderUserAddressLabel.Foreground =
+                    orderProductLabel.Foreground = orderCostLabel.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+
+                selectedOrderIDsTXT.Foreground = orderUserIDLabelTXT.Foreground = orderUserNameSurnameLabelTXT.Foreground = orderUserAddressTXT.Foreground = orderProductTXT.Foreground = orderCostTXT.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                selectedOrderIDsTXT.Background = orderUserIDLabelTXT.Background = orderUserNameSurnameLabelTXT.Background = orderUserAddressTXT.Background = orderProductTXT.Background = orderCostTXT.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+
+                //Przyciski
+                // Studio
+                selectPhotoStudio.Foreground = saveStudioOptions.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                selectPhotoStudio.Background = saveStudioOptions.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
+                //Uzytkownicy
+                saveUser.Foreground = deleteUser.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                saveUser.Background = deleteUser.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
+                //Albumy
+                selectAlbumPhotoImage.Foreground = buyThisAlbum.Foreground = saveAlbum.Foreground = deleteAlbum.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                selectAlbumPhotoImage.Background = buyThisAlbum.Background = saveAlbum.Background = deleteAlbum.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
+                //Autorzy
+                saveAuthor.Foreground = deleteAuthor.Foreground = selectPhoto.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                saveAuthor.Background = deleteAuthor.Background = selectPhoto.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
+                //Utwory
+                selectPhotoSong.Foreground = saveSong.Foreground = deleteSong.Foreground = buyThisSong.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                selectPhotoSong.Background = saveSong.Background = deleteSong.Background = buyThisSong.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
+                //Zamowienie
+                saveOrder.Foreground = deleteOrder.Foreground =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
+                saveOrder.Background = deleteOrder.Background =
+                    new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
+
+                theme = 0;
+            }
         }
 
         /// <summary>
