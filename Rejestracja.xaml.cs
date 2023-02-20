@@ -22,6 +22,7 @@ namespace WpfApp1
     /// </summary>
     
     //Hubert - druga funkcjonalność Rejestracja
+    //Sprawdza czy wszystkie pola są uzupełnione
     //Pozwala ona na zarejestrowanie się nowego użytkownika sprawdzając dane z bazy danych 
     //wyświetla również błędy jeżeli hasło jest nieprawidłowe lub jeżeli podane dane istnieją już w bazie danych
     //sprawdza też czy wpisane hasło zgadza się z tym wpisanym w rubryce powtórz hasło

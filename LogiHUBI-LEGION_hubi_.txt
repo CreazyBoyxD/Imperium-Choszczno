@@ -574,3 +574,42 @@
 2023-02-20T19:13:56.706; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
 2023-02-20T19:13:56.766; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
 2023-02-20T19:14:03.083; Logged in - user: jon and computer name: HUBI-LEGION
+
+2023-02-20T19:20:51.293; Start Application - name of computer and user: HUBI-LEGION_hubi_
+2023-02-20T19:20:52.196; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:20:52.572; Added new Users table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:20:52.805; Added new user to Users table - UserName: admin, Name: Andrzej, Surname: Gołota, is Admin 1 - user: admin and computer name: HUBI-LEGION
+2023-02-20T19:20:53.072; Added new user to Users table - UserName: dzida, Name: Robert, Surname: Zienda, is Admin 0 - user: dzida and computer name: HUBI-LEGION
+2023-02-20T19:20:53.300; Added new user to Users table - UserName: bill, Name: Bill, Surname: Gates, is Admin 0 - user: bill and computer name: HUBI-LEGION
+2023-02-20T19:20:53.538; Added new user to Users table - UserName: jon, Name: John, Surname: Travolta, is Admin 0 - user: jon and computer name: HUBI-LEGION
+2023-02-20T19:20:53.601; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:20:54.005; Added new Songs table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:20:55.232; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:20:55.304; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:21:01.727; Logged in - user: admin and computer name: HUBI-LEGION
+
+2023-02-20T19:22:20.055; Start Application - name of computer and user: HUBI-LEGION_hubi_
+2023-02-20T19:22:20.705; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:22:21.085; Added new Users table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:22:21.333; Added new user to Users table - UserName: admin, Name: Andrzej, Surname: Gołota, is Admin 1 - user: admin and computer name: HUBI-LEGION
+2023-02-20T19:22:21.615; Added new user to Users table - UserName: dzida, Name: Robert, Surname: Zienda, is Admin 0 - user: dzida and computer name: HUBI-LEGION
+2023-02-20T19:22:21.876; Added new user to Users table - UserName: bill, Name: Bill, Surname: Gates, is Admin 0 - user: bill and computer name: HUBI-LEGION
+2023-02-20T19:22:22.129; Added new user to Users table - UserName: jon, Name: John, Surname: Travolta, is Admin 0 - user: jon and computer name: HUBI-LEGION
+2023-02-20T19:22:22.193; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:22:22.629; Added new Songs table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:22:23.880; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:22:23.954; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:22:30.099; Logged in - user: admin and computer name: HUBI-LEGION
+
+2023-02-20T19:25:15.962; Start Application - name of computer and user: HUBI-LEGION_hubi_
+2023-02-20T19:25:16.614; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:25:16.967; Added new Users table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:25:17.204; Added new user to Users table - UserName: admin, Name: Andrzej, Surname: Gołota, is Admin 1 - user: admin and computer name: HUBI-LEGION
+2023-02-20T19:25:17.462; Added new user to Users table - UserName: dzida, Name: Robert, Surname: Zienda, is Admin 0 - user: dzida and computer name: HUBI-LEGION
+2023-02-20T19:25:17.742; Added new user to Users table - UserName: bill, Name: Bill, Surname: Gates, is Admin 0 - user: bill and computer name: HUBI-LEGION
+2023-02-20T19:25:18.009; Added new user to Users table - UserName: jon, Name: John, Surname: Travolta, is Admin 0 - user: jon and computer name: HUBI-LEGION
+2023-02-20T19:25:18.088; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:25:18.562; Added new Songs table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:25:19.807; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:25:19.877; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:25:24.220; Logged in - user: admin and computer name: HUBI-LEGION

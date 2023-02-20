@@ -19,10 +19,10 @@ namespace WpfApp1
     //Wyświetlany jest także błąd jeżeli podane hasło się nie zgadza, logowanie jest niekomplentne lub jeżeli podane dane
     //logowania nie istnieją w bazie danych
     //Sprawdza także czy logujący się użytkownik jest administratorem czy zwykłym użytkownikiem i włącza odpowiedzinia
-    //wersje programu alba admina lub dla użytkownika
+    //wersje programu dla admina lub dla użytkownika
     //Jeśli użytkownik nie posiada konta na do dyspozycji przycisk zarejestruj sie, po jego kliknięciu zostanie przeniesiony
     //do okna z możliwością zarejestrowania się
-    //Ustnieje tutaj także przycisk słońca który pozwala na zmiane motywu na ciemny/jasny
+    //Istnieje tutaj także przycisk słońca który pozwala na zmiane motywu na ciemny/jasny
     public partial class Logowanie : Page
     {
         BazySQL bazySQL;

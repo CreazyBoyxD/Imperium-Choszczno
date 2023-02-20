@@ -186,7 +186,7 @@ namespace WpfApp1
         {
             string sql = "";
             string studioName = "Imperium Choszczno";
-            string Keyproduct = "2137-J2PGD-MHH88";
+            string Keyproduct = "EZ67E-HJD23-249DJ";
             string country = "pl_PL";
             byte[] studioImage = null;
 
