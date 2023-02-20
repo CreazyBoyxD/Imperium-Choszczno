@@ -613,3 +613,16 @@
 2023-02-20T19:25:19.807; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
 2023-02-20T19:25:19.877; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
 2023-02-20T19:25:24.220; Logged in - user: admin and computer name: HUBI-LEGION
+
+2023-02-20T19:46:09.265; Start Application - name of computer and user: HUBI-LEGION_hubi_
+2023-02-20T19:46:09.957; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:46:10.321; Added new Users table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:46:10.559; Added new user to Users table - UserName: admin, Name: Andrzej, Surname: Gołota, is Admin 1 - user: admin and computer name: HUBI-LEGION
+2023-02-20T19:46:10.787; Added new user to Users table - UserName: dzida, Name: Robert, Surname: Zienda, is Admin 0 - user: dzida and computer name: HUBI-LEGION
+2023-02-20T19:46:11.103; Added new user to Users table - UserName: bill, Name: Bill, Surname: Gates, is Admin 0 - user: bill and computer name: HUBI-LEGION
+2023-02-20T19:46:11.327; Added new user to Users table - UserName: jon, Name: John, Surname: Travolta, is Admin 0 - user: jon and computer name: HUBI-LEGION
+2023-02-20T19:46:11.388; Added new Authors table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:46:11.799; Added new Songs table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:46:13.024; Added new Albums table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:46:13.086; Added new Orders table to database - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-02-20T19:46:17.710; Logged in - user: admin and computer name: HUBI-LEGION
