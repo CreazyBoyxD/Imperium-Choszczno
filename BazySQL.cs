@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 
 
 namespace WpfApp1
-{
+{ //Szymon:
     public class BazySQL
     {
         static string workingDirectory = Environment.CurrentDirectory; // gdzie znajduje sie aplikacja np. aby mogl zaczytywac dane
         static string path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
         static string PathTest = System.AppDomain.CurrentDomain.BaseDirectory;
         static string database = "TestDB2";
-        static string databaseName = "TestDB"; //databaseName do starej lokalnej bazy aby mozna bylo przywrocic
+        static string databaseName = "TestDB"; //databaseName - funkcja do starej lokalnej bazy aby mozna bylo przywrocic
         static string Filename = "uzytkownicy.txt";
         static string FileNameAuthors = "autorzy.txt";
         static string FileNameSongs = "utwory.txt";
@@ -27,21 +27,21 @@ namespace WpfApp1
         static int ConnectTimeoutToBase = 30;
         static Logi logs = new Logi();
 
-        private string makeConnString(int timeout, string nameOfMachAndUser)
+        private string makeConnString(int timeout, string nameOfMachAndUser) //zwraca stringa do lokalnej bazy danych
         {
             return string.Format(@"Server=(localdb)\MSSQLLocalDB;User id={0};Integrated Security=True;Connect Timeout={1};Encrypt=False",
-                nameOfMachAndUser, timeout.ToString()); //zwraca stringa do lokalnej bazy danych
+                nameOfMachAndUser, timeout.ToString());
         }
-        private string normalConnStringAllFunctions(string databaseName, string nameOfMachineAndUser, string path)
+        private string normalConnStringAllFunctions(string databaseName, string nameOfMachineAndUser, string path) //zwraca stringa do lokalnej bazy danych
         {
             return string.Format(@"Data source = (localdb)\MSSQLLocalDB; AttachDbFilename={2}\{0}_Data.mdf;
-                User Id={1};Integrated Security=True;Connect Timeout=1;Encrypt=False", databaseName, nameOfMachineAndUser, path); //zwraca info o stringu o lokalnej b. danych
+                User Id={1};Integrated Security=True;Connect Timeout=1;Encrypt=False", databaseName, nameOfMachineAndUser, path);
         }
-        public string makeMySQLConnString()
+        public string makeMySQLConnString() // Szymon: funkcja wykorzystywana jako stała do każdej funkcji kierująca do zdalnej bazy danych
         {
             return "SERVER=192.166.219.220;DATABASE=imperium;UID=imperium;Password=imperium1212";
-        } // do kazdej funkcji jako stala kierujaca do zdalnej bazy danych
-        public bool CheckConnectToDataBase(string connectionStr) // sprawdza czy jest polaczenie z baza danych inaczej program nie wystartuje
+        }
+        public bool CheckConnectToDataBase(string connectionStr) // Szymon: funkcja sprawdza czy jest połączenie z bazą danych inaczej program nie wystartuje
         {
             bool result = false;
 
@@ -61,7 +61,7 @@ namespace WpfApp1
                 }
             }
         }
-        public void CheckAndCreateDB() //funkcja tworzaca lub sprawdzajaca istnienie bazy o zadanej nazwie
+        public void CheckAndCreateDB() // Szymon: funkcja tworząca i sprawdząjaca istnienie bazy o zadanej nazwie
         {
             //string workingDirectory = Environment.CurrentDirectory;
             //string path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
@@ -73,14 +73,14 @@ namespace WpfApp1
             string connectionStr = makeConnString(ConnectTimeoutToBase, nameOfMachineAndUser);
             string connectionStr2 = "SERVER=192.166.219.220;DATABASE=imperium;UID=imperium;Password=imperium1212";
             bool ConnOk = CheckConnectToDataBase(connectionStr2);
-            if (ConnOk) //jesli jest polaczenie ze zdalna baza danych zwraca ok i jesli jest ok moga wystartowac bazy danych
+            if (ConnOk) //jesli jest połaczenie ze zdalna baza danych zwraca ok i jeśli jest ok mogą wystartowac bazy danych
             {
-                CheckOrCreateTablesDB(); //za kazdym razem startuje z formatowaniem bazy wewnatrz sluzy do testu czy poprawnie zawsze statruje program
+                CheckOrCreateTablesDB(); //za każdym razem startuje z formatowaniem bazy wewnątrz służy do testu czy poprawnie zawsze statruje program
             }
 
         }
 
-        private void CheckOrCreateTablesDB() //DO tworzenia tablic
+        private void CheckOrCreateTablesDB() // Szymon: funkcja do tworzenia tablic w bazie danych, które można wykorzystać w programie 
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
 
@@ -98,7 +98,7 @@ namespace WpfApp1
                 addToOptionTable();
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Users;" + //uzytkownicy
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Users;" + //użytkownicy
                 " CREATE TABLE Users (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " Login varchar(255) NOT NULL," +
                 " Password varchar(255) NOT NULL," +
@@ -132,7 +132,7 @@ namespace WpfApp1
                 addAuthorsToTable();
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Songs;" + //songi
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Songs;" + //utwory
                 " CREATE TABLE Songs (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " SongName varchar(255) NOT NULL," +
                 " FileName varchar(255)," +
@@ -163,7 +163,7 @@ namespace WpfApp1
                 Logi.addTextToFile("Added new Albums table to database");
             }
 
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Orders;" + //zamowienia
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Orders;" + //zamówienia
                 " CREATE TABLE Orders(ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " UserID varchar(255) NOT NULL," +
                 " ProductID varchar(255) NOT NULL," +
@@ -181,11 +181,11 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi ładowania opcji do programu, ich edycji oraz dodawania
         /// </summary>
-        public void addToOptionTable()
+        public void addToOptionTable() //Szymon: funkcja dodająca opcję do pliku
         {
             string sql = "";
             string studioName = "Imperium Choszczno";
-            string Keyproduct = "JD69A-EBE13-MHH88";
+            string Keyproduct = "2137-J2PGD-MHH88";
             string country = "pl_PL";
             byte[] studioImage = null;
 
@@ -199,8 +199,8 @@ namespace WpfApp1
             }
             addSaveOptions(1, studioName, Keyproduct, country, studioImage);
         }
-        public void addSaveOptions(int type, string StudioName, string prodKey, string localization, byte[] image) //dodanie opcji edytcji do programu zamienia zawsze
-                                                                                                                   //pierwszy rekord w tablicy
+        public void addSaveOptions(int type, string StudioName, string prodKey, string localization, byte[] image) // Szymon: funkcja dodająca obsługę edytcji danych do programu; zamienia zawsze pierwszy rekord w tablicy
+
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
@@ -230,7 +230,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public MySqlDataReader getOptionTable() // funckja do pobrania danych z tablicy
+        public MySqlDataReader getOptionTable() // Szymon: funkcja służąca do pobrania danych z tablicy
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand getOptions = new MySqlCommand("SELECT * FROM Options WHERE ID = 1", conn);
@@ -251,6 +251,8 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje pozostałe
         /// </summary>
+
+        //Szymon: Funkcja służąca do hash-owania hasła, funkcja do podwójnego hashowania
         private string HashPassword(string pass)
         {
             string HashPass;
@@ -263,15 +265,15 @@ namespace WpfApp1
             }
             return HashPass;
         }
-        private decimal ConvertToDecimal(string cash) //konwersja ze stringa do decimala, przydaje sie gdy trzeba wrzucic casha uzytkownikowi
+        private decimal ConvertToDecimal(string cash) //Szymon: funkcja do konwersji ze stringa do decimala, przydaje się gdy trzeba dodać pięniądze użytkownikowi
         {
             decimal defaultValue = 0;
             decimal result;
-            //Try parsing in the current culture
+            //current culture
             if (!System.Decimal.TryParse(cash, System.Globalization.NumberStyles.Any, CultureInfo.CurrentCulture, out result) &&
-                //Then try in US english
+                //english
                 !System.Decimal.TryParse(cash, System.Globalization.NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out result) &&
-                //Then in neutral language
+                //neutral language
                 !System.Decimal.TryParse(cash, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out result))
             {
                 result = defaultValue;
@@ -282,26 +284,28 @@ namespace WpfApp1
         /// Funkcje obsługi użytkowników
         /// </summary>
         public void registerUser(string UserName, string Password, string Name, string Surname, string Address, string City, string Cash = "1000.00")
-        { // rejestracja usera
+        { // Szymon: funkcja do rejestracji usera
             int Admin = 0;
-            MySqlConnection conn = new MySqlConnection(makeMySQLConnString()); // musi byc polaczenie z mysql do bazy danych
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString()); // musi byc połączenie z mysql do bazy danych
             bool checkAdmins = checkIfAdminExists(); //sprawdza czy jaki kolwiek admin istnieje 
-            if (!checkAdmins) // jesli admin nie istnieje no to stawiany jest admin 0
+            if (!checkAdmins) // jesli admin nie istnieje to stawiany jest admin 0
             {
                 Admin = 1;
             }
-            string hashpass = HashPassword(Password);
+            string hashpass = HashPassword(Password); //funkcja hashująca hasło dla użytkownika
             decimal cash = ConvertToDecimal(Cash);
-            conn.Open(); //zawsze otwiera polaczenie do bazy danych      //dodawanie kolejnych kolum 
+            conn.Open(); //zawsze otwiera połączenie do bazy danych      
+            //Szymon: Funkcja budująca stringa, dodawanie do kolejnych kolum wartości: UserName, Password, hashpass, Name, Surname, Cash zamieniany "," na "." ponieważ w bazie ustawiony jest decimal i bez ryzyka lepiej było zostawic "."
+            //Adress, City, Admin, Admin - drugi admin podany jako wartość będzie zawsze tym adminem, którego nie będzie można usunąć
             string sql = String.Format(@"INSERT INTO Users(Login, Password, Hashpass, Name, Surname, Wallet, Address, City, Admin, IsFirstAdmin)  
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, {9})", UserName, Password, hashpass, Name, Surname, cash.ToString().Replace(',', '.'), Address, City, Admin, Admin);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);      //do cashu ustawiona . bo w bazie jest decimal i bez ryzyka lepiej bylo zostawic . //drugi admin czyli ten ktorego nie mozna usnac
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
-            conn.Close(); //musi zamknac polaczenie aby mozna bylo wpisac do dany
+            conn.Close(); //musi zamknąć połączenie aby można było wpisać dane do bazy
             Logi.addTextToFile(String.Format("Added new user to Users table - UserName: {0}, Name: {1}, Surname: {2}, is Admin {3}", UserName, Name, Surname, Admin), UserName);
         } // dodaje usera z kilikoma inforamcja i czy jest adminem
         public void saveUser(int ID, string UserName, string Name, string Surname, string Cash, string Address, string City, int Admin, string WHO)
-        {//saveUser jest do zapisu przez Admina, zmienilo sie tyle ze nie ma hashowania hasla bo admin nie moze zmienic hasla
+        {//Szymon: funkcja saveUser jest do zapisu przez Admina
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             decimal cash = ConvertToDecimal(Cash);
             conn.Open();
@@ -311,6 +315,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
             Logi.addTextToFile(String.Format("Saved existing user in Users table - ID in table: {0}, UserName: {1}, Name: {2}, Surname: {3}, is Admin {4}", ID, UserName, Name, Surname, Admin), WHO);
+
         }
         public void deleteUser(int ID, string WHO) //usuwanie wybranego usera
         {
@@ -322,7 +327,7 @@ namespace WpfApp1
             conn.Close();
             Logi.addTextToFile(String.Format("Saved existing user in Users table - ID in table: {0}", ID), WHO);
         }
-        public MySqlDataReader InfoAboutUser(string login, string password) //zwraca readaera czy user istnienie zwraca cala tablice usserow
+        public MySqlDataReader InfoAboutUser(string login, string password) // Szymon: funkcja zwraca readaera czy user istnieje, zwraca całą tablice usera
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand checkLoginPass = new MySqlCommand("SELECT * FROM Users WHERE Login = @log AND Password = @pas", conn);
@@ -336,7 +341,7 @@ namespace WpfApp1
             reader.Read();
             return reader;
         }
-        public MySqlDataReader infoAboutUserByID(int ID)  //wybiera wszystkie informacje o userze po ID
+        public MySqlDataReader infoAboutUserByID(int ID)  //Szymon: funkcja wybiera wszystkie informacje o userze po ID
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand cmd = new MySqlCommand(String.Format(@"SELECT * FROM Users WHERE ID = {0}", ID), conn);
@@ -353,8 +358,7 @@ namespace WpfApp1
 
             return reader;
         }
-        public void updateUserCash(int ID, string userName, string cash) //sluzy tylko przy kupnie jak user/admin cos kupuje trzeba mu podmienic pieniadze tak aby funckja sprawdzila 
-                                                                         // czy moze kupic cos innego
+        public void updateUserCash(int ID, string userName, string cash) //Szymon: funkcja służąca tylko przy kupnie sprawdzająca czy użytkownik/admin może kupić coś innego np. droższego
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             conn.Open();
@@ -364,7 +368,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public DataTable getUserOrder(int ID) // funckja pobierajaca zamowienie dla konkretnego usera
+        public DataTable getUserOrder(int ID) // Szymon: funkcja pobierająca informację o zamówieniu dla konkretnego użytkownika
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlDataAdapter sda = null;
@@ -379,7 +383,7 @@ namespace WpfApp1
             sda.Fill(dt);
             return dt;
         }
-        public void changeUserPassword(int ID, string UserName, string Pass) //sluzy tylko do zmiany hasla przez usera
+        public void changeUserPassword(int ID, string UserName, string Pass) //Szymon: funkcja służąca tylko do zmiany hasła przez użytkownika
         {
             string hashpass = HashPassword(Pass);
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
@@ -393,7 +397,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public void saveUserFromUserPage(int ID, string login, string name, string surname, string address, string city) //uzytkownik moze zapisac nowe dane
+        public void saveUserFromUserPage(int ID, string login, string name, string surname, string address, string city) //Szymon: funkcja umożliwiająca, że użytkownik może zapisać nowe dane
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             conn.Open();
@@ -412,10 +416,10 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi sprawdzania istnienia danych w konkretnych tabelach
         /// </summary>
-        private bool checkIfAdminExists() //sprawdza czy admin istnieje
+        private bool checkIfAdminExists() //Szymon: funkcja sprawdza czy admin istnieje, jeśli są już jacyś userzy to jest już jakiś admin
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
-            MySqlCommand checkLoginPass = new MySqlCommand("SELECT * FROM Users WHERE Admin = 1", conn); //checkLoginPass funckja sprawdzajaca podczas logowania czy takie dane istnieja
+            MySqlCommand checkLoginPass = new MySqlCommand("SELECT * FROM Users WHERE Admin = 1", conn); //checkLoginPass funckja sprawdzająca podczas logowania czy takie dane istnieją, zwraca informację czy 
             conn.Open();
             var reader = checkLoginPass.ExecuteReader();
             if (reader.HasRows)
@@ -428,7 +432,7 @@ namespace WpfApp1
             }
             conn.Close();
         }
-        public int checkIfDataExistLogIn(string login, string password = "default") //sprawdzanie podczas logowania czy takie dane istnieja zwraca ifno czy istnieje czy nie czy haslo jest poprawne
+        public int checkIfDataExistLogIn(string login, string password = "default") //Szymon: funkcja sprawdzająca podczas logowania czy dane istnieją, zwraca informację czy istnieją czy nie i czy hasło jest poprawne
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             MySqlCommand checkLoginPass = new MySqlCommand();
@@ -457,7 +461,7 @@ namespace WpfApp1
             }
             conn.Close();
         }
-        public bool checkIfUserAuthorSongAlbumExist(string typeOfQuestion, int ID, string Name = "")
+        public bool checkIfUserAuthorSongAlbumExist(string typeOfQuestion, int ID, string Name = "") //Szymon: funkcja sprawdza czy istnieje autor o podanym id i nazwie
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string check = "";
@@ -469,7 +473,7 @@ namespace WpfApp1
                 }
                 else if (typeOfQuestion == "author")
                 {
-                    check = String.Format("SELECT COUNT(*) FROM Authors WHERE ID = @ID AND AuthorName = @Name"); //sprawdza czy istnieje autor o podanym id i nazwie
+                    check = String.Format("SELECT COUNT(*) FROM Authors WHERE ID = @ID AND AuthorName = @Name");
                 }
                 else if (typeOfQuestion == "song")
                 {
@@ -492,11 +496,11 @@ namespace WpfApp1
                 }
                 else if (typeOfQuestion == "song")
                 {
-                    check = String.Format("SELECT COUNT(*) FROM Songs WHERE ID = @ID"); //czy istnieje piosenka o konkretnym id
+                    check = String.Format("SELECT COUNT(*) FROM Songs WHERE ID = @ID"); //sprawdzenie czy istnieje piosenka o konkretnym id
                 }
                 else if (typeOfQuestion == "album")
                 {
-                    check = String.Format("SELECT COUNT(*) FROM Albums WHERE ID = @ID");
+                    check = String.Format("SELECT COUNT(*) FROM Albums WHERE ID = @ID"); //sprawdzenie czy istnieje album o konkretnym id
                 }
             }
 
@@ -525,7 +529,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi tabel (wspólne)
         /// </summary>
-        public void deleteUserAuthorSongAlbum(string type, int ID, string WHO = "") //f. do usuwania konkretnego id w bazie
+        public void deleteUserAuthorSongAlbum(string type, int ID, string WHO = "") //Szymon: funkcja do usuwania konkretnego id w bazie
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
@@ -554,7 +558,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public DataTable getTables(string Table) //sluzy do pobierania calych tablic
+        public DataTable getTables(string Table) //Szymon: funkcja służąca do pobierania całych tablic
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string CmdString = "";
@@ -608,17 +612,17 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi dodawania autorów
         /// </summary>
-        public void addSaveAuthor(int AddOrSave, string AuthName, string NameFile = "null", byte[] image = null, int Id = -1) //f. 
+        public void addSaveAuthor(int AddOrSave, string AuthName, string NameFile = "null", byte[] image = null, int Id = -1) //Szymon: funkcja 
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
 
-            if (AddOrSave == 1) //albo dodajemy usera
+            if (AddOrSave == 1) //dodawanie usera
             {
                 conn.Open();
                 sql = String.Format(@"INSERT INTO Authors (AuthorName, FileName, Image) VALUES ('{0}', @NameFile, @image)", AuthName);
             }
-            else if (AddOrSave == 2 && Id >= 0) //albo edytyjemy już istniejącego
+            else if (AddOrSave == 2 && Id >= 0) //edycja już istniejącego
             {
                 conn.Open();
                 sql = String.Format(@"UPDATE Authors SET AuthorName = '{0}', FileName = @NameFile, Image = @image WHERE ID={1}",
@@ -644,7 +648,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public MySqlDataReader getInfoAboutAuthor(int ID) //pobiera wszystkie informacje o autorze
+        public MySqlDataReader getInfoAboutAuthor(int ID) //Szymon: funckja pobierająca wszystkie informacje o autorze
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string query = "SELECT * FROM Authors WHERE ID=@ID";
@@ -660,7 +664,7 @@ namespace WpfApp1
             else
                 return null;
         }
-        public DataSet getAuthorsToCombobox() //funkcja pobierająca informację do comboboxa
+        public DataSet getAuthorsToCombobox() //Szymon: funkcja pobierająca informację do comboboxa
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
 
@@ -672,7 +676,7 @@ namespace WpfApp1
             return ds;
 
         }
-        public byte[] getAuthorImage(int ID) //funkcja pobierająca image o danym autorze
+        public byte[] getAuthorImage(int ID) //Szymon: funkcja pobierająca image o danym autorze
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
 
@@ -700,7 +704,7 @@ namespace WpfApp1
             }
             return imageByte;
         }
-        public void deleteAuthor(int ID) //usuwanie autora
+        public void deleteAuthor(int ID) //Szymon: funkcja służąca do usuwania autora
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             conn.Open();
@@ -714,8 +718,9 @@ namespace WpfApp1
         /// Funkcje obsługi utworów
         /// </summary>
 
+        //Szymon: funkcja służąca do dodawania utowrów
         public void addSaveSong(int AddOrSave, string SongName, string Authors, string price, string discount, int Id = -1, string NameFile = "null", byte[] image = null)
-        {//dodanie utowrow
+        {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
             conn.Open();
@@ -740,7 +745,7 @@ namespace WpfApp1
             {
                 cmd.Parameters.AddWithValue("@NameFile", SqlString.Null);
             }
-            if (image != null) //jesli namefile lub image jest pusty to zamiena na null, zabezpieczenie przed tym aby program sie wysypal gdyby nie bylo obrazka - beda puste dane
+            if (image != null) //jesli namefile lub image jest pusty to zamiena na null, zabezpieczenie przed tym aby program sie "wysypał" gdyby nie bylo obrazka - będą puste dane
             {
                 cmd.Parameters.AddWithValue("@image", image);
             }
@@ -758,6 +763,8 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi albumów
         /// </summary>
+
+        //Szymon: funkcja służąca do dodawania albumów
         public void addSaveAlbum(int AddOrSave, string SongName, string Songs, string price, string discount, int Id = -1, string NameFile = "null", byte[] image = null)
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
@@ -799,7 +806,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public DataTable getSongsOfAlbum(string SongsString) //pobiera wszystkie songi danego albumu 
+        public DataTable getSongsOfAlbum(string SongsString) //Szymon: funkcja pobierająca wszystkie utwory danego albumu 
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string CmdString = "";
@@ -817,8 +824,10 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje obsługi zamówień
         /// </summary>
+
+        // Szymon: funkcja służąca do aktualizacji zamówienia
         public void addSaveOrder(int AddOrSave, int UserID, int ProductID, string ProductType, string OrderData, string Price, string DeliveryAddress, int Id = -1)
-        { // updatuje order
+        {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string sql = "";
 
@@ -838,7 +847,7 @@ namespace WpfApp1
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public MySqlDataReader getOrderedProductinfo(string type, int ID, string name = "") //pobieraja z albumow albo piosenek informacje o zamowionym produkcie
+        public MySqlDataReader getOrderedProductinfo(string type, int ID, string name = "") //Szymon: funkcja pobierająca z albumów/piosenek informacje o zamówionym produkcie
         {//pobiera dane po id 
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
             string command = "";
@@ -868,7 +877,7 @@ namespace WpfApp1
         /// <summary>
         /// Funkcje dodawania danych z plików TXT do tabel
         /// </summary>
-        private void addUsersToTable()  //3 funkcje ktore dodaja z pliku txt
+        private void addUsersToTable()  //Szymon: funkcje dodające z plików .txt
         {
             //List<string> Users = new List<string>();
             if (File.Exists(string.Format(@"{0}\{1}", path, Filename)))
