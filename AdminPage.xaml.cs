@@ -496,7 +496,7 @@ namespace WpfApp1
         {
             BinaryDataImageStudio = GetImageSelectPhoto("studio");
         }
-        //Bury - funckja zapisująca dane które podaliśmy w opcjach 
+        //Bury - funckja zapisująca dane które podaliśmy w opcjach oraz sprawdza czy dane w textboxach są puste
         private void saveStudioOptions_Click(object sender, RoutedEventArgs e)
         {
             if ((nameOfStudio.Text != "" && nameOfStudio.Text != string.Empty) && (KeyProduct.Text != "" && KeyProduct.Text != string.Empty)
