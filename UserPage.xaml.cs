@@ -48,7 +48,7 @@ namespace WpfApp1
             Main.Width = 1300;
 
             RefreshOrderTable((int)userList[0]);
-            theme = motyw;
+            theme = (int)userList[11];
             changeTheme();
         }
         /// <summary>
@@ -123,6 +123,29 @@ namespace WpfApp1
                 deleteOrder.Background =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFDDDDDD"));
 
+                /* //DataGridy
+                 //Uzytkownicy
+                 usersTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                 usersTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                 //Albumy
+                 albumList.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                 albumList.Background= new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                 albumListOfSongs.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                 albumListOfSongs.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                 listOfSongsAlbum.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                 listOfSongsAlbum.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                 //Tworcy
+                 authorTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                 authorTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                 //Utwory
+                 SongsTable.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                 SongsTable.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
+                 //Zamowienie
+                 orderList.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF000000"));
+                 orderList.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));*/
+                bazySQL.updateUserTheme((int)userList[0], theme);
+                MySqlDataReader userTemp = bazySQL.infoAboutUserByID((int)userList[0]);
+                updateUserList(userTemp);
                 theme = 1;
             }
             else if (theme == 1)
@@ -130,10 +153,12 @@ namespace WpfApp1
                 foreach (MenuItem mi in MenuTop.Items)
                 {
                     mi.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                    //mi.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 }
                 foreach (TabItem ti in Tabs.Items)
                 {
                     ti.Background = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF696969"));
+                    //ti.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFFFFFFF"));
                 }
                 NameOfStudioMainprogram.Foreground = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FFE6FF00"));
                 //infos
@@ -192,6 +217,9 @@ namespace WpfApp1
                 deleteOrder.Background =
                     new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF4A4A4A"));
 
+                bazySQL.updateUserTheme((int)userList[0], theme);
+                MySqlDataReader userTemp = bazySQL.infoAboutUserByID((int)userList[0]);
+                updateUserList(userTemp);
                 theme = 0;
             }
         }

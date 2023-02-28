@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Data.SqlTypes;
 using MySql.Data.MySqlClient;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 
 
 namespace WpfApp1
@@ -76,26 +77,27 @@ namespace WpfApp1
             }
 
         }
-
-        private void CheckOrCreateTablesDB() // Szymon: funkcja do tworzenia tablic w bazie danych, które można wykorzystać w programie 
+        private void generateOptionTable()
         {
             MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
-
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Options;" + // opcje programu
-                " CREATE TABLE Options (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
-                " StudioName varchar(255) NOT NULL," +
-                " KeyProduct varchar(255) NOT NULL," +
-                " Country varchar(10) NOT NULL," +
-                " Image longblob);", conn))
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Options;" +
+            " CREATE TABLE Options (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
+            " StudioName varchar(255) NOT NULL," +
+            " KeyProduct varchar(255) NOT NULL," +
+            " Country varchar(10) NOT NULL," +
+            " Image longblob);", conn))
             {
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
-                Logi.addTextToFile("Added new Authors table to database"); //logi
+                Logi.addTextToFile("Added new Authors table to database");
                 addToOptionTable();
             }
-
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Users;" + //użytkownicy
+        }
+        private void generateUserTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Users;" +
                 " CREATE TABLE Users (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " Login varchar(255) NOT NULL," +
                 " Password varchar(255) NOT NULL," +
@@ -107,16 +109,20 @@ namespace WpfApp1
                 " City varchar(255) NOT NULL," +
                 " Admin int NOT NULL," +
                 " IsFirstAdmin int NOT NULL," +
+                " Theme int NOT NULL," +
                 " UNIQUE (Login));", conn))
             {
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
                 Logi.addTextToFile("Added new Users table to database");
-                addUsersToTable(); //funkcje zaczytające dane z pliku do testów, aby przyspieszyć testy aplikacji
+                addUsersToTable();
             }
-
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Authors;" + //autorzy
+        }
+        private void generateAuthorTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Authors;" +
                 " CREATE TABLE Authors (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " AuthorName varchar(255) NOT NULL," +
                 " FileName varchar(255)," +
@@ -128,8 +134,11 @@ namespace WpfApp1
                 Logi.addTextToFile("Added new Authors table to database");
                 addAuthorsToTable();
             }
-
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Songs;" + //utwory
+        }
+        private void generateSongsTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Songs;" +
                 " CREATE TABLE Songs (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " SongName varchar(255) NOT NULL," +
                 " FileName varchar(255)," +
@@ -144,8 +153,11 @@ namespace WpfApp1
                 Logi.addTextToFile("Added new Songs table to database");
                 addSongsToTable();
             }
-
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Albums;" + //albumy
+        }
+        private void generateAlbumTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Albums;" +
                 " CREATE TABLE Albums (ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " AlbumName varchar(255) NOT NULL," +
                 " FileName varchar(255)," +
@@ -159,8 +171,11 @@ namespace WpfApp1
                 conn.Close();
                 Logi.addTextToFile("Added new Albums table to database");
             }
-
-            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Orders;" + //zamówienia
+        }
+        private void generateOrderTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            using (MySqlCommand command = new MySqlCommand("DROP TABLE IF EXISTS Orders;" +
                 " CREATE TABLE Orders(ID INTEGER PRIMARY KEY AUTO_INCREMENT," +
                 " UserID varchar(255) NOT NULL," +
                 " ProductID varchar(255) NOT NULL," +
@@ -175,10 +190,293 @@ namespace WpfApp1
                 Logi.addTextToFile("Added new Orders table to database");
             }
         }
-        /// <summary>
-        /// Funkcje obsługi ładowania opcji do programu, ich edycji oraz dodawania
-        /// </summary>
+        private int CheckTableFunction(string tableName)
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            MySqlCommand cmd = new MySqlCommand(tableName, conn);
+            int result = 0;
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
 
+            while (reader.Read())
+            {
+                int count = reader.GetInt32(0);
+                if (count == 0)
+                {
+                    result = 0;
+                }
+                else if (count == 1)
+                {
+                    result = 1;
+                }
+            }
+            if (conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            return result;
+        }
+        private void CheckOrCreateTablesDB()
+        {
+            //MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+
+            string cmdStrOp = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'imperium' AND table_name = 'Options'";
+            string cmdStrU = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'imperium' AND table_name = 'Users'";
+            string cmdStrA = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'imperium' AND table_name = 'Authors'";
+            string cmdStrS = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'imperium' AND table_name = 'Songs'";
+            string cmdStrAl = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'imperium' AND table_name = 'Albums'";
+            string cmdStrOr = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = 'imperium' AND table_name = 'Orders'";
+
+            // Do tablicy opcji
+            int opt = CheckTableFunction(cmdStrOp);
+            if (opt == 0)
+            {
+                generateOptionTable();
+            }
+            else if (opt == 1)
+            {
+                checkOptionTable();
+            }
+            //Tablica userów
+            int users = CheckTableFunction(cmdStrU);
+            if (users == 0)
+            {
+                generateUserTable();
+            }
+            else if (users == 1)
+            {
+                checkUsersTable();
+            }
+            //Tablica autorów
+            int authors = CheckTableFunction(cmdStrA);
+            if (authors == 0)
+            {
+                generateAuthorTable();
+            }
+            else if (authors == 1)
+            {
+                checkAuthorsTable();
+            }
+            //Tablica albumów
+            int albums = CheckTableFunction(cmdStrAl);
+            if (albums == 0)
+            {
+                generateAlbumTable();
+            }
+            else if (albums == 1)
+            {
+                checkAlbumsTable();
+            }
+            //Tablica utworów
+            int songs = CheckTableFunction(cmdStrS);
+            if (songs == 0)
+            {
+                generateSongsTable();
+            }
+            else if (songs == 1)
+            {
+                checkSongsTable();
+            }
+            //Tablica zamowien
+            int orders = CheckTableFunction(cmdStrOr);
+            if (orders == 0)
+            {
+                generateOrderTable();
+            }
+            else if (orders == 1)
+            {
+                checkOrdersTable();
+            }
+        }/// <summary>
+         /// Funkcje sprawdzające istnienie konkretnych układów tablic
+         /// </summary>
+        private void checkOptionTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            DataTable schema = null;
+
+            using (var schemaCommand = new MySqlCommand("SELECT * FROM Options", conn))
+            {
+                conn.Open();
+                using (var readerSchema = schemaCommand.ExecuteReader(CommandBehavior.SchemaOnly))
+                {
+                    schema = readerSchema.GetSchemaTable();
+                }
+                if ((schema.Rows[0].Field<String>("ColumnName") == "ID" && schema.Rows[0].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[1].Field<String>("ColumnName") == "StudioName" && schema.Rows[1].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[2].Field<String>("ColumnName") == "KeyProduct" && schema.Rows[2].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[3].Field<String>("ColumnName") == "Country" && schema.Rows[3].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[4].Field<String>("ColumnName") == "Image" && schema.Rows[4].Field<Type>("DataType") == Type.GetType("System.Byte[]")))
+                {
+                    MySqlDataReader checkOpt = getOptionTable();
+                    if (checkOpt != null)
+                    {
+                        if ((checkOpt.GetValue(1) != null || checkOpt.GetValue(1).ToString() != "") &&
+                            (checkOpt.GetValue(2) != null || checkOpt.GetValue(2).ToString() != "") &&
+                            (checkOpt.GetValue(3) != null || checkOpt.GetValue(3).ToString() != "")) { }
+                        else
+                            addToOptionTable();
+                    }
+                    else
+                    {
+                        addToOptionTable();
+                    }
+                    Logi.addTextToFile("Successfully checked schema of Options Table");
+                }
+                else
+                {
+                    generateOptionTable();
+                }
+                conn.Close();
+            }
+        }
+        private void checkUsersTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            DataTable schema = null;
+
+            using (var schemaCommand = new MySqlCommand("SELECT * FROM Users", conn))
+            {
+                conn.Open();
+                using (var readerSchema = schemaCommand.ExecuteReader(CommandBehavior.SchemaOnly))
+                {
+                    schema = readerSchema.GetSchemaTable();
+                }
+                if ((schema.Rows[0].Field<String>("ColumnName") == "ID" && schema.Rows[0].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[1].Field<String>("ColumnName") == "Login" && schema.Rows[1].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[2].Field<String>("ColumnName") == "Password" && schema.Rows[2].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[3].Field<String>("ColumnName") == "Hashpass" && schema.Rows[3].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[4].Field<String>("ColumnName") == "Name" && schema.Rows[4].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[5].Field<String>("ColumnName") == "Surname" && schema.Rows[5].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[6].Field<String>("ColumnName") == "Wallet" && schema.Rows[6].Field<Type>("DataType") == Type.GetType("System.Double"))
+                    && (schema.Rows[7].Field<String>("ColumnName") == "Address" && schema.Rows[7].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[8].Field<String>("ColumnName") == "City" && schema.Rows[8].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[9].Field<String>("ColumnName") == "Admin" && schema.Rows[9].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[10].Field<String>("ColumnName") == "IsFirstAdmin" && schema.Rows[10].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[11].Field<String>("ColumnName") == "Theme" && schema.Rows[11].Field<Type>("DataType") == Type.GetType("System.Int32")))
+                {
+                    Logi.addTextToFile("Successfully checked schema of Users Table");
+                }
+                else
+                {
+                    generateUserTable();
+                }
+                conn.Close();
+            }
+        }
+        private void checkAuthorsTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            DataTable schema = null;
+
+            using (var schemaCommand = new MySqlCommand("SELECT * FROM Authors", conn))
+            {
+                conn.Open();
+                using (var readerSchema = schemaCommand.ExecuteReader(CommandBehavior.SchemaOnly))
+                {
+                    schema = readerSchema.GetSchemaTable();
+                }
+                if ((schema.Rows[0].Field<String>("ColumnName") == "ID" && schema.Rows[0].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[1].Field<String>("ColumnName") == "AuthorName" && schema.Rows[1].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[2].Field<String>("ColumnName") == "FileName" && schema.Rows[2].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[3].Field<String>("ColumnName") == "Image" && schema.Rows[3].Field<Type>("DataType") == Type.GetType("System.Byte[]")))
+                {
+                    Logi.addTextToFile("Successfully checked schema of Authors Table");
+                }
+                else
+                {
+                    generateAuthorTable();
+                }
+                conn.Close();
+            }
+        }
+        private void checkSongsTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            DataTable schema = null;
+
+            using (var schemaCommand = new MySqlCommand("SELECT * FROM Songs", conn))
+            {
+                conn.Open();
+                using (var readerSchema = schemaCommand.ExecuteReader(CommandBehavior.SchemaOnly))
+                {
+                    schema = readerSchema.GetSchemaTable();
+                }
+                if ((schema.Rows[0].Field<String>("ColumnName") == "ID" && schema.Rows[0].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[1].Field<String>("ColumnName") == "SongName" && schema.Rows[1].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[2].Field<String>("ColumnName") == "FileName" && schema.Rows[2].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[3].Field<String>("ColumnName") == "Image" && schema.Rows[3].Field<Type>("DataType") == Type.GetType("System.Byte[]"))
+                    && (schema.Rows[4].Field<String>("ColumnName") == "Authors" && schema.Rows[4].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[5].Field<String>("ColumnName") == "Price" && schema.Rows[5].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[6].Field<String>("ColumnName") == "Discount" && schema.Rows[6].Field<Type>("DataType") == Type.GetType("System.String")))
+                {
+                    Logi.addTextToFile("Successfully checked schema of Songs Table");
+                }
+                else
+                {
+                    generateSongsTable();
+                }
+                conn.Close();
+            }
+        }
+        private void checkAlbumsTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            DataTable schema = null;
+
+            using (var schemaCommand = new MySqlCommand("SELECT * FROM Albums", conn))
+            {
+                conn.Open();
+                using (var readerSchema = schemaCommand.ExecuteReader(CommandBehavior.SchemaOnly))
+                {
+                    schema = readerSchema.GetSchemaTable();
+                }
+                if ((schema.Rows[0].Field<String>("ColumnName") == "ID" && schema.Rows[0].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[1].Field<String>("ColumnName") == "AlbumName" && schema.Rows[1].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[2].Field<String>("ColumnName") == "FileName" && schema.Rows[2].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[3].Field<String>("ColumnName") == "Image" && schema.Rows[3].Field<Type>("DataType") == Type.GetType("System.Byte[]"))
+                    && (schema.Rows[4].Field<String>("ColumnName") == "Songs" && schema.Rows[4].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[5].Field<String>("ColumnName") == "Price" && schema.Rows[5].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[6].Field<String>("ColumnName") == "Discount" && schema.Rows[6].Field<Type>("DataType") == Type.GetType("System.String")))
+                {
+                    Logi.addTextToFile("Successfully checked schema of Albums Table");
+                }
+                else
+                {
+                    generateAlbumTable();
+                }
+                conn.Close();
+            }
+        }
+        private void checkOrdersTable()
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            DataTable schema = null;
+
+            using (var schemaCommand = new MySqlCommand("SELECT * FROM Orders", conn))
+            {
+                conn.Open();
+                using (var readerSchema = schemaCommand.ExecuteReader(CommandBehavior.SchemaOnly))
+                {
+                    schema = readerSchema.GetSchemaTable();
+                }
+                if ((schema.Rows[0].Field<String>("ColumnName") == "ID" && schema.Rows[0].Field<Type>("DataType") == Type.GetType("System.Int32"))
+                    && (schema.Rows[1].Field<String>("ColumnName") == "UserID" && schema.Rows[1].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[2].Field<String>("ColumnName") == "ProductID" && schema.Rows[2].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[3].Field<String>("ColumnName") == "ProductType" && schema.Rows[3].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[4].Field<String>("ColumnName") == "OrderData" && schema.Rows[4].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[5].Field<String>("ColumnName") == "Price" && schema.Rows[5].Field<Type>("DataType") == Type.GetType("System.String"))
+                    && (schema.Rows[6].Field<String>("ColumnName") == "DeliveryAdress" && schema.Rows[6].Field<Type>("DataType") == Type.GetType("System.String")))
+                {
+                    Logi.addTextToFile("Successfully checked schema of Orders Table");
+                }
+                else
+                {
+                    generateOrderTable();
+                }
+                conn.Close();
+            }
+        }
         // Szymon: funkcjonalność możliwość zmieniany logo, nazwy, numeru seryjnego, lokalizacji aplikacji.(tylko admin)
         // w rubrykach zostają wyświetlone dane z bazy danych, które możemy edytować,
 
@@ -287,7 +585,7 @@ namespace WpfApp1
         /// </summary>
 
         //Szymon: funkcja do rejestracji usera
-        public void registerUser(string UserName, string Password, string Name, string Surname, string Address, string City, string Cash = "1000.00")
+        public void registerUser(string UserName, string Password, string Name, string Surname, string Address, string City, string Cash = "1000.00", int motyw = 0)
         { // Szymon: funkcjonalność: Rejestracja Usera
           // Po wpisaniu przez użytkownika informacji funkcja pobiera dane z okienek tekstowych po czym dodaje je do datatable
           // w momencie rejestracji użytkownik otrzymuje 1000zł na start
@@ -306,8 +604,8 @@ namespace WpfApp1
             //Funkcja budująca stringa, dodawanie do kolejnych kolum wartości: UserName, Password, hashpass, Name, Surname,
             //Cash zamieniany "," na "." ponieważ w bazie ustawiony jest decimal i bez ryzyka lepiej było zostawic "."
             //Adress, City, Admin, Admin - drugi admin podany jako wartość będzie zawsze tym adminem, którego nie będzie można usunąć
-            string sql = String.Format(@"INSERT INTO Users(Login, Password, Hashpass, Name, Surname, Wallet, Address, City, Admin, IsFirstAdmin)  
-            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, {9})", UserName, Password, hashpass, Name, Surname, cash.ToString().Replace(',', '.'), Address, City, Admin, Admin);
+            string sql = String.Format(@"INSERT INTO Users(Login, Password, Hashpass, Name, Surname, Wallet, Address, City, Admin, IsFirstAdmin, Theme) 
+            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', {8}, {9}, {10})", UserName, Password, hashpass, Name, Surname, cash.ToString().Replace(',', '.'), Address, City, Admin, Admin, motyw);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             conn.Close(); //musi zamknąć połączenie aby można było wpisać dane do bazy
@@ -427,6 +725,18 @@ namespace WpfApp1
             cmd.Parameters.AddWithValue("@surname", surname);
             cmd.Parameters.AddWithValue("@address", address);
             cmd.Parameters.AddWithValue("@city", city);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public void updateUserTheme(int ID, int theme)
+        {
+            MySqlConnection conn = new MySqlConnection(makeMySQLConnString());
+            conn.Open();
+            string sql = "UPDATE Users SET Theme=@theme WHERE ID = @ID ";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@ID", ID);
+            cmd.Parameters.AddWithValue("@theme", theme);
             cmd.ExecuteNonQuery();
             conn.Close();
         }
@@ -928,7 +1238,7 @@ namespace WpfApp1
                     {
                         string[] podzial = line.Split(';');
 
-                        registerUser(podzial[0], podzial[1], podzial[2], podzial[3], podzial[5], podzial[6], podzial[4]);
+                        registerUser(podzial[0], podzial[1], podzial[2], podzial[3], podzial[5], podzial[6], podzial[4], int.Parse(podzial[7]));
                     }
                 }
             }
