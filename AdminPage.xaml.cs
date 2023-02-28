@@ -60,6 +60,7 @@ namespace WpfApp1
             addAuthorsToCombobox();
             SongsTableRefresh();
             OrderTable();
+            AlbumsTable();
             theme = (int)userList[11];
             changeTheme();
             songList = null;
@@ -673,7 +674,7 @@ namespace WpfApp1
                 checkIfAuthorIs = bazySQL.checkIfUserAuthorSongAlbumExist("author", selectedAuthorID, nameOfAuthor.Text);
             }
             result = System.Windows.MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
-            if (result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes && (nameOfAuthor.Text != null && nameOfAuthor.Text != ""))
             {
                 if (selectedFileName.Text != "" && selectedFileName.Text != null && BinaryDataImage != null)
                 {
@@ -867,54 +868,59 @@ namespace WpfApp1
             result = MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             if (result == MessageBoxResult.Yes)
             {
-                if (selectedImageFileNameSong.Text != "" && selectedImageFileNameSong.Text != null && BinaryDataImage != null &&
-                    priceOfSongTXT.Text != null && priceOfSongTXT.Text != null)
+                if (nameOfSong1.Text != null && nameOfSong1.Text != "" && cmbAuthorSong.SelectedValue != null && priceOfSongTXT.Text != "")
                 {
-                    if (checkIfSongIs == true)
+                    if (selectedImageFileNameSong.Text != "" && selectedImageFileNameSong.Text != null && BinaryDataImage != null &&
+                                        priceOfSongTXT.Text != null && priceOfSongTXT.Text != null)
                     {
-                        addOrEdit = MessageBox.Show(messageBoxEditText, caption2, button, icon, MessageBoxResult.Yes);
-                        if (addOrEdit == MessageBoxResult.Yes)
+                        if (checkIfSongIs == true)
                         {
-                            bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
-                                cmbSongDiscount.SelectedItem.ToString(), -1, selectedImageFileNameSong.Text, BinaryDataImageSong);
+                            addOrEdit = MessageBox.Show(messageBoxEditText, caption2, button, icon, MessageBoxResult.Yes);
+                            if (addOrEdit == MessageBoxResult.Yes)
+                            {
+                                bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
+                                    cmbSongDiscount.SelectedItem.ToString(), -1, selectedImageFileNameSong.Text, BinaryDataImageSong);
+                            }
+                            else
+                            {
+                                bazySQL.addSaveSong(2, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text
+                                    , cmbSongDiscount.SelectedItem.ToString(), selectedSongID, selectedImageFileNameSong.Text, BinaryDataImageSong);
+                            }
                         }
                         else
                         {
-                            bazySQL.addSaveSong(2, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text
-                                , cmbSongDiscount.SelectedItem.ToString(), selectedSongID, selectedImageFileNameSong.Text, BinaryDataImageSong);
+                            bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
+                                    cmbSongDiscount.SelectedItem.ToString(), -1, selectedImageFileNameSong.Text, BinaryDataImageSong);
                         }
                     }
                     else
                     {
-                        bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
-                                cmbSongDiscount.SelectedItem.ToString(), -1, selectedImageFileNameSong.Text, BinaryDataImageSong);
-                    }
-                }
-                else
-                {
-                    if (checkIfSongIs == true)
-                    {
-                        addOrEdit = MessageBox.Show(messageBoxEditText, caption2, button, icon, MessageBoxResult.Yes);
-                        if (addOrEdit == MessageBoxResult.Yes)
+                        if (checkIfSongIs == true)
                         {
-                            bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
-                                cmbSongDiscount.SelectedItem.ToString(), -1, "null", null);
+                            addOrEdit = MessageBox.Show(messageBoxEditText, caption2, button, icon, MessageBoxResult.Yes);
+                            if (addOrEdit == MessageBoxResult.Yes)
+                            {
+                                bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
+                                    cmbSongDiscount.SelectedItem.ToString(), -1, "null", null);
+                            }
+                            else
+                            {
+                                bazySQL.addSaveSong(2, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text
+                                    , cmbSongDiscount.SelectedItem.ToString(), selectedSongID, "null", null);
+                            }
                         }
                         else
                         {
-                            bazySQL.addSaveSong(2, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text
-                                , cmbSongDiscount.SelectedItem.ToString(), selectedSongID, "null", null);
+                            bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
+                                    cmbSongDiscount.SelectedItem.ToString(), -1, "null", null);
                         }
                     }
-                    else
-                    {
-                        bazySQL.addSaveSong(1, nameOfSong1.Text, cmbAuthorSong.SelectedValue.ToString(), priceOfSongTXT.Text,
-                                cmbSongDiscount.SelectedItem.ToString(), -1, "null", null);
-                    }
                 }
+
                 SongsTableRefresh();
             }
         }
+
         //Bury - oprogramowanie przycisku Wyłącz Program
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
