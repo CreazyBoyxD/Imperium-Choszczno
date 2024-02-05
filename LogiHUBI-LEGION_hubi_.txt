@@ -674,3 +674,12 @@
 2023-02-28T12:28:45.248; Successfully checked schema of Songs Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
 2023-02-28T12:28:45.461; Successfully checked schema of Orders Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
 2023-02-28T12:28:55.307; Logged in - user: admin and computer name: HUBI-LEGION
+
+2023-03-06T01:37:41.534; Start Application - name of computer and user: HUBI-LEGION_hubi_
+2023-03-06T01:37:43.129; Successfully checked schema of Options Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-03-06T01:37:43.331; Successfully checked schema of Users Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-03-06T01:37:43.505; Successfully checked schema of Authors Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-03-06T01:37:43.690; Successfully checked schema of Albums Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-03-06T01:37:43.865; Successfully checked schema of Songs Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-03-06T01:37:44.065; Successfully checked schema of Orders Table - user: (not specified/is default/doesn't exist yet) and computer name: HUBI-LEGION
+2023-03-06T01:38:13.786; Logged in - user: admin and computer name: HUBI-LEGION
